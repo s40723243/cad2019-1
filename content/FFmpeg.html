@@ -148,9 +148,33 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">FreeCAD << <a href='FreeCAD.html'>Previous</a> <a href='Solidworks.html'>Next</a> >> Solidworks<br /><h1>Webots</h1>
-<p><span><a href="https://drive.google.com/file/d/1o8cAv-pSUyp69TUGhC7NvEznGrdNP5AC/view?usp=sharing">Webot 2019a.7z</a> </span><span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</span></p>
-<br />FreeCAD << <a href='FreeCAD.html'>Previous</a> <a href='Solidworks.html'>Next</a> >> Solidworks</div>
+    <div id="tipue_search_content">Tools << <a href='Tools.html'>Previous</a> <a href='GUI.html'>Next</a> >> GUI<br /><h1>FFmpeg</h1>
+<p>FFmpeg 手冊: <a href="http://ffmpeg.org/ffmpeg.html">http://ffmpeg.org/ffmpeg.html</a></p>
+<h4>FFmpeg GUI:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg">https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg</a></p>
+<p style="padding-left: 60px;"><a href="http://qwinff.github.io/">http://qwinff.github.io/</a></p>
+<p style="padding-left: 60px;"><a href="http://www.avanti.arrozcru.org/">http://www.avanti.arrozcru.org/</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/winff">https://github.com/winff</a></p>
+<p style="padding-left: 60px;"><a href="http://www.ffmpegx.com/">http://www.ffmpegx.com/</a></p>
+<p style="padding-left: 60px;"><a href="https://handbrake.fr/">https://handbrake.fr/</a></p>
+<p style="padding-left: 60px;"><a href="http://www.squared5.com/">http://www.squared5.com/</a></p>
+<p style="padding-left: 60px;"><a href="https://sourceforge.net/projects/ffmpegyag/">https://sourceforge.net/projects/ffmpegyag/</a></p>
+<h4>擷取 mp4 片段檔案</h4>
+<p>從 origin.mp4 影片中的第一秒開始, 切出 15 分鐘的影片, 存為 new.mp4</p>
+<p style="padding-left: 30px;">ffmpeg -i origin.mp4 -ss 00:00:01 -t 00:15:00 -async 1 new.mp4</p>
+<h4>刪除影片中的聲音資料</h4>
+<p style="padding-left: 30px;">ffmpeg -i origin.mp4 -c copy -an new.mp4</p>
+<p>合併 mp4 檔案</p>
+<p>建立 allmp4.txt 內容為<br/>file '/path/to/1.mp4'<br/>file '/path/to/2.mp4'<br/>file '/path/to/3.mp4'</p>
+<p>將 1.mp4, 2.mp4 與 3.mp4 合併為 new.mp4</p>
+<p style="padding-left: 30px;">ffmpeg -f concat -i allmp4.txt -c copy new.mp4</p>
+<h4>影片中加入字幕</h4>
+<p>利用 <a href="http://www.aegisub.org/">http://www.aegisub.org/</a> 可攜版本工具加入字幕</p>
+<p>直接將 input.srt 字幕資料 burn 入 input.mp4</p>
+<p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
+<h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
+<h4 style="padding-left: 30px;"><img alt="" height="30" src="./../images/kmol_102x30_color.png" width="102"/></h4>
+<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p><br />Tools << <a href='Tools.html'>Previous</a> <a href='GUI.html'>Next</a> >> GUI</div>
         
     <!-- footer -->
       <div class="container">
