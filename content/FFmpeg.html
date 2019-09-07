@@ -150,15 +150,6 @@ init_mathjax();
         </header>
     <div id="tipue_search_content">Tools << <a href='Tools.html'>Previous</a> <a href='GUI.html'>Next</a> >> GUI<br /><h1>FFmpeg</h1>
 <p>FFmpeg 手冊: <a href="http://ffmpeg.org/ffmpeg.html">http://ffmpeg.org/ffmpeg.html</a></p>
-<h4>FFmpeg GUI:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg">https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg</a></p>
-<p style="padding-left: 60px;"><a href="http://qwinff.github.io/">http://qwinff.github.io/</a></p>
-<p style="padding-left: 60px;"><a href="http://www.avanti.arrozcru.org/">http://www.avanti.arrozcru.org/</a></p>
-<p style="padding-left: 60px;"><a href="https://github.com/winff">https://github.com/winff</a></p>
-<p style="padding-left: 60px;"><a href="http://www.ffmpegx.com/">http://www.ffmpegx.com/</a></p>
-<p style="padding-left: 60px;"><a href="https://handbrake.fr/">https://handbrake.fr/</a></p>
-<p style="padding-left: 60px;"><a href="http://www.squared5.com/">http://www.squared5.com/</a></p>
-<p style="padding-left: 60px;"><a href="https://sourceforge.net/projects/ffmpegyag/">https://sourceforge.net/projects/ffmpegyag/</a></p>
 <h4>擷取 mp4 片段檔案</h4>
 <p>從 origin.mp4 影片中的第一秒開始, 切出 15 分鐘的影片, 存為 new.mp4</p>
 <p style="padding-left: 30px;">ffmpeg -i origin.mp4 -ss 00:00:01 -t 00:15:00 -async 1 new.mp4</p>
@@ -174,7 +165,14 @@ init_mathjax();
 <p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
 <h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
 <h4 style="padding-left: 30px;"><img alt="" height="30" src="./../images/kmol_102x30_color.png" width="102"/></h4>
-<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p><br />Tools << <a href='Tools.html'>Previous</a> <a href='GUI.html'>Next</a> >> GUI</div>
+<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p>
+<h4>其他圖形化工具:</h4>
+<p style="padding-left: 30px;"><a href="http://www.aegisub.org/">http://www.aegisub.org/</a> (Font: SimSun, Size: 40, Bold, Primary, Color (255, 200, 5))</p>
+<p style="padding-left: 30px;"><a href="http://www.avidemux.org/nightly/win64_support/">http://www.avidemux.org/nightly/win64_support/</a> (建立使用 2.6.21 版本, 可與 aegisub 配合使用)</p>
+<p style="padding-left: 30px;"><a href="https://www.openshot.org/">https://www.openshot.org/</a> (必須分段輸入字幕, 無法與 aegisub 配合使用)</p>
+<p>請登入 @gm 電子郵箱後, 下載 <a href="https://drive.google.com/file/d/1UdEVnmursZFgWrYTY1CqDOWSjt7nr84N/view?usp=sharing">aegisub_avidemux_openshot.7z</a></p>
+<p style="padding-left: 30px;"></p>
+<p></p><br />Tools << <a href='Tools.html'>Previous</a> <a href='GUI.html'>Next</a> >> GUI</div>
         
     <!-- footer -->
       <div class="container">

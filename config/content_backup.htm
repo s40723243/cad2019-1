@@ -1722,15 +1722,6 @@ volume.run(1000, 50)</pre>
 <p></p>
 <h2>FFmpeg</h2>
 <p>FFmpeg 手冊: <a href="http://ffmpeg.org/ffmpeg.html">http://ffmpeg.org/ffmpeg.html</a></p>
-<h4>FFmpeg GUI:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg">https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg</a></p>
-<p style="padding-left: 60px;"><a href="http://qwinff.github.io/">http://qwinff.github.io/</a></p>
-<p style="padding-left: 60px;"><a href="http://www.avanti.arrozcru.org/">http://www.avanti.arrozcru.org/</a></p>
-<p style="padding-left: 60px;"><a href="https://github.com/winff">https://github.com/winff</a></p>
-<p style="padding-left: 60px;"><a href="http://www.ffmpegx.com/">http://www.ffmpegx.com/</a></p>
-<p style="padding-left: 60px;"><a href="https://handbrake.fr/">https://handbrake.fr/</a></p>
-<p style="padding-left: 60px;"><a href="http://www.squared5.com/">http://www.squared5.com/</a></p>
-<p style="padding-left: 60px;"><a href="https://sourceforge.net/projects/ffmpegyag/">https://sourceforge.net/projects/ffmpegyag/</a></p>
 <h4>擷取 mp4 片段檔案</h4>
 <p>從 origin.mp4 影片中的第一秒開始, 切出 15 分鐘的影片, 存為 new.mp4</p>
 <p style="padding-left: 30px;">ffmpeg -i origin.mp4 -ss 00:00:01 -t 00:15:00 -async 1 new.mp4</p>
@@ -1746,7 +1737,13 @@ volume.run(1000, 50)</pre>
 <p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
 <h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
 <h4 style="padding-left: 30px;"><img alt="" height="30" src="/images/kmol_102x30_color.png" width="102"/></h4>
-<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p><h2>GUI</h2>
+<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p>
+<h4>其他圖形化工具:</h4>
+<p style="padding-left: 30px;"><a href="http://www.aegisub.org/">http://www.aegisub.org/</a> (Font: SimSun, Size: 40, Bold, Primary, Color (255, 200, 5))</p>
+<p style="padding-left: 30px;"><a href="http://www.avidemux.org/nightly/win64_support/">http://www.avidemux.org/nightly/win64_support/</a> (建立使用 2.6.21 版本, 可與 aegisub 配合使用)</p>
+<p style="padding-left: 30px;"><a href="https://www.openshot.org/">https://www.openshot.org/</a> (必須分段輸入字幕, 無法與 aegisub 配合使用)</p>
+<p style="padding-left: 30px;"></p>
+<p></p><h2>GUI</h2>
 <p><a href="https://github.com/TransmissionZero/MinGW-Win32-Application">https://github.com/TransmissionZero/MinGW-Win32-Application</a></p>
 <p><a href="http://cq.cx/index.pl">http://cq.cx/index.pl</a></p>
 <p><a href="https://github.com/LDmicro/LDmicro">https://github.com/LDmicro/LDmicro</a></p><h2>Solvespace</h2>
@@ -2391,7 +2388,10 @@ int main()
 <p><span>Rover 零組件轉入<a href="http://www.coppeliarobotics.com/"> V-rep</a> 與 <a href="https://cyberbotics.com/">Webots</a> 執行機電控制系統設計</span></p>
 <p style="padding-left: 30px;">Webots 範例: <a href="https://www.cyberbotics.com/doc/guide/sojourner">https://www.cyberbotics.com/doc/guide/sojourner</a></p>
 <p style="padding-left: 30px;">參考資料:</p>
-<p style="padding-left: 60px;">登入 @gm 電子郵箱後, 下載 <a href="https://drive.google.com/file/d/1alczEGcvayA19SA6kdV38UeU-Y5vvZGx/view?usp=sharing">Webots_reference_pdfs.7z</a></p>
+<p style="padding-left: 60px;">登入 @gm 電子郵箱後,</p>
+<p style="padding-left: 90px;">下載 <a href="https://drive.google.com/file/d/1alczEGcvayA19SA6kdV38UeU-Y5vvZGx/view?usp=sharing">Webots_reference_pdfs.7z</a></p>
+<p style="padding-left: 90px;">下載 <a href="https://drive.google.com/file/d/1NpIVSnVHUWUbXP30SgOiB61-bqWcsjNz/view?usp=sharing">Webots_2012_guide.pdf</a></p>
+<p style="padding-left: 90px;">下載 <a href="https://drive.google.com/file/d/18MfpW65vZngRWKE42B69AsDs9aeyKhGZ/view?usp=sharing">Vrep_reference_pdfs.7z</a></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/_9d_vukS0Qg" width="560"></iframe></p><h2>Project</h2>
 <h4><span>機電資整合分組專案執行</span></h4>
 <p style="padding-left: 30px;">請各組參考先前已完成之<span>多段式頂球機構與循環鋼球運動系統 (例如:<span> </span><a href="https://www.youtube.com/watch?v=Zc17Azvmx9M">1</a>,<span> </span><a href="https://www.youtube.com/watch?v=1WWKgAMN5LI">2</a>,<span> </span><a href="https://www.youtube.com/watch?v=ZAGrFV1jCdk">3</a>), 每組在 V-rep 或 Webots 中建立一個鋼球運動系統站, 並</span>結合 Task2 所完成的 Rover, 以執行各站鋼球搬運<span> </span><a href="https://en.wikipedia.org/wiki/Automated_storage_and_retrieval_system">AS/RS</a><span> </span>工作, 以組為單位, 完成結合機械設計、電子感測配置、電機驅動與程式控制的機電資整合專案.</p>
