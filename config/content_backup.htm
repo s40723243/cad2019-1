@@ -27,16 +27,50 @@
 <p style="padding-left: 30px;">Project: <span>機電資整合分組專案執行 (30%)</span></p>
 <p>評分方式:</p>
 <p style="padding-left: 30px;">電腦輔助設計實習每週自評與互評表單: <a href="https://forms.gle/raTtrfjv8cMMVSZd6">https://forms.gle/raTtrfjv8cMMVSZd6</a> </p>
-<p style="padding-left: 30px;">學員自我評量<span> (30%)</span></p>
-<p style="padding-left: 30px;">分組學員相互評量 (30%)</p>
-<p style="padding-left: 30px;">簡報與倉儲歷程查驗 (40%)</p>
+<p style="padding-left: 30px;"></p>
 <p>教學方式:</p>
 <p style="padding-left: 30px;">課堂講授</p>
 <p style="padding-left: 30px;">操作錄影</p>
 <p style="padding-left: 30px;">學員實習</p>
 <p style="padding-left: 30px;">分組報告</p>
 <p>參考資料:</p>
-<p><a href="https://open.umn.edu/opentextbooks/subjects/engineering">https://open.umn.edu/opentextbooks/subjects/engineering</a> </p><h2>Theories</h2>
+<p><a href="https://open.umn.edu/opentextbooks/subjects/engineering">https://open.umn.edu/opentextbooks/subjects/engineering</a> </p><h2>Evaluation</h2>
+<p><span>電腦輔助設計實習每週自評與互評表單: </span><a href="https://forms.gle/raTtrfjv8cMMVSZd6">https://forms.gle/raTtrfjv8cMMVSZd6</a><span> </span></p>
+<h4>課程計分流程:</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
+根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
+'''
+ 
+def diff(自評分數, 互評得分):
+    return abs(自評分數 - 互評得分)
+     
+def max(自評分數, 互評得分):
+    if 自評分數 &gt; 互評得分:
+        return 自評分數
+    else:
+        return 互評得分
+ 
+def 分組比分(自評分數, 互評得分):
+    if diff(自評分數, 互評得分) &lt; 5:
+        學員得分 = max(自評分數, 互評得分)
+    else:
+        學員得分 = 互評得分 - diff(自評分數, 互評得分)
+    return 學員得分
+     
+def 全班比分(學員得分, 教師評分):
+    if diff(學員得分, 教師評分) &lt; 5:
+        學員成績 = max(學員得分, 教師評分)
+    else:
+        學員成績 = 教師評分 - diff(學員得分, 教師評分)/4
+    return 學員成績
+ 
+def 學員成績(自評分數, 互評得分, 教師評分):
+    學員分組得分 = 分組比分(自評分數, 互評得分)
+    學員課程成績 = 全班比分(學員分組得分, 教師評分)
+    return 學員課程成績
+     
+print(學員成績(80, 70, 60))
+print(學員成績(60, 70, 80))</pre><h2>Theories</h2>
 <p><span><a href="http://mde.tw/cadp2018/downloads/intro_cad.pdf">http://mde.tw/cadp2018/downloads/intro_cad.pdf</a></span></p>
 <p><span><a href="http://mde.tw/cadp2018/downloads/cadbook.pdf">http://mde.tw/cadp2018/downloads/cadbook.pdf</a></span></p>
 <p><span><a href="http://mde.tw/cadp2018/downloads/mit_intro_cad.pdf">http://mde.tw/cadp2018/downloads/mit_intro_cad.pdf</a></span></p>
@@ -47,8 +81,7 @@
 <p><span><a href="http://mde.tw/cadp2018/content/%E8%BC%94%E5%8A%A9%E8%A8%AD%E8%A8%88%E5%A5%97%E4%BB%B6.html">http://mde.tw/cadp2018/content/%E8%BC%94%E5%8A%A9%E8%A8%AD%E8%A8%88%E5%A5%97%E4%BB%B6.html</a></span></p>
 <p><a href="http://mde.tw/cadp2018/downloads/intro_curves.pdf">http://mde.tw/cadp2018/downloads/intro_curves.pdf</a></p>
 <p><a href="http://verbnurbs.com/">http://verbnurbs.com/</a> (<a href="https://github.com/pboyer/verb">https://github.com/pboyer/verb</a>) (<a href="https://haxe.org/">https://haxe.org/</a>)</p>
-<p><a href="https://pomax.github.io/bezierinfo/">https://pomax.github.io/bezierinfo/</a></p>
-<h3>Foundations</h3>
+<p><a href="https://pomax.github.io/bezierinfo/">https://pomax.github.io/bezierinfo/</a></p><h3>Foundations</h3>
 <p><a href="/downloads/Mechanical Design Report DARPA BOSS Program.pdf">Mechanical Design Report DARPA BOSS Program.pdf</a></p>
 <p><a href="/downloads/4a_Coordinate_system_and_transformations.pdf">Coordinate_system_and_transformations.pdf</a></p>
 <p><a href="/downloads/6a_Optimization.pdf">Optimization.pdf</a></p>
@@ -1742,6 +1775,7 @@ volume.run(1000, 50)</pre>
 <p style="padding-left: 30px;"><a href="http://www.aegisub.org/">http://www.aegisub.org/</a> (Font: SimSun, Size: 40, Bold, Primary, Color (255, 200, 5))</p>
 <p style="padding-left: 30px;"><a href="http://www.avidemux.org/nightly/win64_support/">http://www.avidemux.org/nightly/win64_support/</a> (建立使用 2.6.21 版本, 可與 aegisub 配合使用)</p>
 <p style="padding-left: 30px;"><a href="https://www.openshot.org/">https://www.openshot.org/</a> (必須分段輸入字幕, 無法與 aegisub 配合使用)</p>
+<p>請登入 @gm 電子郵箱後, 下載 <a href="https://drive.google.com/file/d/1UdEVnmursZFgWrYTY1CqDOWSjt7nr84N/view?usp=sharing">aegisub_avidemux_openshot.7z</a></p>
 <p style="padding-left: 30px;"></p>
 <p></p><h2>GUI</h2>
 <p><a href="https://github.com/TransmissionZero/MinGW-Win32-Application">https://github.com/TransmissionZero/MinGW-Win32-Application</a></p>

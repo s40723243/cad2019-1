@@ -148,23 +148,43 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Foundations << <a href='Foundations.html'>Previous</a> <a href='Optimal Design.html'>Next</a> >> Optimal Design<br /><h1>Design Theory</h1>
-<p><a href="./../downloads/Computer-Based Design Synthesis Research - An Overview.pdf">Computer-Based Design Synthesis Research - An Overview.pdf</a></p>
-<p><a href="./../downloads/Implications of designer behavior for design synthesis tool interaction design.pdf">Implications of designer behavior for design synthesis tool interaction design.pdf</a></p>
-<p><a href="./../downloads/A method based on C-K Theory for fast STCR development - The case of a drilling robot design.pdf">A method based on C-K Theory for fast STCR development - The case of a drilling robot design.pdf</a></p>
-<p><a href="./../downloads/Product Design and Development 2.0 Applied C-K theory -to innovate in a digital age.pdf">Product Design and Development 2.0 Applied C-K theory -to innovate in a digital age.pdf</a></p>
-<p><a href="./../downloads/IDEA GENERATION IN ENGINEERING DESIGN APPLICATION OF A MEMORY SEARCH PERSPECTIVE AND SOME EXPERIMENTAL STUDIES.pdf">IDEA GENERATION IN ENGINEERING DESIGN APPLICATION OF A MEMORY SEARCH PERSPECTIVE AND SOME EXPERIMENTAL STUDIES.pdf</a></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/K0kLeycHT4s" width="560"></iframe></p>
-<p><a href="https://github.com/mdecourse/cd2018/issues/3">https://github.com/mdecourse/cd2018/issues/3</a></p>
-<p>Design Theory - Methods and Organization for Innovation</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-3-319-50277-9">https://link.springer.com/book/10.1007/978-3-319-50277-9</a></p>
-<p>Theory and Design of CNC Systems</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-84800-336-1">https://link.springer.com/book/10.1007/978-1-84800-336-1</a></p>
-<p>An Anthology of Theories and Models of Design - Philosophy, Approaches and Empirical Explorations</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4471-6338-1">https://link.springer.com/book/10.1007/978-1-4471-6338-1</a></p>
-<p>Control Systems Design - A New Framework</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/1-84628-215-2">https://link.springer.com/book/10.1007/1-84628-215-2</a></p>
-<br />Foundations << <a href='Foundations.html'>Previous</a> <a href='Optimal Design.html'>Next</a> >> Optimal Design</div>
+    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='Theories.html'>Next</a> >> Theories<br /><h1>Evaluation</h1>
+<p><span>電腦輔助設計實習每週自評與互評表單: </span><a href="https://forms.gle/raTtrfjv8cMMVSZd6">https://forms.gle/raTtrfjv8cMMVSZd6</a><span> </span></p>
+<h4>課程計分流程:</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
+根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
+'''
+ 
+def diff(自評分數, 互評得分):
+    return abs(自評分數 - 互評得分)
+     
+def max(自評分數, 互評得分):
+    if 自評分數 &gt; 互評得分:
+        return 自評分數
+    else:
+        return 互評得分
+ 
+def 分組比分(自評分數, 互評得分):
+    if diff(自評分數, 互評得分) &lt; 5:
+        學員得分 = max(自評分數, 互評得分)
+    else:
+        學員得分 = 互評得分 - diff(自評分數, 互評得分)
+    return 學員得分
+     
+def 全班比分(學員得分, 教師評分):
+    if diff(學員得分, 教師評分) &lt; 5:
+        學員成績 = max(學員得分, 教師評分)
+    else:
+        學員成績 = 教師評分 - diff(學員得分, 教師評分)/4
+    return 學員成績
+ 
+def 學員成績(自評分數, 互評得分, 教師評分):
+    學員分組得分 = 分組比分(自評分數, 互評得分)
+    學員課程成績 = 全班比分(學員分組得分, 教師評分)
+    return 學員課程成績
+     
+print(學員成績(80, 70, 60))
+print(學員成績(60, 70, 80))</pre><br />About << <a href='About.html'>Previous</a> <a href='Theories.html'>Next</a> >> Theories</div>
         
     <!-- footer -->
       <div class="container">
