@@ -27,7 +27,6 @@
 <p style="padding-left: 30px;">Project: <span>機電資整合分組專案執行 (30%)</span></p>
 <p>評分方式:</p>
 <p style="padding-left: 30px;">電腦輔助設計實習每週自評與互評表單: <a href="https://forms.gle/raTtrfjv8cMMVSZd6">https://forms.gle/raTtrfjv8cMMVSZd6</a> </p>
-<p style="padding-left: 30px;"></p>
 <p>教學方式:</p>
 <p style="padding-left: 30px;">課堂講授</p>
 <p style="padding-left: 30px;">操作錄影</p>
@@ -71,8 +70,13 @@ def 學員成績(自評分數, 互評得分, 教師評分):
      
 print(學員成績(80, 70, 60))
 print(學員成績(60, 70, 80))</pre><h2>Theories</h2>
+<p><a href="https://link.springer.com/book/10.1007/978-3-030-02399-7">Advanced CAD Modeling</a></p>
+<p><a href="https://github.com/deadsy/sdfx">https://github.com/deadsy/sdfx</a> </p>
+<p><a href="https://link.springer.com/book/10.1007/978-3-319-74594-7">Solid Modeling and Applications</a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-0-85729-259-9">Solid Modeling and CAD Systems</a></p>
 <p><span><a href="http://mde.tw/cadp2018/downloads/intro_cad.pdf">http://mde.tw/cadp2018/downloads/intro_cad.pdf</a></span></p>
-<p><span><a href="http://mde.tw/cadp2018/downloads/cadbook.pdf">http://mde.tw/cadp2018/downloads/cadbook.pdf</a></span></p>
+<p><span><a href="http://mde.tw/cadp2018/downloads/cadbook.pdf">http://mde.tw/cadp2018/downloads/cadbook.pdf</a> (<a href="/downloads/CAD_book.pdf">CAD_Book.pdf</a>)</span></p>
+<p><a href="/downloads/3D-Modelling-with-the-ACIS-Kernel-and-Toolkit.pdf">3D-Modelling-with-the-ACIS-Kernel-and-Toolkit.pdf</a></p>
 <p><span><a href="http://mde.tw/cadp2018/downloads/mit_intro_cad.pdf">http://mde.tw/cadp2018/downloads/mit_intro_cad.pdf</a></span></p>
 <p><span><a href="http://mde.tw/cadp2018/downloads/robot_kinematics_and_dynamics.pdf">http://mde.tw/cadp2018/downloads/robot_kinematics_and_dynamics.pdf</a></span></p>
 <p><span><a href="http://mde.tw/cadp2018/downloads/Kinematics%20of%20Machines.pdf">http://mde.tw/cadp2018/downloads/Kinematics%20of%20Machines.pdf</a></span></p>
@@ -81,7 +85,8 @@ print(學員成績(60, 70, 80))</pre><h2>Theories</h2>
 <p><span><a href="http://mde.tw/cadp2018/content/%E8%BC%94%E5%8A%A9%E8%A8%AD%E8%A8%88%E5%A5%97%E4%BB%B6.html">http://mde.tw/cadp2018/content/%E8%BC%94%E5%8A%A9%E8%A8%AD%E8%A8%88%E5%A5%97%E4%BB%B6.html</a></span></p>
 <p><a href="http://mde.tw/cadp2018/downloads/intro_curves.pdf">http://mde.tw/cadp2018/downloads/intro_curves.pdf</a></p>
 <p><a href="http://verbnurbs.com/">http://verbnurbs.com/</a> (<a href="https://github.com/pboyer/verb">https://github.com/pboyer/verb</a>) (<a href="https://haxe.org/">https://haxe.org/</a>)</p>
-<p><a href="https://pomax.github.io/bezierinfo/">https://pomax.github.io/bezierinfo/</a></p><h3>Foundations</h3>
+<p><a href="https://pomax.github.io/bezierinfo/">https://pomax.github.io/bezierinfo/</a></p>
+<p><a href="https://github.com/bluecube/codecad">https://github.com/bluecube/codecad</a></p><h3>Foundations</h3>
 <p><a href="/downloads/Mechanical Design Report DARPA BOSS Program.pdf">Mechanical Design Report DARPA BOSS Program.pdf</a></p>
 <p><a href="/downloads/4a_Coordinate_system_and_transformations.pdf">Coordinate_system_and_transformations.pdf</a></p>
 <p><a href="/downloads/6a_Optimization.pdf">Optimization.pdf</a></p>
@@ -2397,7 +2402,14 @@ int main()
 <p>接著將先前 build 目錄中的 libslvs.dll 複製到 Y:\msys64\mingw64\lib</p>
 <p>然後在 solvespace\exposed\ 目錄中建立 build 目錄, 然後以指令模式進入此一 build 目錄後, 執行:</p>
 <p><span>cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release</span><br/><span>mingw32-make</span></p>
-<p><span>就可以完成 CDemo.exe 的編譯, 必須配合 libslvs.dll 與 libwinpthread-1.dll 執行.</span></p><h3>Solvespace 操作</h3>
+<p><span>就可以完成 CDemo.exe 的編譯, 必須配合 libslvs.dll 與 libwinpthread-1.dll 執行.</span></p>
+<p><span>設計原理:</span></p>
+<p style="padding-left: 30px;"><a href="https://github.com/solvespace/solvespace/commit/67139236fc0b63e06eaa1efa8fe0022df5612bd2">Solvespace 首次提交到 Github</a></p>
+<p style="padding-left: 30px;"><a href="http://solvespace.com/forum.pl?action=viewthread&amp;parent=1893&amp;tt=1493369400">來源</a>, <a href="/downloads/Watertight Trimmed NURBS.pdf">Watertight Trimmed NURBS.pdf</a></p>
+<p style="padding-left: 30px;"><span>SolveSpace represents curves and surfaces in a form equivalent to NURBS, by their rational polynomial parametric equations. That can represent a lot of geometry exactly, but not everything (for example, not the general intersection curve of two cylinders). When no exact representation of that form exists, SolveSpace approximates. This is the same approach that commercial libraries (Parasolid, Solids++, etc.) take.</span></p>
+<p style="padding-left: 30px;"><span>There's just a lot of cases, and a lot of work to test that you've covered them all. As far as I know, the highest-quality commercial libraries get their robustness mostly from exhaustive enumeration of special cases, or trying multiple differently-broken algorithms until something works, and less from anything that's mathematically interesting in isolation.</span></p>
+<p style="padding-left: 30px;"><span>A trimming curve is typically a degree-three NURBS curve defined in the parameter domain of a NURBS surface. The image of such a trimming curve on a bicubic patch (i.e., the curve on the bicubic patch in R3 that the trimming curve maps to) is degree ≤ 18 and algebraic genus zero. However, a generic intersection curve of two bicubic surfaces is degree 324 in R3 and algebraic genus 433. Hence, intersection curves can only be approximated by parametric trimming curves.</span></p>
+<p><span></span></p><h3>Solvespace 操作</h3>
 <h4>分組作業:</h4>
 <p style="padding-left: 30px;">請各組在了解如何利用 Solvespace 執行零組件繪圖後, 以協同模式製作一個帶有中文說明字幕的 Solvespace 零組件操作導引影片, 並上傳至 Youtube 且內嵌至各分組網站.</p>
 <p><a href="https://www.youtube.com/watch?v=1Em_XESnqUM&amp;list=PLEvJVXu3VfGMSOdpA0jrGRzoM7NlNOl5s">https://www.youtube.com/watch?v=1Em_XESnqUM&amp;list=PLEvJVXu3VfGMSOdpA0jrGRzoM7NlNOl5s</a></p>

@@ -458,7 +458,14 @@ int main()
 <p>接著將先前 build 目錄中的 libslvs.dll 複製到 Y:\msys64\mingw64\lib</p>
 <p>然後在 solvespace\exposed\ 目錄中建立 build 目錄, 然後以指令模式進入此一 build 目錄後, 執行:</p>
 <p><span>cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release</span><br/><span>mingw32-make</span></p>
-<p><span>就可以完成 CDemo.exe 的編譯, 必須配合 libslvs.dll 與 libwinpthread-1.dll 執行.</span></p><br />Task1 << <a href='Task1.html'>Previous</a> <a href='Solvespace 操作.html'>Next</a> >> Solvespace 操作</div>
+<p><span>就可以完成 CDemo.exe 的編譯, 必須配合 libslvs.dll 與 libwinpthread-1.dll 執行.</span></p>
+<p><span>設計原理:</span></p>
+<p style="padding-left: 30px;"><a href="https://github.com/solvespace/solvespace/commit/67139236fc0b63e06eaa1efa8fe0022df5612bd2">Solvespace 首次提交到 Github</a></p>
+<p style="padding-left: 30px;"><a href="http://solvespace.com/forum.pl?action=viewthread&amp;parent=1893&amp;tt=1493369400">來源</a>, <a href="./../downloads/Watertight Trimmed NURBS.pdf">Watertight Trimmed NURBS.pdf</a></p>
+<p style="padding-left: 30px;"><span>SolveSpace represents curves and surfaces in a form equivalent to NURBS, by their rational polynomial parametric equations. That can represent a lot of geometry exactly, but not everything (for example, not the general intersection curve of two cylinders). When no exact representation of that form exists, SolveSpace approximates. This is the same approach that commercial libraries (Parasolid, Solids++, etc.) take.</span></p>
+<p style="padding-left: 30px;"><span>There's just a lot of cases, and a lot of work to test that you've covered them all. As far as I know, the highest-quality commercial libraries get their robustness mostly from exhaustive enumeration of special cases, or trying multiple differently-broken algorithms until something works, and less from anything that's mathematically interesting in isolation.</span></p>
+<p style="padding-left: 30px;"><span>A trimming curve is typically a degree-three NURBS curve defined in the parameter domain of a NURBS surface. The image of such a trimming curve on a bicubic patch (i.e., the curve on the bicubic patch in R3 that the trimming curve maps to) is degree ≤ 18 and algebraic genus zero. However, a generic intersection curve of two bicubic surfaces is degree 324 in R3 and algebraic genus 433. Hence, intersection curves can only be approximated by parametric trimming curves.</span></p>
+<p><span></span></p><br />Task1 << <a href='Task1.html'>Previous</a> <a href='Solvespace 操作.html'>Next</a> >> Solvespace 操作</div>
         
     <!-- footer -->
       <div class="container">
