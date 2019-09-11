@@ -2,7 +2,8 @@
 <p>本電腦輔助機械設計實習課程, 除了教導學生使用電腦輔助設計套件 ( <a href="https://www.solidworks.com/">Solidworks</a>, <a href="https://www.plm.automation.siemens.com/global/en/products/nx/">NX</a>) 中, 各種參數式 3D 零組件設計與繪圖功能外, 也導入開源的 <a href="http://solvespace.com">Solvespace</a>, <a href="https://www.freecadweb.org/">FreeCAD</a>, <a href="http://www.coppeliarobotics.com/">V-rep</a> 與 <a href="https://cyberbotics.com/">Webots</a>, 讓學員了解這些中高端套件的底層所包含的各種數學原理與程式技術. 並且透過全雲端 <a href="https://www.onshape.com/">Onshape</a> 的協同設計, 引領學員一窺未來全球協同產品開發流程可能呈現的架構與風貌.</p>
 <p>電腦輔助設計實習課程承接計算機程式與網際內容管理課程, 並與協同產品設計實習採用相同工具與理念, 希望所有學員能夠在電腦軟硬體與網路系統的充分整合應用下, 有能力透過程式方法與網際內容管理的架構, 執行創新產品開發.</p>
 <h4>課程工具套件:</h4>
-<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a></p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a> (編譯  Solvespace 用)</p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a> (登入 @gm 帳號後下載)</p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a></p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/13-ByKlFCsScF3xHi1SZrsJ1ZOejzFXZo/view?usp=sharing">FreeCAD 0.18.7z</a></p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1cZFSsLEoGOBYojzKzFEf4YH2l--pbS-9/view?usp=sharing">V-rep 3.6.1 rev 4.7z</a></p>
@@ -1750,7 +1751,10 @@ volume.run(1000, 50)</pre>
 <p>動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
 <p>4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
 <p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
-<h1>Tools</h1>
+<h2>STL</h2>
+<p>CMSiMDE 引用 ASCII STL方法:</p>
+<p>將 ascii.stl 檔案上傳至 downloads 目錄後, 利用 File List 功能, 後列出 ascii.stl, 以滑鼠點擊會出現顯示 stl 檔案的頁面, 導入頁面時, 以 iframe 標註之 src 對應至顯示 stl 檔案的 html 連結即可, 例如:  &lt;iframe src=/static/viewstl.html?src=/downloads/spikeball.stl" width="600" height="400"&gt;&lt;/iframe&gt;</p>
+<p><iframe height="400" src='/static/viewstl.html?src=./../downloads/spikeball.stl"' width="600"></iframe></p><h1>Tools</h1>
 <p>從未使用 Solidworks, Inventor 或 Solid Edge 等中端 MCAD 者:</p>
 <p style="padding-left: 30px;">請<span>登入 @gm 電子郵箱, </span><a href="https://drive.google.com/file/d/1KPpXzumzBIvMCovZdBYh0s468uFO277k/view">下載 SolidWorks 2017 SP2 安裝光碟</a><span>, 或下載已經安裝好的<span> </span></span><a href="https://drive.google.com/file/d/1VB30WUbfKEH3BX3ftLlOWWZ_aQIZzZVx/view?usp=sharing">SolidWorks 2017 SP2 虛擬主機版本</a>, 從熟悉 Solidworks 參數繪圖與零組件設計操作開始.</p>
 <p>曾經使用過中端 MCAD 者:</p>
@@ -1762,8 +1766,7 @@ volume.run(1000, 50)</pre>
 <p style="padding-left: 30px;"><span><a href="https://drive.google.com/file/d/1o8cAv-pSUyp69TUGhC7NvEznGrdNP5AC/view?usp=sharing">Webot 2019a.7z</a><span> </span></span><span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</span></p>
 <p style="padding-left: 30px;"><span>並在各分組中探討這些工具能夠用來解決電腦輔助機械設計流程中的那些問題?</span></p>
 <p><span></span></p>
-<p></p>
-<h2>FFmpeg</h2>
+<p></p><h2>FFmpeg</h2>
 <p>FFmpeg 手冊: <a href="http://ffmpeg.org/ffmpeg.html">http://ffmpeg.org/ffmpeg.html</a></p>
 <h4>擷取 mp4 片段檔案</h4>
 <p>從 origin.mp4 影片中的第一秒開始, 切出 15 分鐘的影片, 存為 new.mp4</p>
@@ -2495,7 +2498,51 @@ int main()
 <p style="padding-left: 60px;">下一輛漫遊車 (<a href="https://mars.nasa.gov/mars2020/">Mars 2020 計畫</a>) 預計在 2021 年 2 月 18 日降落火星, 漫遊車尺寸 L 3m X W 2.7m X H 2.2m, 重量 1050 公斤.</p>
 <p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Automated_guided_vehicle">Automatic Guided Vehicle</a></p>
 <p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Automated_storage_and_retrieval_system">AS/RS</a></p>
-<p></p><h2>CAD2CAE</h2>
+<p></p><h2>Ebooks</h2>
+<p>本課程所採用的兩本電子書, 第一本主要用於 Solidworks 2017 與 NX 12 執行零組件繪圖時參考, 而第二本則說明電腦輔助繪圖與設計程式發展歷史,  其中牽涉到許多套件間的開發細節與背景, 這些資料主要用於參考用.</p>
+<p>1) 2015- Space Modeling with SolidWorks and NX</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">https://link.springer.com/book/10.1007/978-3-319-03862-9</a></p>
+<p>2) 2008- The Engineering Design Revolution</p>
+<p style="padding-left: 30px;"><a href="/downloads/cad_history.pdf">The Engineering Design Revolution</a> (a.k.a. cad_history.pdf)</p>
+<h4>導讀:</h4>
+<p style="padding-left: 30px;">第一本電子書標題的所謂 Space 指的是 modeling of objects in 3D space  中的三度空間, 因此標題可以翻為: Solidworks 與 NX (套件)的(三度)空間(零組件)模擬.</p>
+<p style="padding-left: 30px;">有關 Solidworks 的開發緣起, 可以參考 <a href="/downloads/cad_history.pdf">The Engineering Design Revolution</a> 書中的第十八章.</p>
+<p style="padding-left: 60px;">Solidworks 的前身是 2D 概念設計套件: DesignView, 由1983 年從 MIT 機械碩士畢業的 Jon Hirschtick 於 1987 年取得資金 (150 萬美金) 後著手開發, 公司名稱為 Premise. 一開始 DesignView 就設定在當時剛萌芽的 IBM 相容個人電腦上執行. 當時一套 DesignView 商業版定價 1895 美元. </p>
+<p style="padding-left: 60px;">之後 Premise 被 ComputerVision 公司併購, 1993 年<span>Jon Hirschtick 離開 ComputerVision, 隔年一月起便著手與與 Bob Zuffante, Scott Harris, Constantine Dokos 與 Tommy Li 開發 Solidworks: 一套能夠在 PC 上運作的低價 CAD 套件.</span></p>
+<p style="padding-left: 60px;">1994 年 8 月 PTC 公司草創時編號 3 號的 Michael Payne 離開 PTC, 加入開發 SolidWorks 的團隊. 期間參與投資者還包括日本的 Kubota 公司.</p>
+<p style="padding-left: 60px;">1995 年 10 月 Solidworks 正式推出, 商業版定價每套 3995 美元.</p>
+<p style="padding-left: 60px;">Solidworks 起始開發時採用 ACIS核心, 但正式發表前已經換為 Parasolid 核心, 1997 年 6 月法國達梭公司以 3 億美元併購 Solidworks.</p>
+<p style="padding-left: 30px;">有關 <a href="https://en.wikipedia.org/wiki/Siemens_NX">NX</a> (Unigraphics) 的詳細開發緣起, 可以參考 <span> </span><a href="/downloads/cad_history.pdf">The Engineering Design Revolution</a><span> 書中的第十九章.</span></p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Siemens_NX">NX</a> 套件的前身為 Unigraphics 早在 1973 年就啟動開發. 2001 年在 <a href="https://en.wikipedia.org/wiki/Electronic_Data_Systems">EDS</a> 旗下與 <a href="https://en.wikipedia.org/wiki/SDRC">SDRC</a> 合併後進行 Unigraphics, I-DEAS 與 SDRC 整合, 產品名稱為 <a href="https://en.wikipedia.org/wiki/Siemens_NX">NX</a>, 公司名稱為 <a href="https://en.wikipedia.org/wiki/UGS_Corp.">UGS</a>, 最終在 2007 年被德國 <a href="https://en.wikipedia.org/wiki/Siemens">Siemens</a> 以 35 億美元併購.</p>
+<p style="padding-left: 30px;"><span><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">2015- Space Modeling with SolidWorks and NX</a> 電子書中的第一章提到在三度空間建立零組件模型的主題包含:</span></p>
+<p style="padding-left: 60px;"><span>Role and meaning of modelling for engineering</span></p>
+<p style="padding-left: 60px;"><span>Making a sketch and extrude</span></p>
+<p style="padding-left: 60px;"><span>Making a sketch and revolve</span></p>
+<p style="padding-left: 60px;"><span>Auxiliary shapes of modelling Fillet, chamfer</span></p>
+<p style="padding-left: 60px;"><span>Assessment—combined models</span></p>
+<p style="padding-left: 60px;"><span>Complex shapes—sweep, loft</span></p>
+<p style="padding-left: 60px;"><span>Welded structures</span></p>
+<p style="padding-left: 60px;"><span>Sheet-metal products</span></p>
+<p style="padding-left: 60px;"><span>Measuring a physical model, digitising, parameterisation</span></p>
+<p style="padding-left: 60px;"><span>Assessment—physical models</span></p>
+<p style="padding-left: 60px;"><span>Assemblies of structures with models—bottom-up technique</span></p>
+<p style="padding-left: 60px;"><span>Assemblies of structures with models—top-down technique</span></p>
+<p style="padding-left: 60px;"><span>Documentation—assembly drawing</span></p>
+<p style="padding-left: 60px;"><span>Documentation—working drawing</span></p>
+<p style="padding-left: 60px;"><span>Assessment—examples as finished units Seminar work.</span></p>
+<p><span><img alt="" height="370" src="/images/research_inno_loop_activities.png" width="600"/></span></p>
+<p style="padding-left: 60px;"><span></span><img alt="" height="363" src="/images/system_engr_loop_app_research_loop.png" width="600"/></p>
+<p><span><img alt="" height="592" src="/images/graphics_repr_R_and_D.png" width="600"/></span></p>
+<p><img alt="" height="456" src="/images/golden_loop_R_and_D.png" width="600"/></p>
+<p style="padding-left: 30px;">第一章第一節提到有關電腦教室的相關配置規劃. 以及產品開發流程:</p>
+<p style="padding-left: 60px;">innovative loop (創新迴圈)</p>
+<p style="padding-left: 90px;">The innovative loop is of key importance for recognizing a problem and placing it in space. In the innovation loop we specify the task, the requirements and the wishes that play a part in defining a problem or a technological process</p>
+<p style="padding-left: 60px;">System engineering loop (系統工程迴圈)</p>
+<p style="padding-left: 90px;">The system-engineering loop places an expected result (innovation, a high-quality product)—vital for the materialization of a product logically into space and time.</p>
+<p style="padding-left: 60px;">Application research loop (應用研究迴圈)</p>
+<p style="padding-left: 90px;">The application research loop is important in order to define the parameters that provide an optimum choice of function in the material, the conceptual and the user’s environment.</p>
+<p style="padding-left: 60px;">Golden loop</p>
+<p style="padding-left: 90px;">The golden loop in the development process defines a product in all its details, supplements fundamental researches for all key parameters that define the details and quality materialization of a product.</p><h2>CAD2CAE</h2>
 <p>1 <span style="color: #ffffff;"><a href="https://drive.google.com/file/d/1G6vY3PZd3gkLF2H82rBKLnE3RyM3NRUs/view?usp=sharing" style="color: #ffffff;">autodesk_inventor_tutorial.7z</a></span></p>
 <p><img alt="" src="/images/autodesk_inventor_1.png" width="600"/></p>
 <p>Solvespace: <a href="/downloads/cad2cae_1_solvespace.slvs">cad2cae_1_solvespace.slvs</a></p>
