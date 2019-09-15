@@ -151,7 +151,22 @@ init_mathjax();
         </header>
     <div id="tipue_search_content">Solidworks << <a href='Solidworks.html'>Previous</a> <a href='Solid Edge.html'>Next</a> >> Solid Edge<br /><h1>SW API</h1>
 <p><a href="./../downloads/INTEGRATION OF MODELING IN SOLIDWORKS AND MATLAB SIMULINK ENVIRONMENTS.pdf">INTEGRATION OF MODELING IN SOLIDWORKS AND MATLAB/SIMULINK ENVIRONMENTS.pdf</a></p>
-<br />Solidworks << <a href='Solidworks.html'>Previous</a> <a href='Solid Edge.html'>Next</a> >> Solid Edge</div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import win32com.client
+import pythoncom
+swYearLastDigit = 6
+sw = win32com.client.Dispatch("SldWorks.Application.%d" % (25+(swYearLastDigit-2)))  # e.g. 24 is SW2016,  25 is SW2017
+
+model = sw.ActiveDoc
+modelExt = model.Extension
+selMgr = model.SelectionManager
+featureMgr = model.FeatureManager
+sketchMgr = model.SketchManager
+eqMgr = model.GetEquationMgr
+
+print("Equation 1 is: " + eqMgr.Equation(1))
+eqMgr.Equation(1, "\"myVar\" = 2017")
+print("Equation 1 is now: " + eqMgr.Equation(1))</pre>
+<p></p><br />Solidworks << <a href='Solidworks.html'>Previous</a> <a href='Solid Edge.html'>Next</a> >> Solid Edge</div>
         
     <!-- footer -->
       <div class="container">

@@ -151,7 +151,47 @@ init_mathjax();
         </header>
     <div id="tipue_search_content">Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3<br /><h1>NX</h1>
 <p><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">Space Modeling with SolidWorks and NX.pdf</a></p>
-<br />Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3</div>
+<p><a href="https://docs.plm.automation.siemens.com/docs/nx/12.0.1/en_US/release_notes.pdf">https://docs.plm.automation.siemens.com/docs/nx/12.0.1/en_US/release_notes.pdf</a></p>
+<p><a href="https://docs.plm.automation.siemens.com/tdoc/nx/12/nx_help/">https://docs.plm.automation.siemens.com/tdoc/nx/12/nx_help/</a></p>
+<p><a href="./../downloads/NX-12-for-Engineering-Design.pdf">NX12 for engineering design.pdf</a></p>
+<p><a href="./../downloads/parametric_modeling_with_nx12.pdf">parametric_modeling_with_nx12.pdf</a></p>
+<p><a href="./../downloads/nxopen_getting_started_v12.pdf">nxopen_getting_started_v12.pdf</a></p>
+<p>NXOpen Python Guide:</p>
+<p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/12/nx_api/custom/en_US/nxopen_python_ref/index.html">https://docs.plm.automation.siemens.com/data_services/resources/nx/12/nx_api/custom/en_US/nxopen_python_ref/index.html</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import math
+import NXOpen
+import NXOpen.UF
+
+def BoundingBox() : 
+
+    theSession  = NXOpen.Session.GetSession()
+    theUFSession = NXOpen.UF.UFSession.GetUFSession()
+    workPart = theSession.Parts.Work
+    
+    size = theSession.ListingWindow
+    size.Open()
+    size.WriteLine("Bounding Boxes:")
+
+    NULLTAG = 0
+
+    all_bodies = workPart.Bodies
+    bounding_Box_Coords = []
+
+    for body in all_bodies:
+        bounding_Box_Coords = theUFSession.ModlGeneral.AskBoundingBox(body.Tag) 
+
+        size.WriteLine(str(bounding_Box_Coords[0]) + "  ")
+        size.WriteLine(str(bounding_Box_Coords[1]) + "  ")
+        size.WriteLine(str(bounding_Box_Coords[2]) + "  ")
+        size.WriteLine(str(bounding_Box_Coords[3]) + "  ")
+        size.WriteLine(str(bounding_Box_Coords[4]) + "  ")
+        size.WriteLine(str(bounding_Box_Coords[5]))
+        size.WriteLine("  ")
+
+    
+if __name__ == '__main__':
+    BoundingBox()</pre>
+<p><a href="./../downloads/nx12_python_setup.pdf">nx12_python_setup</a></p><br />Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3</div>
         
     <!-- footer -->
       <div class="container">
