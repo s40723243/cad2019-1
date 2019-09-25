@@ -1931,7 +1931,23 @@ if __name__ == '__main__':
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/11lSoROAP5swT1RqX-eR-6aMhmOwx3zt3/view?usp=sharing">下載自行編譯的  solvespace.exe</a></p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/18R3erVkzKdvJmQ-ni7YzSb_izwGUkkeo/view?usp=sharing">下載 Solvespace 22e4011 版本</a></p>
 <p></p>
-<h2>Onshape</h2>
+<h2>Pyslvs-UI</h2>
+<p><a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a></p>
+<p>目前正將原先使用 PyQt 的使用者介面改寫為 <a href="https://github.com/mottosso/Qt.py">https://github.com/mottosso/Qt.py</a> 相容, </p>
+<p>套件執行請下載 <a href="https://github.com/KmolYuan/Pyslvs-UI/releases">https://github.com/KmolYuan/Pyslvs-UI/releases</a> Windows 64 位元版本.</p>
+<p>自行編譯核心程式碼:</p>
+<p style="padding-left: 30px;">git clone <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a>.git </p>
+<p style="padding-left: 30px;">cd Pyslvs-UI</p>
+<p style="padding-left: 30px;">git submodule update --init --recursive</p>
+<p style="padding-left: 30px;">cd depend/pyslvs</p>
+<p style="padding-left: 30px;">python setup.py install</p>
+<p style="padding-left: 30px;">cd ..</p>
+<p style="padding-left: 30px;">cd solvespce/cython</p>
+<p style="padding-left: 30px;">python setup.py install</p>
+<p>接下來可直接利用 Python 程式呼叫位於 Lib/site-packages/pyslvs 與 <span>Lib/site-packages/python-solvespace 中的動態連結程式庫.</span></p>
+<p><span>自行編譯 pyslvs.exe 套件時, 必須先檢查可攜系統是否已經安裝 requirements.txt 中所需的模組.</span></p>
+<p style="padding-left: 30px;">cd Pyslvs-UI </p>
+<p style="padding-left: 30px;">mingw32-make build</p><h2>Onshape</h2>
 <p><a href="https://appstore.onshape.com/apps/Utilities/DFE73AMQ42NPMVAEQBQVP56QGLCWJ4ALJUBEBLA=/description">Link Tab</a></p>
 <p>3DX Models</p>
 <p style="padding-left: 30px;"><a href="https://3dx-us.com/onshape">https://3dx-us.com/onshape</a></p>
@@ -1945,8 +1961,7 @@ if __name__ == '__main__':
 <p style="padding-left: 30px;"><a href="https://forum.onshape.com/discussion/5081/kiri-moto-integration">https://forum.onshape.com/discussion/5081/kiri-moto-integration</a></p>
 <p style="padding-left: 30px;"><a href="https://forum.onshape.com/discussion/8248/kiri-moto-video-guide-for-cnc-machining">https://forum.onshape.com/discussion/8248/kiri-moto-video-guide-for-cnc-machining</a></p>
 <p>OpenBOM</p>
-<p style="padding-left: 30px;"><a href="https://www.onshape.com/cad-blog/creating-a-bill-of-materials-using-openbom">https://www.onshape.com/cad-blog/creating-a-bill-of-materials-using-openbom</a></p>
-<h2>V-rep</h2>
+<p style="padding-left: 30px;"><a href="https://www.onshape.com/cad-blog/creating-a-bill-of-materials-using-openbom">https://www.onshape.com/cad-blog/creating-a-bill-of-materials-using-openbom</a></p><h2>V-rep</h2>
 <p>登入 @gm 電子郵箱後, 可以下載 <a href="https://drive.google.com/file/d/1cZFSsLEoGOBYojzKzFEf4YH2l--pbS-9/view?usp=sharing">V-rep 3.6.1 rev4.7z</a> (139 MB)</p>
 <p>目前最新版為 <a href="https://drive.google.com/file/d/1FG0Bpd7pcNLdk_WWFtooMaAxItbmSfgs/view?usp=sharing">V-rep 3.6.2 rev0.7z</a>, 必須比較 <a href="http://mde.tw/cd2019/content/%E5%8D%94%E5%90%8C%E8%A8%AD%E8%A8%88.html">cd2019</a> 所使用的  V-rep 版本後, 選擇一個版本.</p>
 <p>reading and display vision sensor image using python remoate api (<a href="http://www.forum.coppeliarobotics.com/viewtopic.php?f=9&amp;t=7012#p27785">來源</a>)</p>
@@ -2598,7 +2613,25 @@ int main()
 <p><a href="https://www.youtube.com/watch?v=1Em_XESnqUM&amp;list=PLEvJVXu3VfGMSOdpA0jrGRzoM7NlNOl5s">https://www.youtube.com/watch?v=1Em_XESnqUM&amp;list=PLEvJVXu3VfGMSOdpA0jrGRzoM7NlNOl5s</a></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/1Em_XESnqUM" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/cZzn9Z2j2cQ" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/13qKQ9BHXCM" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/62AUqGLomfI" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/7HtF2MBwO-o" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/X9byxcHuins" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3Sw4YHZ9DzQ" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/d5KxO-ZkKpY" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/oAJIKC24g5Y" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/19XLvZtN27w" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/mvJuwv-1Qic" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/XTHkXNTtrZs" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dr1xAhgsm8w" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/U6-eAfch-So" width="560"></iframe></p><h2>Task2</h2>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/13qKQ9BHXCM" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/62AUqGLomfI" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/7HtF2MBwO-o" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/X9byxcHuins" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3Sw4YHZ9DzQ" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/d5KxO-ZkKpY" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/oAJIKC24g5Y" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/19XLvZtN27w" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/mvJuwv-1Qic" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/XTHkXNTtrZs" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dr1xAhgsm8w" width="560"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/U6-eAfch-So" width="560"></iframe></p><h3>GCS</h3>
+<p>Solvespace 的 Geometric Constraint Solver 程式庫原始碼:</p>
+<p>constraint.cpp:</p>
+<p style="padding-left: 30px;">Implementation of the Constraint menu, to create new constraints in the sketch.</p>
+<p>constrainteq.cpp</p>
+<p style="padding-left: 30px;">Given a constraint, generate one or more equations in our symbolic algebra system to represent that constraint; also various geometric helper functions for that.</p>
+<p>entity.cpp</p>
+<p style="padding-left: 30px;">The implementation of our entities in the symbolic algebra system, methods to return a symbolic representation of the entity (line by its endpoints, circle by center and radius, etc.).</p>
+<p>expr.cpp</p>
+<p style="padding-left: 30px;">The symbolic algebra system used to write our constraint equations; routines to build expressions in software or from a user-provided string, and to compute the partial derivatives that we'll use when write our Jacobian matrix.</p>
+<p>lib.cpp</p>
+<p style="padding-left: 30px;">A library wrapper around SolveSpace, to permit someone to use its constraint solver without coupling their program too much to SolveSpace's internals.</p>
+<p>system.cpp</p>
+<p style="padding-left: 30px;">Once we've written our constraint equations in the symbolic algebra system, these routines linearize them, and solve by a modified Newton's method. This also contains the routines to detect non-convergence or inconsistency, and report diagnostics to the user.</p>
+<p>透過 <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a> 取得 GCS 動態程式庫:</p>
+<p style="padding-left: 30px;">git clone <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a>.git </p>
+<p style="padding-left: 30px;">cd Pyslvs-UI</p>
+<p style="padding-left: 30px;">git submodule update --init --recursive</p>
+<p style="padding-left: 30px;">mingw32-make build-kernel</p><h2>Task2</h2>
 <h4>分組作業:</h4>
 <p style="padding-left: 30px;">請各組在實際安裝與操作 Inventor 2019、NX12、Solidworks 2017 Solidworks 2017 、Creo 6.0 與 Onshape 之後, 以協同模式製作一個帶有中文字幕的影片, 說明各套系統的安裝、認證設定與基本零組件繪圖功能後, 上傳至 Youtube 並內嵌至各分組網站中.</p>
 <p style="padding-left: 30px;"><a href="/downloads/NX12.0.2_release_notes.pdf">NX12.0.2_release_notes.pdf</a></p>
