@@ -1763,7 +1763,16 @@ volume.run(1000, 50)</pre>
 <p>3.在近端維護時, 更換目錄到倉儲中的 cmsimde, 以 python wsgi.py 啟動近端網際伺服器.</p>
 <p>動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
 <p>4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
-<p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p><h2>STL</h2>
+<p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
+<h2>CMSiMDE</h2>
+<p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 是一套以 Python 加上 flask, bs4, lxml, mardown, pelican, flask_cors, leo 等模組所建構的網際內容管理系統.</p>
+<p>flask 模組是一套網際程式框架, CMSiMDE 利用此一框架編寫網際相關的函式, 用來執行動態的內容管理系統.</p>
+<p>bs4 在 CMSiMDE 擔任解析 config/content.htm 超文件檔案的工作, 根據 h1, h2 與 h3 標註, 對 content.htm 進行分頁, 因此使用者可以透過 3 個階次的內容架構進行編輯.</p>
+<p>lxml 模組主要用來將 content.htm 逐一轉換為 content 目錄中的個別檔案, 也就是在 CMSiMDE 動態系統中, 點擊 generate_pages 之後, 呼叫 lxml 模組中的分頁方法, 將動態內容轉為靜態內容.</p>
+<p>markdown 與 pelican 在 CMSiMDE 主要用來產生靜態網誌, 而網誌的設計與編輯則透過 Leo Editor 進行, 此外 CMSiMDE 除了網際內容管理與網誌之外, 還透過 Leo Editor 管理 reveal.js 網際簡報系統.</p>
+<p>flask_cors 模組, 在 CMSiMDE 是為了配合 Dartpad 程式編寫過程, 需要跨網站擷取資料的需求而加入, 在舊版的可攜系統中若無此模組, 執行 CMSiMDE 之前必須透過</p>
+<p style="padding-left: 30px;">python -m pip install flask_cors </p>
+<p>安裝.</p><h2>STL</h2>
 <p>CMSiMDE 引用 ASCII STL方法:</p>
 <p>將 ascii.stl 檔案上傳至 downloads 目錄後, 利用 File List 功能, 後列出 ascii.stl, 以滑鼠點擊會出現顯示 stl 檔案的頁面, 導入頁面時, 以 iframe 標註之 src 對應至顯示 stl 檔案的 html 連結即可, 例如:  &lt;iframe width="600" height="400" src="/static/viewstl.html?src=./../../downloads/spikeball.stl"&gt;&lt;/iframe&gt;</p>
 <p><iframe height="400" src="/static/viewstl.html?src=./../../downloads/spikeball.stl" width="600"></iframe></p>
@@ -2803,8 +2812,57 @@ int main()
 <h3>PMKS</h3>
 <p><span><a href="http://project.mde.tw/blog/planar-mechanism-kinematic-simulator-tuo-pu-fa-jian-jie.html">http://project.mde.tw/blog/planar-mechanism-kinematic-simulator-tuo-pu-fa-jian-jie.html</a></span></p>
 <p><span><a href="https://github.com/mdecourse/pmks_firefox">https://github.com/mdecourse/pmks_firefox</a></span></p>
+<p><span><a href="http://designengrlab.github.io/GraphSynth/">http://designengrlab.github.io/GraphSynth/</a></span></p>
 <p><span><a href="https://github.com/IDEALLab/design-data-list">https://github.com/IDEALLab/design-data-list</a></span></p>
-<p style="padding-left: 30px;"></p><h2>CAD2CAE</h2>
+<p><span>從</span></p>
+<p><span><a href="https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/PlanarMechanismKinematicSimulator.csproj">https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/PlanarMechanismKinematicSimulator.csproj</a></span></p>
+<p><span>可以發現, PMKS 編譯時必須導入 OOOT_Functions\LineSearch\Objective Function Constraint Classes\Interfaces.cs</span></p>
+<p>先根據</p>
+<p><a href="https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/OOOT_Functions/OptMethods/abstractOptMethod.cs">https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/OOOT_Functions/OptMethods/abstractOptMethod.cs</a></p>
+<p>中將數值分析解題分為六大類:</p>
+<p>IOptFunction<br/>    IInequality<br/>    IEquality<br/>    IObjectiveFunction<br/>IDependentAnalysis<br/>abstractLineSearch<br/>abstractSearchDirection<br/>abstractMeritFunction<br/>abstractConvergence</p>
+<p>其中主要運算則導向</p>
+<p>inequality, equality, objectiveFunction, abstractLineSearch 以及abstractSearchDirection 等運算方法.</p>
+<p><span>而各點計算位置, 速度與加速度的程式碼, 位於:</span></p>
+<p><span><a href="https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/Simulator%20Classes/PlanarMechanismSimulator.Numerical.cs">https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/Simulator%20Classes/PlanarMechanismSimulator.Numerical.cs</a></span></p>
+<p><span>平面機構任一時間點的位置計算:</span></p>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false">        static double FindPositionatTime(double tau, double deltaTime, double posPrevious, double posNext, double vPrevious,
+               double vNext, double aPrevious, double aNext)
+        {
+            var tauSquared = tau * tau;
+            var tauCubed = tau * tauSquared;
+            var tauToThe4th = tau * tauCubed;
+            var tauToThe5th = tau * tauToThe4th;
+            var deltaTimeSquared = deltaTime * deltaTime;
+            var deltaTimeCubed = deltaTime * deltaTimeSquared;
+            return posPrevious + vPrevious * tau + aPrevious * tauSquared / 2
+                   + tauCubed * (10 * (posNext - posPrevious) / deltaTimeSquared - 6 * vPrevious / deltaTime - 4 * vNext / deltaTime
+                   - 1.5 * aPrevious + aNext / 2) / deltaTime
+                   + tauToThe4th * (15 * (posPrevious - posNext) / deltaTimeSquared + 8 * vPrevious / deltaTime + 7 * vNext / deltaTime
+                   + 1.5 * aPrevious - aNext) / deltaTimeSquared
+                   + tauToThe5th * (6 * (posPrevious - posNext) / deltaTimeSquared + 3 * (vPrevious + vNext) / deltaTime + 0.5 * (aPrevious - aNext))
+                   / deltaTimeCubed;
+        }</pre>
+<p>各點的速度計算:</p>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false">        static double FindVelocityatTime(double tau, double deltaTime, double vPrevious, double vNext, double aPrevious, double aNext)
+        {
+            if (deltaTime == 0.0) return vPrevious;
+            var tauSquared = tau * tau;
+            var tauCubed = tau * tauSquared;
+            var deltaTimeSquared = deltaTime * deltaTime;
+            var deltaTimeCubed = deltaTime * deltaTimeSquared;
+            return vPrevious
+                   + (vPrevious - vNext) * (2 * tauCubed / deltaTimeCubed - 3 * tauSquared / deltaTimeSquared)
+                   + aNext * (tauCubed / deltaTimeSquared - tauSquared / deltaTime)
+                   + aPrevious * (tauCubed / deltaTimeSquared - 2 * tauSquared / deltaTime + tau);
+        }</pre>
+<p>各點的加速度計算:</p>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false">        static double FindAccelerationatTime(double tau, double deltaTime, double aPrevious, double aNext)
+        {
+            if (deltaTime == 0.0) return aPrevious;
+            return aPrevious + (aNext - aPrevious) * tau / deltaTime;
+        }</pre>
+<p></p><h2>CAD2CAE</h2>
 <p>1 <span style="color: #ffffff;"><a href="https://drive.google.com/file/d/1G6vY3PZd3gkLF2H82rBKLnE3RyM3NRUs/view?usp=sharing" style="color: #ffffff;">autodesk_inventor_tutorial.7z</a></span></p>
 <p><img alt="" src="/images/autodesk_inventor_1.png" width="600"/></p>
 <p>Solvespace: <a href="/downloads/cad2cae_1_solvespace.slvs">cad2cae_1_solvespace.slvs</a></p>

@@ -149,24 +149,15 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Solidworks << <a href='Solidworks.html'>Previous</a> <a href='Solid Edge.html'>Next</a> >> Solid Edge<br /><h1>SW API</h1>
-<p><a href="./../downloads/INTEGRATION OF MODELING IN SOLIDWORKS AND MATLAB SIMULINK ENVIRONMENTS.pdf">INTEGRATION OF MODELING IN SOLIDWORKS AND MATLAB/SIMULINK ENVIRONMENTS.pdf</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import win32com.client
-import pythoncom
-swYearLastDigit = 6
-sw = win32com.client.Dispatch("SldWorks.Application.%d" % (25+(swYearLastDigit-2)))  # e.g. 24 is SW2016,  25 is SW2017
-
-model = sw.ActiveDoc
-modelExt = model.Extension
-selMgr = model.SelectionManager
-featureMgr = model.FeatureManager
-sketchMgr = model.SketchManager
-eqMgr = model.GetEquationMgr
-
-print("Equation 1 is: " + eqMgr.Equation(1))
-eqMgr.Equation(1, "\"myVar\" = 2017")
-print("Equation 1 is now: " + eqMgr.Equation(1))</pre>
-<p></p><br />Solidworks << <a href='Solidworks.html'>Previous</a> <a href='Solid Edge.html'>Next</a> >> Solid Edge</div>
+    <div id="tipue_search_content">CMS << <a href='CMS.html'>Previous</a> <a href='STL.html'>Next</a> >> STL<br /><h1>CMSiMDE</h1>
+<p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 是一套以 Python 加上 flask, bs4, lxml, mardown, pelican, flask_cors, leo 等模組所建構的網際內容管理系統.</p>
+<p>flask 模組是一套網際程式框架, CMSiMDE 利用此一框架編寫網際相關的函式, 用來執行動態的內容管理系統.</p>
+<p>bs4 在 CMSiMDE 擔任解析 config/content.htm 超文件檔案的工作, 根據 h1, h2 與 h3 標註, 對 content.htm 進行分頁, 因此使用者可以透過 3 個階次的內容架構進行編輯.</p>
+<p>lxml 模組主要用來將 content.htm 逐一轉換為 content 目錄中的個別檔案, 也就是在 CMSiMDE 動態系統中, 點擊 generate_pages 之後, 呼叫 lxml 模組中的分頁方法, 將動態內容轉為靜態內容.</p>
+<p>markdown 與 pelican 在 CMSiMDE 主要用來產生靜態網誌, 而網誌的設計與編輯則透過 Leo Editor 進行, 此外 CMSiMDE 除了網際內容管理與網誌之外, 還透過 Leo Editor 管理 reveal.js 網際簡報系統.</p>
+<p>flask_cors 模組, 在 CMSiMDE 是為了配合 Dartpad 程式編寫過程, 需要跨網站擷取資料的需求而加入, 在舊版的可攜系統中若無此模組, 執行 CMSiMDE 之前必須透過</p>
+<p style="padding-left: 30px;">python -m pip install flask_cors </p>
+<p>安裝.</p><br />CMS << <a href='CMS.html'>Previous</a> <a href='STL.html'>Next</a> >> STL</div>
         
     <!-- footer -->
       <div class="container">
