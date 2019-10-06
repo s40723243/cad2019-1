@@ -1758,22 +1758,22 @@ volume.run(1000, 50)</pre>
 <p style="padding-left: 30px;">python -m pip install flask_cors</p>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 的開發, 可以讓使用者在一個 Github 倉儲目錄中, 透過子模組的方式放入 cmsimde, 然後將 cmsimde 目錄中 up_dir 的內容放到與 cmsimde 目錄同位階的地方, 使用 command 進入 cmsimde 目錄後, 執行 python wsgi.py, 就可以啟動, 以瀏覽器 https://localhost:9443 就可以連接在近端啟動的動態內容管理系統, 以 admin 作為管理者密碼, 就可以登入維護內容.</p>
 <h4>利用 Leo Editor 執行開發</h4>
-<p>cmsimde 的開發採用 Leo Editor, 開啟 cmsimde 目錄中的 cmsimde.leo 就可以進行程式修改, 結束後, 若要保留網際內容, 只要將 cmsimde 外部的內容倒回 up_dir 目錄中即可持續對 cmsimde 遠端倉儲進行改版.</p>
+<p style="padding-left: 30px;">cmsimde 的開發採用 Leo Editor, 開啟 cmsimde 目錄中的 cmsimde.leo 就可以進行程式修改, 結束後, 若要保留網際內容, 只要將 cmsimde 外部的內容倒回 up_dir 目錄中即可持續對 cmsimde 遠端倉儲進行改版.</p>
 <h4>Pelican 網誌與 reveal 簡報系統</h4>
-<p>cmsimde 除了利用  flask, bs4, lxml 與 flask_cors 建立網際內容管理系統外, 同時利用 markdown 與 pelican 模組建立網誌系統, 利用 reveal.js 建立網際簡報系統.</p>
-<p>pelican 網誌系統的編輯採用 Leo Editor, 管理檔案位於 config/pelican.leo, 而網際 reveal.js 簡報系統的編輯也採用 Leo Editor, 管理檔案位於 config/reveal.leo.</p>
-<p>pelican 網際系統的 markdown 檔案位於 mardown 目錄, 轉換完成的網誌檔案則位於 blog 目錄, 而 reveal.js 的簡報檔案則位於 reveal 目錄.</p>
+<p style="padding-left: 30px;">cmsimde 除了利用  flask, bs4, lxml 與 flask_cors 建立網際內容管理系統外, 同時利用 markdown 與 pelican 模組建立網誌系統, 利用 reveal.js 建立網際簡報系統.</p>
+<p style="padding-left: 30px;">pelican 網誌系統的編輯採用 Leo Editor, 管理檔案位於 config/pelican.leo, 而網際 reveal.js 簡報系統的編輯也採用 Leo Editor, 管理檔案位於 config/reveal.leo.</p>
+<p style="padding-left: 30px;">pelican 網際系統的 markdown 檔案位於 mardown 目錄, 轉換完成的網誌檔案則位於 blog 目錄, 而 reveal.js 的簡報檔案則位於 reveal 目錄.</p>
 <h4>使用者設定</h4>
-<p>init.py 位於  up_dir 目錄, 可以設定 site_title 與 uwsgi 等變數. uwsgi 執行模式主要用於 Ubuntu 伺服器, 必須結合 nginx 全球資訊網伺服器建立具有隨開機啟動與提供 https 連線的網際內容管理服務.</p>
+<p style="padding-left: 30px;">init.py 位於  up_dir 目錄, 可以設定 site_title 與 uwsgi 等變數. uwsgi 執行模式主要用於 Ubuntu 伺服器, 必須結合 nginx 全球資訊網伺服器建立具有隨開機啟動與提供 https 連線的網際內容管理服務.</p>
 <h4>利用 cmsimde 建立靜態網誌方法:</h4>
-<p>1. 在 github 建立倉儲, git clone 到近端</p>
-<p>2. 參考 <a href="https://github.com/mdecourse/newcms">https://github.com/mdecourse/newcms</a>, 加入除了 cmsimde 目錄外的所有內容</p>
-<p>以 git submodule add <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> cmsimde</p>
-<p>建立 cmsimde 目錄, 並從 github 取下子模組內容.</p>
-<p>3.在近端維護時, 更換目錄到倉儲中的 cmsimde, 以 python wsgi.py 啟動近端網際伺服器.</p>
-<p>動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
-<p>4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
-<p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p><h2>CMSiMDE</h2>
+<p style="padding-left: 30px;">1. 在 github 建立倉儲, git clone 到近端</p>
+<p style="padding-left: 30px;">2. 參考 <a href="https://github.com/mdecourse/newcms">https://github.com/mdecourse/newcms</a>, 加入除了 cmsimde 目錄外的所有內容</p>
+<p style="padding-left: 30px;">以 git submodule add <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> cmsimde</p>
+<p style="padding-left: 30px;">建立 cmsimde 目錄, 並從 github 取下子模組內容.</p>
+<p style="padding-left: 30px;">3.在近端維護時, 更換目錄到倉儲中的 cmsimde, 以 python wsgi.py 啟動近端網際伺服器.</p>
+<p style="padding-left: 30px;">動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
+<p style="padding-left: 30px;">4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
+<p style="padding-left: 30px;">git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p><h2>CMSiMDE</h2>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 是一套以 Python 加上 flask, bs4, lxml, mardown, pelican, flask_cors, leo 等模組所建構的網際內容管理系統.</p>
 <p>flask 模組是一套網際程式框架, CMSiMDE 利用此一框架編寫網際相關的函式, 用來執行動態的內容管理系統.</p>
 <p>bs4 在 CMSiMDE 擔任解析 config/content.htm 超文件檔案的工作, 根據 h1, h2 與 h3 標註, 對 content.htm 進行分頁, 因此使用者可以透過 3 個階次的內容架構進行編輯.</p>

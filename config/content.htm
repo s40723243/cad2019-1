@@ -1781,7 +1781,13 @@ volume.run(1000, 50)</pre>
 <p>markdown 與 pelican 在 CMSiMDE 主要用來產生靜態網誌, 而網誌的設計與編輯則透過 Leo Editor 進行, 此外 CMSiMDE 除了網際內容管理與網誌之外, 還透過 Leo Editor 管理 reveal.js 網際簡報系統.</p>
 <p>flask_cors 模組, 在 CMSiMDE 是為了配合 Dartpad 程式編寫過程, 需要跨網站擷取資料的需求而加入, 在舊版的可攜系統中若無此模組, 執行 CMSiMDE 之前必須透過</p>
 <p style="padding-left: 30px;">python -m pip install flask_cors </p>
-<p>安裝.</p><h2>STL</h2>
+<p>安裝.</p>
+<p>CMSiMDE 可以放入 Javascript 前端程式, 進行簡單的設計運算, 例如:</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Task3.html">http://mde.tw/cp2019/content/Task3.html</a> 中的猜數字遊戲.</p>
+<p>也可以嵌入 STL文字格式零件, 例如:</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cad2019/content/STL.html">http://mde.tw/cad2019/content/STL.html</a></p>
+<p>也可以利用前端的 Javascript 與伺服器後端的程式進行非同步設計運算或遠端控制, 例如:</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cad2019/content/Task1.html">http://mde.tw/cad2019/content/Task1.html</a> 中的網際虛擬雙輪車控制.</p><h2>STL</h2>
 <p>CMSiMDE 引用 ASCII STL方法:</p>
 <p>將 ascii.stl 檔案上傳至 downloads 目錄後, 利用 File List 功能, 後列出 ascii.stl, 以滑鼠點擊會出現顯示 stl 檔案的頁面, 導入頁面時, 以 iframe 標註之 src 對應至顯示 stl 檔案的 html 連結即可, 例如:  &lt;iframe width="600" height="400" src="/static/viewstl.html?src=./../../downloads/spikeball.stl"&gt;&lt;/iframe&gt;</p>
 <p><iframe height="400" src="/static/viewstl.html?src=./../../downloads/spikeball.stl" width="600"></iframe></p>
