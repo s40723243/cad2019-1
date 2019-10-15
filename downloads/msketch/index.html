@@ -1393,9 +1393,9 @@ made by yunwoo jeong -->
   });
 
 //var wattDataPath = "./public/res/WattDataSet";
-var wattDataPath = "https://mde.tw/cad2019/downloads/msketch/public/res/WattDataSet";
+var wattDataPath = "./public/res/WattDataSet";
 //var fourbarDataPath = "./public/res/FourbarDataSet";
-var fourbarDataPath = "https://mde.tw/cad2019/downloads/msketch/public/res/FourbarDataSet";
+var fourbarDataPath = "./public/res/FourbarDataSet";
 var WEIGHT_DIST = 10;
 var WEIGHT_ANGLE = 0.1;
 var WATT_SAMPLE_SIZE = 16;
@@ -1478,7 +1478,9 @@ function loadFourbarSet(){
     var _returnData = [];
     for(var j=0; j<NUM_OF_FOURBAR_DATASET; j++){
       xmlhttp = new XMLHttpRequest();
-    	xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt" ,false);
+    	//xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt" ,false);
+     // true for github pages
+     xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt", true);
     	xmlhttp.send(null);
     	var _data = xmlhttp.responseText;
 
