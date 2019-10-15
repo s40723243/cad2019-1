@@ -1483,8 +1483,9 @@ function loadFourbarSet(){
      xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt", false);
     	xmlhttp.send(null);
     	var _data = xmlhttp.responseText;
-
-        var _lineData = _data.split("\r\n");
+        // original for windows
+        //var _lineData = _data.split("\r\n");
+        var _lineData = _data.split("\n");
         for(i=0; i<_lineData.length; i++){
             if(_lineData[i]!="") _returnData.push(JSON.parse(_lineData[i]));
         }
