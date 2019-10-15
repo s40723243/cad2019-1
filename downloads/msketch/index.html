@@ -1464,8 +1464,9 @@ function loadWattSet(){
     	xmlhttp.open("GET", wattDataPath+"_"+j+".txt" ,false);
     	xmlhttp.send(null);
     	var _data = xmlhttp.responseText;
-
-        var _lineData = _data.split("\r\n");
+        // original for windows
+        // var _lineData = _data.split("\r\n");
+        var _lineData = _data.split("\n");
         for(i=0; i<_lineData.length; i++){
             if(_lineData[i]!="") _returnData.push(JSON.parse(_lineData[i]));
         }
@@ -1479,8 +1480,7 @@ function loadFourbarSet(){
     for(var j=0; j<NUM_OF_FOURBAR_DATASET; j++){
       xmlhttp = new XMLHttpRequest();
     	//xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt" ,false);
-     // true for github pages
-     xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt", true);
+     xmlhttp.open("GET", fourbarDataPath+"_"+j+".txt", false);
     	xmlhttp.send(null);
     	var _data = xmlhttp.responseText;
 
