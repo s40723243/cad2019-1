@@ -7,7 +7,8 @@ import numpy as np
 class VrepLineFollower:
   def __init__(self):
     vrep.simxFinish(-1) # just in case, close all opened connections
-    self.clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+    #self.clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+    self.clientID = vrep.simxStart('140.130.17.32', 19997, True, True, 5000, 5)
 
     self.wheelRadius = 0.027
     self.linearVelocityLeft  = 0.1
@@ -49,7 +50,8 @@ class VrepLineFollower:
     
   def get_image(self):
     # 使用 port 19998 取得 image sensor 影像
-    clientID = vrep.simxStart('127.0.0.1', 19998, True, True, 5000, 5)
+    #clientID = vrep.simxStart('127.0.0.1', 19998, True, True, 5000, 5)
+    clientID = vrep.simxStart('140.130.17.32', 19998, True, True, 5000, 5)
     if clientID!=-1:
       #print('Connected to remote API server')
       #print('Vision Sensor object handling')
@@ -62,8 +64,8 @@ class VrepLineFollower:
             #print("image OK!!!")
             img = np.array(image,dtype=np.uint8)
             img.resize([resolution[1],resolution[0],3])
-            flipHorizontal = cv2.flip(img, 1)
             # 將影像水平反轉
+            flipHorizontal = cv2.flip(img, 1)
             cv2.imshow('image', flipHorizontal)
             #cv2.imshow('image',img)
             if cv2.waitKey(1) & 0xFF == ord('q'):
