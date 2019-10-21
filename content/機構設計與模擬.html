@@ -150,6 +150,13 @@ init_mathjax();
           
         </header>
     <div id="tipue_search_content">Solvespace 操作 << <a href='Solvespace 操作.html'>Previous</a> <a href='GCS.html'>Next</a> >> GCS<br /><h1>機構設計與模擬</h1>
+<p>分組任務, 請利用 <a href="http://solvespace.com/index.pl">Solvespace</a>, <a href="http://www.coppeliarobotics.com/">V-rep</a> 與 <a href="https://github.com/KmolYuan/Pyslvs-UI/">Pyslvs</a> 等系統功能, 完成 <span style="background-color: #ffff00;"><a href="https://en.wikipedia.org/wiki/Jansen%27s_linkage" style="background-color: #ffff00;">Jansen 行走機構</a>的零組件繪製、組合、2D 模擬與3D 系統模擬</span>.</p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/GVr23lGzAoY" width="560"></iframe></p>
+<h4>問題討論:</h4>
+<p style="padding-left: 30px;">當多連桿行走機構的<span style="background-color: #ccffcc;">設計目標變更</span>時, 能否透過程式方法, <span style="background-color: #ccffcc;">快速</span>完成機電資系統的零組件以及系統模擬的<span style="background-color: #ccffcc;">設計因應變更</span>?</p>
+<p style="padding-left: 60px;">根據<span>網際 V-rep 模型控制: </span><a href="https://github.com/mdecourse/mocad/files/3583773/web_vrep2.zip">web_vrep2.zip</a><span> (</span><a href="./../downloads/web_vrep2.zip">local</a><span>) 任務的執行, 已知 V-rep 可以啟動多網路埠號接受遠端連線控制. 意即, 使用者可以透過 Remote API 的 Python 程式控制並監控遠端 V-rep 系統的模擬內容.</span></p>
+<p style="padding-left: 60px;">完成上述任務執行後, 是否能夠根據設計目標要求, 以參數式表單完成行走機構零件繪製與自動組立, 並據以修改動態模擬系統內容, 快速完成系統模擬與驗證?</p>
+<p style="padding-left: 60px;">問題: 能否<span style="background-color: #ffff00;">透過 V-rep 的 Python Remote API 流程</span>, 完成多連桿行走機構的<span style="background-color: #ffff00;">模型建立</span>? 假如 Python 程式希望執行 Remote API 並未提供的系統功能, 可以如 programming\remoteApiBindings\python\python\complexCommandTest.py 中的說明, 以間接的方式完成. (下載 <a href="./../downloads/vrep_python_remote_command_test_.7z">vrep_python_remote_command_test_.7z</a> 範例)</p>
 <h4>參考資料:</h4>
 <p style="padding-left: 30px;">2000 - <a href="./../downloads/The A-Design Invention Machine.pdf">The A-Design Invention Machine.pdf</a></p>
 <p style="padding-left: 30px;">2001 - <a href="./../downloads/OPTIMAL.SYNTHESIS.OF.PLANAR.FIVE-LINK.MECHANISMS.FOR.THE.PRODUCTION.OF.NONLINEAR.MECHANICAL.ADVANTAGE.pdf">OPTIMAL.SYNTHESIS.OF.PLANAR.FIVE-LINK.MECHANISMS.FOR.THE.PRODUCTION.OF.NONLINEAR.MECHANICAL.ADVANTAGE.pdf</a></p>
