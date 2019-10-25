@@ -30,6 +30,15 @@
 <v t="leo.20190903120516.1"><vh>何謂電腦輔助設計?</vh>
 <v t="leo.20190903120516.2"><vh>何謂電腦輔助設計?</vh></v>
 </v>
+<v t="leo.20191025072717.1"><vh>W1-W9 摘要</vh>
+<v t="leo.20191025072736.1"><vh>W1-W9 學習摘要</vh></v>
+</v>
+<v t="leo.20191025075437.1"><vh>W7 摘要</vh>
+<v t="leo.20191025075437.2"><vh>W7 學習摘要</vh></v>
+</v>
+<v t="leo.20191025074044.1"><vh>W10-W18 摘要</vh>
+<v t="leo.20191025074044.2"><vh>W10-W18 學習摘要</vh></v>
+</v>
 <v t="leo.20190903115511.1"><vh>快捷鍵</vh>
 <v t="leo.20190903115511.2"><vh>投影片快捷鍵</vh></v>
 </v>
@@ -77,12 +86,12 @@ Created by [KMOLab](http://lab.kmol.info/)
 </t>
 <t tx="leo.20180902120523.12"># 課程簡介
 
-* 從 Solvespace  編譯與使用開始
+* 從 Solvespace 編譯與使用開始 (必選)
 * 安裝 SolidWorks 2017 與零組件繪圖
 * 安裝 Inventor 2018 與零組件繪圖
-* 安裝 Siemens NX12 與零組件繪圖
+* 安裝 Siemens NX12 與零組件繪圖 (必選)
 * 安裝 PTC Creo 6 與零組件繪圖
-* 分組執行越野車設計與分析專案
+* 分組執行越野車/行走機構設計與分析專案 (必選)
 
 </t>
 <t tx="leo.20180902120523.13">&lt;section&gt;
@@ -387,6 +396,50 @@ vertical: body pane on the botton</t>
 * 設計 - 權衡約束條件後所完成的安排及表達
 * 設計的目的在尋求目標達成的最合理安排
 * 電腦輔助機械設計的目的在求價值最大化
+
+</t>
+<t tx="leo.20191025072717.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20191025072736.1"># W1-W9 學習摘要
+
+* W2 - 課程內容說明、亂數分組、建立各學員網站
+* W3 - 任務一 Solvespace 編譯與參數繪圖應用說明
+* W5 - Solvespace 編譯與參數繪圖示範
+* W6 - V-rep 網際雙輪車控制模擬示範
+* W7 - 統一網站架構, Solvespace 編譯與繪圖驗證
+* W8 - Solvespace 與 V-rep 應用, 雙輪車與行走機構
+* W9 - 期中考週 - 任務一驗證, 學員 reveal 期中簡報
+
+</t>
+<t tx="leo.20191025074044.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20191025074044.2"># W10-W18 學習摘要
+
+* W10 - 開始全班維護一個協同倉儲, 各參數繪圖套件安裝
+* W11-W13 - Solvespace 與 NX12 參數繪圖與 V-rep 結合應用
+* W14-W15 - NX12 零件工程分析
+* W16-W17 - V-rep 越野車與行走機構模擬
+* W18 - 期末考週 - 各任務驗證, 分組 reveal 期末簡報
+
+</t>
+<t tx="leo.20191025075437.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20191025075437.2"># W7 統一網站架構與任務一驗證
+
+* 請各組討論後, 統一網站架構, 以至多五個 H1 為限
+* 將 Solvespace 編譯過程拍成帶字幕影片後上傳並嵌入個人網站 (在 Help-&gt;About 視窗中, 納入 "This Solvespace is compiled by 學號")
+* Solvespace  繪圖驗證, 從[零件網頁](http://mde.tw/cad2019/content/CAD2CAE.html) 自選, 可採 Solvespace 完成繪圖的零件, 將過程拍成帶字幕的影片後上傳嵌入個人網站
+
+
 
 </t>
 </tnodes>
