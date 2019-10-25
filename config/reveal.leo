@@ -437,7 +437,7 @@ vertical: body pane on the botton</t>
 
 * 請各組討論後, 統一網站架構, 以至多五個 H1 為限
 * 將 Solvespace 編譯過程拍成帶字幕影片後上傳並嵌入個人網站 (在 Help-&gt;About 視窗中, 納入 "This Solvespace is compiled by 學號")
-* Solvespace  繪圖驗證, 從[零件網頁](http://mde.tw/cad2019/content/CAD2CAE.html) 自選, 可採 Solvespace 完成繪圖的零件, 將過程拍成帶字幕的影片後上傳嵌入個人網站
+* Solvespace  繪圖驗證, 從[零件網頁](http://mde.tw/cad2019/content/CAD2CAE.html) 自選, 可採 Solvespace 完成繪圖的零件, 將過程拍成帶字幕的影片後上傳嵌入個人網站 ([2a 回報處](https://github.com/mdecourse/cad2019/issues/17), [2b 回報處](https://github.com/mdecourse/cad2019/issues/18))
 
 
 
