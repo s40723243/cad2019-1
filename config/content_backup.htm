@@ -2118,9 +2118,130 @@ print('Program ended')</pre>
 <h2>FreeCAD</h2>
 <p><a href="https://drive.google.com/file/d/13-ByKlFCsScF3xHi1SZrsJ1ZOejzFXZo/view?usp=sharing">FreeCAD 0.18.7z</a><span> </span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</p>
 <h2>Webots</h2>
+<p><a href="http://www.coppeliarobotics.com/">V-rep</a> 早在 2013 年初就<a href="http://ros-users.122217.n3.nabble.com/Robot-Simulator-V-REP-now-open-source-td4019395.html">率先開源</a>, 而同樣來自瑞士 (<a href="http://www.coppeliarobotics.com/contact.html">V-rep</a>  2010 <a href="https://www.azorobotics.com/Suppliers.aspx?SupplierID=1299">推出模擬套件</a>, 公司在 <a href="https://www.bloomberg.com/profile/company/1620042D:SW">2014 成立</a>, <a href="https://cyberbotics.com/#about">Webots 則在 1998 年</a>從 <a href="https://www.epfl.ch/en/">EPFL</a> 轉出成立公司) 的 <a href="https://cyberbotics.com/">Webots</a> 也在 2018 年底<a href="https://cyberbotics.com/doc/blog/Webots-2019-a-release">宣布開源</a></p>
+<p>這兩套機電資整合系統模擬套件之所以選擇透過軟體開源行銷, 背後可能的思考參見:</p>
+<p style="padding-left: 30px;"><a href="https://opensource.com/life/15/12/why-open-source">https://opensource.com/life/15/12/why-open-source</a></p>
+<p style="padding-left: 30px;"><a href="https://rubygarage.org/blog/why-open-source-is-good-for-business">https://rubygarage.org/blog/why-open-source-is-good-for-business</a></p>
+<hr/>
 <p><span><a href="https://drive.google.com/file/d/1o8cAv-pSUyp69TUGhC7NvEznGrdNP5AC/view?usp=sharing">Webot 2019a.7z</a> </span><span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</span></p>
 <p><span><a href="https://drive.google.com/file/d/1MolDH7kKJt_IIBTrKalsMfNWMrqqTWdt/view?usp=sharing">Webots_2019b_rev1.7z</a> (登入 gm.nfu.edu.tw 後下載)</span></p>
-<p><span>利用 <a href="https://www.patrickmin.com/meshconv/">https://www.patrickmin.com/meshconv/</a> 將 Solvespace 轉出的 stl 檔案轉為 vrml</span></p><h2>Solidworks</h2>
+<h4><span>Webots 啟動條件:</span></h4>
+<p><span>執行路徑設定</span></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
+<p>啟動指令:</p>
+<p>在 y:\ 目錄建立 start_webots.bat, 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
+<p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
+<hr/>
+<h4>Webots Tutorial</h4>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/tutorials">https://cyberbotics.com/doc/guide/tutorials</a></p>
+<h4>Tutorial 1</h4>
+<p style="padding-left: 30px;">這裡的 World 指由機電資系統整合模擬者所建構的 <span>system of created things (造物系統), 在 V-rep 此一包含模擬環境設定的模型稱為 Scene (場景), 而在 Webots 則可稱為 World (模擬世界).</span></p>
+<p style="padding-left: 30px;">A <span style="background-color: #ccffcc;">World</span> (模擬世界) is a file containing information like where the objects are, what they look like, how they interact with each other, what is the color of the sky, how is defined the gravity, friction, masses of the objects, etc. It defines the initial state of a simulation. The different objects are called <span style="background-color: #ccffcc;">Nodes</span> (節點) and are organized hierarchically in a <span style="background-color: #ccffcc;">Scene Tree</span> (場景樹). Therefore, a node may contain sub-nodes. A world is stored in a file having the <span style="background-color: #ffff00;">.wbt extension</span>. The file format is <span style="background-color: #ccffcc;">derived from the VRML97 language</span>, and is human readable. The world files must be stored directly in a <span style="background-color: #ffff00;">directory called worlds</span>.</p>
+<p style="padding-left: 30px;"><a href="/downloads/vrml_2.0_specification.pdf">vrml_2.0_specification.pdf</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/VRML Primer and Tutorial.pdf">VRML Primer and Tutorial.pdf</a></p>
+<p style="padding-left: 30px;">標準檔案架構</p>
+<p style="padding-left: 30px;">The Root Directory of a Project</p>
+<p style="padding-left: 30px;">The root directory of a project contains at least a directory called "worlds" containing a single world file. But several other directories are often required:</p>
+<p style="padding-left: 30px;">"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
+<p style="padding-left: 30px;">"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
+<p style="padding-left: 30px;">"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
+<p style="padding-left: 30px;">"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p>
+<p style="padding-left: 30px;">The Project Files</p>
+<p style="padding-left: 30px;">The project files contain information about the GUI (such as the perspective). These files are hidden. Each world file can have one project file. If the world file is named "myWorldFile.wbt", its project file is named ".myWorldFile.wbproj". This file is written by Webots when a world is correctly closed. Removing it allows you to retrieve the default perspective.</p>
+<p style="padding-left: 30px;">The "controllers" Directory</p>
+<p style="padding-left: 30px;">This directory contains the controllers. Each controller is defined in a directory. A controller is referenced by the name of the directory. Here is an example of the controllers directory having one simple controller written in C which can be edited and executed.</p>
+<p style="padding-left: 30px;">controllers/<br/>controllers/simple_controller/<br/>controllers/simple_controller/Makefile<br/>controllers/simple_controller/simple_controller.c<br/>controllers/simple_controller/simple_controller[.exe]</p>
+<p style="padding-left: 30px;">場景導航</p>
+<p style="padding-left: 30px;">Dragging the mouse while pressing a mouse button moves the camera of the 3D window.</p>
+<p style="padding-left: 30px;">Camera rotation: In the 3D window, click on an object with the left mouse button and drag the mouse to rotate the viewpoint around it. If you click on the background, the camera will rotate around its own position.</p>
+<p style="padding-left: 30px;">Camera translation: In the 3D window, press the right button and drag the mouse to translate the camera.</p>
+<p style="padding-left: 30px;">Zooming / Camera rotation: In the 3D window, press both left and right mouse buttons simultaneously (or just the middle button) and drag the mouse vertically, to zoom in and out. Dragging the mouse horizontally will rotate the camera around the viewing axis. Alternatively, the mouse wheel alone can also be used for zooming.</p>
+<p style="padding-left: 30px;">移動與縮放物體</p>
+<p style="padding-left: 30px;">Currently Webots provides two different ways to move solid objects: axis-aligned handles and keyboard shortcuts.</p>
+<p style="padding-left: 30px;">Axis-aligned Handles</p>
+<p style="padding-left: 30px;">When a solid object is selected, some arrow-shaped handles appear in the 3D window. These handles can be used to translate and rotate the object along the corresponding axis. For moving the object you can simply click on the handle and drag it to the desired position. A label will show the currect relative translation or rotation during the movement.</p>
+<p style="padding-left: 30px;">If the Control key (Ctrl) is pressed, the handles for resizing the solid object will be displayed instead of translation and rotation handles. These resize handles can also be enabled from the Field Editor.</p>
+<p style="padding-left: 30px;">快捷鍵</p>
+<p style="padding-left: 30px;">Translation: To move an object parallel to the ground: hold down the Shift key, press the left mouse button and drag.</p>
+<p style="padding-left: 30px;">Rotation: To rotate an object around the world's vertical axis: hold down the Shift key, press the right mouse button and drag.</p>
+<p style="padding-left: 30px;">Lift: To raise or lower an object: hold down the Shift key, press both left and right mouse buttons (or the middle button) and drag. Alternatively, the mouse wheel combined with the Shift key can also be used.</p>
+<p style="padding-left: 30px;">Applying a Force to a Solid Object with Physics</p>
+<p style="padding-left: 30px;">To apply a force to an object, place the mouse pointer where the force will apply, hold down the Alt key and left mouse button together while dragging the mouse.</p>
+<p style="padding-left: 30px;">Linux users should also hold down the Control key (Ctrl) together with the Alt key. This way your are drawing a 3D-vector whose end is located on the plane parallel to the view which passes through the point of application. The intensity of the applied force is directly proportional to the cube of the length of this vector.</p>
+<p style="padding-left: 30px;">Applying a Torque to a Solid Object with Physics</p>
+<p style="padding-left: 30px;">To apply a torque to an object, place the mouse pointer on it, hold down the Alt key and right mouse button together while dragging the mouse.</p>
+<p style="padding-left: 30px;">Linux users should also hold down the Control key (Ctrl) together with the Alt key. Also, macOS users with a one-button mouse should hold down the Control key (Ctrl) to emulate the right mouse button. This way your are drawing a 3D-vector with origin the center of mass and whose end is located on the plane parallel to the view which passes through this center. The object is prompted to turn around the vector direction, the intensity of the applied torque is directly proportional to the product of the mass by the length of the 3D-vector.</p>
+<h4>Solvespace 零件尺寸與 Webots</h4>
+<p style="padding-left: 30px;">因為 Webots 內建的尺寸單位為 m, 因此利用 Import 導入 wrl 檔案時, 若該檔案從 Solvespace 以 mm 尺寸執行繪圖後, 轉為 wrl 後導入 Webots, 則必須將 scale 調整為 1/1000, 才能夠得到正確的零件尺寸. (即使將 Solvespace 中的 View -&gt; Dimension Units -&gt; Dimension in meter, 選擇以 m 執行繪圖, 但是從 Solvespace 轉出的 wrl 檔案仍以 mm 作為尺寸單位存檔).</p>
+<p style="padding-left: 30px;">使用者可以將零件從 Solvespace 轉出 wrl 後, 在 transform 中加入</p>
+<p style="padding-left: 30px;">scale 0.001 0.001 0.001</p>
+<p style="padding-left: 30px;">後重新存檔, 就可以在 Import 轉入 Webots 後, 得到正確的尺寸. 也可以修改 Solvespace 的原始碼, 自動在轉出的 wrl 檔案中加入 scale 轉換, 改以 m 作為尺寸單位.</p>
+<p style="padding-left: 30px;">另外, 由於 Webots 無法解讀從 Solvespace 轉出 wrl 檔案中的 <span style="background-color: #ffff00;">colorPerVertex, color 以及 colorIndex</span> 等三種欄位資料, 因此也可以在修改 scale 時將這些欄位資料刪除. 或從 Solvespace 原始碼中進行修改.</p>
+<p style="padding-left: 30px;">例如:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#VRML V2.0 utf8
+#Exported from SolveSpace 3.0
+
+DEF a1m_block Transform {
+  scale 0.001 0.001 0.001
+  children [
+    Shape {
+      appearance Appearance {
+        material DEF a1m_block_material_255 Material {
+          diffuseColor 0.300000 0.300000 0.300000
+          ambientIntensity 0.300000
+          transparency 0.000000
+        }
+      }
+      geometry IndexedFaceSet {
+        colorPerVertex TRUE
+        coord Coordinate { point [
+          -50.400000 50.000000 1000.000000,
+          -50.400000 -0.000000 1000.000000,
+          0.000000 50.000000 1000.000000,
+          0.000000 -0.000000 1000.000000,
+          -50.400000 -0.000000 0.000000,
+          -50.400000 50.000000 0.000000,
+          0.000000 -0.000000 0.000000,
+          0.000000 50.000000 0.000000,
+        ] }
+        coordIndex [
+          0, 1, 2, -1,
+          2, 1, 3, -1,
+          4, 5, 6, -1,
+          6, 5, 7, -1,
+          3, 1, 6, -1,
+          6, 1, 4, -1,
+          1, 0, 4, -1,
+          4, 0, 5, -1,
+          0, 2, 5, -1,
+          5, 2, 7, -1,
+          2, 3, 7, -1,
+          7, 3, 6, -1,
+        ]
+        color Color { color [
+          0.3921568692 0.3921568692 0.3921568692,
+        ] }
+        colorIndex [
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+          0, 0, 0, -1,
+        ]
+      }
+    }
+  ]
+}
+</pre>
+<p></p><h2>Solidworks</h2>
 <p>登入 @gm 電子郵箱, 可以<a href="https://drive.google.com/file/d/1KPpXzumzBIvMCovZdBYh0s468uFO277k/view">下載 SolidWorks 2017 SP2 安裝光碟</a>), 或是已經安裝好的 <a href="https://drive.google.com/file/d/1VB30WUbfKEH3BX3ftLlOWWZ_aQIZzZVx/view?usp=sharing">SolidWorks 2017 SP2 虛擬主機版本</a>.</p>
 <p><a href="/downloads/solidworks_basics.pdf">solidworks_basics.pdf</a></p>
 <p><a href="/downloads/Solidworks_EDU_Drawing_Exercises_2010_ENG.pdf">Solidworks_EDU_Drawing_Exercises_2010_ENG.pdf</a></p>
