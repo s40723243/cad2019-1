@@ -149,9 +149,28 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Cyber-physical << <a href='Cyber-physical.html'>Previous</a> <a href='Webots.html'>Next</a> >> Webots<br /><h1>FreeCAD</h1>
-<p><a href="https://drive.google.com/file/d/13-ByKlFCsScF3xHi1SZrsJ1ZOejzFXZo/view?usp=sharing">FreeCAD 0.18.7z</a><span> </span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</p>
-<br />Cyber-physical << <a href='Cyber-physical.html'>Previous</a> <a href='Webots.html'>Next</a> >> Webots</div>
+    <div id="tipue_search_content">Webots << <a href='Webots.html'>Previous</a> <a href='Solidworks.html'>Next</a> >> Solidworks<br /><h1>WB Tutorial1</h1>
+<h4><span>Webots 啟動條件:</span></h4>
+<p><span>執行路徑設定</span></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
+<p>啟動指令:</p>
+<p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
+<p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
+<p>建立新專案</p>
+<p>利用下拉式功能表中的 Wizards 精靈, 選擇 New Project Directory.  將會自動建立:</p>
+<p style="padding-left: 30px;">controllers</p>
+<p style="padding-left: 30px;">libraries</p>
+<p style="padding-left: 30px;">plugins</p>
+<p style="padding-left: 30px;">protos</p>
+<p style="padding-left: 30px;">worlds </p>
+<p>等目錄. 各目錄內容說明如下:</p>
+<p>The Root Directory of a Project</p>
+<p>The root directory of a project contains at least a directory called "worlds" containing a single world file. But several other directories are often required:</p>
+<p>"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
+<p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
+<p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
+<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><br />Webots << <a href='Webots.html'>Previous</a> <a href='Solidworks.html'>Next</a> >> Solidworks</div>
         
     <!-- footer -->
       <div class="container">

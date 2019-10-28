@@ -2118,6 +2118,8 @@ print('Program ended')</pre>
 <h2>FreeCAD</h2>
 <p><a href="https://drive.google.com/file/d/13-ByKlFCsScF3xHi1SZrsJ1ZOejzFXZo/view?usp=sharing">FreeCAD 0.18.7z</a><span> </span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</p>
 <h2>Webots</h2>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/">https://cyberbotics.com/</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics">https://github.com/cyberbotics</a></p>
 <p><a href="http://www.coppeliarobotics.com/">V-rep</a> 早在 2013 年初就<a href="http://ros-users.122217.n3.nabble.com/Robot-Simulator-V-REP-now-open-source-td4019395.html">率先開源</a>, 而同樣來自瑞士 (<a href="http://www.coppeliarobotics.com/contact.html">V-rep</a>  2010 <a href="https://www.azorobotics.com/Suppliers.aspx?SupplierID=1299">推出模擬套件</a>, 公司在 <a href="https://www.bloomberg.com/profile/company/1620042D:SW">2014 成立</a>, <a href="https://cyberbotics.com/#about">Webots 則在 1998 年</a>從 <a href="https://www.epfl.ch/en/">EPFL</a> 轉出成立公司) 的 <a href="https://cyberbotics.com/">Webots</a> 也在 2018 年底<a href="https://cyberbotics.com/doc/blog/Webots-2019-a-release">宣布開源</a></p>
 <p>這兩套機電資整合系統模擬套件之所以選擇透過軟體開源行銷, 背後可能的思考參見:</p>
 <p style="padding-left: 30px;"><a href="https://opensource.com/life/15/12/why-open-source">https://opensource.com/life/15/12/why-open-source</a></p>
@@ -2129,8 +2131,8 @@ print('Program ended')</pre>
 <p><span>執行路徑設定</span></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
 <p>啟動指令:</p>
-<p>在 y:\ 目錄建立 start_webots.bat, 內容為:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
+<p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
 <p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
 <hr/>
 <h4>Webots Tutorial</h4>
@@ -2138,8 +2140,11 @@ print('Program ended')</pre>
 <h4>Tutorial 1</h4>
 <p style="padding-left: 30px;">這裡的 World 指由機電資系統整合模擬者所建構的 <span>system of created things (造物系統), 在 V-rep 此一包含模擬環境設定的模型稱為 Scene (場景), 而在 Webots 則可稱為 World (模擬世界).</span></p>
 <p style="padding-left: 30px;">A <span style="background-color: #ccffcc;">World</span> (模擬世界) is a file containing information like where the objects are, what they look like, how they interact with each other, what is the color of the sky, how is defined the gravity, friction, masses of the objects, etc. It defines the initial state of a simulation. The different objects are called <span style="background-color: #ccffcc;">Nodes</span> (節點) and are organized hierarchically in a <span style="background-color: #ccffcc;">Scene Tree</span> (場景樹). Therefore, a node may contain sub-nodes. A world is stored in a file having the <span style="background-color: #ffff00;">.wbt extension</span>. The file format is <span style="background-color: #ccffcc;">derived from the VRML97 language</span>, and is human readable. The world files must be stored directly in a <span style="background-color: #ffff00;">directory called worlds</span>.</p>
+<p style="padding-left: 30px;"><a href="/downloads/VRML_lecture.pdf">VRML_lecture.pdf</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/intro_vrml97.pdf">intro_vrml97.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/vrml_2.0_specification.pdf">vrml_2.0_specification.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/VRML Primer and Tutorial.pdf">VRML Primer and Tutorial.pdf</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/Studying Geometry Color and Texture in VRML.pdf">Studying Geometry Color and Texture in VRML.pdf</a></p>
 <p style="padding-left: 30px;">標準檔案架構</p>
 <p style="padding-left: 30px;">The Root Directory of a Project</p>
 <p style="padding-left: 30px;">The root directory of a project contains at least a directory called "worlds" containing a single world file. But several other directories are often required:</p>
@@ -2241,7 +2246,27 @@ DEF a1m_block Transform {
   ]
 }
 </pre>
-<p></p><h2>Solidworks</h2>
+<h4>Web Simulation</h4>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/web-simulation">https://cyberbotics.com/doc/guide/web-simulation</a></p>
+<p style="padding-left: 30px;">TCP/IP interface</p>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/interfacing-webots-to-third-party-software-with-tcp-ip">https://cyberbotics.com/doc/guide/interfacing-webots-to-third-party-software-with-tcp-ip</a></p>
+<p style="padding-left: 30px;">SolidReference</p>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/solidreference">https://cyberbotics.com/doc/reference/solidreference</a></p><h3>WB Tutorial1</h3>
+<h4><span>Webots 啟動條件:</span></h4>
+<p><span>執行路徑設定</span></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
+<p>啟動指令:</p>
+<p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
+<p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
+<p>建立新專案</p>
+<p>利用下拉式功能表中的 Wizards 精靈, 選擇 New Project Directory.  將會自動建立:</p>
+<p style="padding-left: 30px;">controllers</p>
+<p style="padding-left: 30px;">libraries</p>
+<p style="padding-left: 30px;">plugins</p>
+<p style="padding-left: 30px;">protos</p>
+<p style="padding-left: 30px;">worlds </p>
+<p>等目錄.</p><h2>Solidworks</h2>
 <p>登入 @gm 電子郵箱, 可以<a href="https://drive.google.com/file/d/1KPpXzumzBIvMCovZdBYh0s468uFO277k/view">下載 SolidWorks 2017 SP2 安裝光碟</a>), 或是已經安裝好的 <a href="https://drive.google.com/file/d/1VB30WUbfKEH3BX3ftLlOWWZ_aQIZzZVx/view?usp=sharing">SolidWorks 2017 SP2 虛擬主機版本</a>.</p>
 <p><a href="/downloads/solidworks_basics.pdf">solidworks_basics.pdf</a></p>
 <p><a href="/downloads/Solidworks_EDU_Drawing_Exercises_2010_ENG.pdf">Solidworks_EDU_Drawing_Exercises_2010_ENG.pdf</a></p>
