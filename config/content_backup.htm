@@ -2266,7 +2266,13 @@ DEF a1m_block Transform {
 <p style="padding-left: 30px;">plugins</p>
 <p style="padding-left: 30px;">protos</p>
 <p style="padding-left: 30px;">worlds </p>
-<p>等目錄.</p><h2>Solidworks</h2>
+<p>等目錄. 各目錄內容說明如下:</p>
+<p>The Root Directory of a Project</p>
+<p>The root directory of a project contains at least a directory called "worlds" containing a single world file. But several other directories are often required:</p>
+<p>"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
+<p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
+<p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
+<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h2>Solidworks</h2>
 <p>登入 @gm 電子郵箱, 可以<a href="https://drive.google.com/file/d/1KPpXzumzBIvMCovZdBYh0s468uFO277k/view">下載 SolidWorks 2017 SP2 安裝光碟</a>), 或是已經安裝好的 <a href="https://drive.google.com/file/d/1VB30WUbfKEH3BX3ftLlOWWZ_aQIZzZVx/view?usp=sharing">SolidWorks 2017 SP2 虛擬主機版本</a>.</p>
 <p><a href="/downloads/solidworks_basics.pdf">solidworks_basics.pdf</a></p>
 <p><a href="/downloads/Solidworks_EDU_Drawing_Exercises_2010_ENG.pdf">Solidworks_EDU_Drawing_Exercises_2010_ENG.pdf</a></p>
