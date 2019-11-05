@@ -2118,10 +2118,13 @@ print('Program ended')</pre>
 <h2>FreeCAD</h2>
 <p><a href="https://drive.google.com/file/d/13-ByKlFCsScF3xHi1SZrsJ1ZOejzFXZo/view?usp=sharing">FreeCAD 0.18.7z</a><span> </span>(登入 gm.nfu.edu.tw 後下載) - 電腦輔助設計實習課程專用</p>
 <h2>Webots</h2>
-<p style="padding-left: 30px;"><a href="https://cyberbotics.com/">https://cyberbotics.com/</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics">https://github.com/cyberbotics</a></p>
-<p style="padding-left: 30px;"><a href="/downloads/Robot Design for Everyone_1_2.pdf">Robot Design for Everyone_1_2.pdf</a></p>
-<p style="padding-left: 30px;"><a href="/downloads/Robot Design for Everyone_2_2.pdf">Robot Design for Everyone_2_2.pdf</a></p>
+<p style="padding-left: 30px;">官方網站: <a href="https://cyberbotics.com/">https://cyberbotics.com/</a></p>
+<p style="padding-left: 30px;">原始碼: <a href="https://github.com/cyberbotics">https://github.com/cyberbotics</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/webots/releases">https://github.com/cyberbotics/webots/releases</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/blender-webots-exporter">https://github.com/cyberbotics/blender-webots-exporter</a></p>
+<p style="padding-left: 30px;">2018 論文 - Robot Design for Everyone: Computational Tools that Democratize the Design of Robots (<a href="http://www.cs.cmu.edu/~rutad/files/rutad_thesis_static.pdf">下載</a>)</p>
+<p style="padding-left: 60px;">Part1: <a href="/downloads/Robot Design for Everyone_1_2.pdf">Robot Design for Everyone_1_2.pdf</a></p>
+<p style="padding-left: 60px;">Part2: <a href="/downloads/Robot Design for Everyone_2_2.pdf">Robot Design for Everyone_2_2.pdf</a></p>
 <p><a href="http://www.coppeliarobotics.com/">V-rep</a> 早在 2013 年初就<a href="http://ros-users.122217.n3.nabble.com/Robot-Simulator-V-REP-now-open-source-td4019395.html">率先開源</a>, 而同樣來自瑞士 (<a href="http://www.coppeliarobotics.com/contact.html">V-rep</a>  2010 <a href="https://www.azorobotics.com/Suppliers.aspx?SupplierID=1299">推出模擬套件</a>, 公司在 <a href="https://www.bloomberg.com/profile/company/1620042D:SW">2014 成立</a>, <a href="https://cyberbotics.com/#about">Webots 則在 1998 年</a>從 <a href="https://www.epfl.ch/en/">EPFL</a> 轉出成立公司) 的 <a href="https://cyberbotics.com/">Webots</a> 也在 2018 年底<a href="https://cyberbotics.com/doc/blog/Webots-2019-a-release">宣布開源</a></p>
 <p>這兩套機電資整合系統模擬套件之所以選擇透過軟體開源行銷, 背後可能的思考參見:</p>
 <p style="padding-left: 30px;"><a href="https://opensource.com/life/15/12/why-open-source">https://opensource.com/life/15/12/why-open-source</a></p>
@@ -2180,7 +2183,7 @@ print('Program ended')</pre>
 <p style="padding-left: 30px;">To apply a torque to an object, place the mouse pointer on it, hold down the Alt key and right mouse button together while dragging the mouse.</p>
 <p style="padding-left: 30px;">Linux users should also hold down the Control key (Ctrl) together with the Alt key. Also, macOS users with a one-button mouse should hold down the Control key (Ctrl) to emulate the right mouse button. This way your are drawing a 3D-vector with origin the center of mass and whose end is located on the plane parallel to the view which passes through this center. The object is prompted to turn around the vector direction, the intensity of the applied torque is directly proportional to the product of the mass by the length of the 3D-vector.</p>
 <h4>Solvespace 零件尺寸與 Webots</h4>
-<p style="padding-left: 30px;">因為 Webots 內建的尺寸單位為 m, 因此利用 Import 導入 wrl 檔案時, 若該檔案從 Solvespace 以 mm 尺寸執行繪圖後, 轉為 wrl 後導入 Webots, 則必須將 scale 調整為 1/1000, 才能夠得到正確的零件尺寸. (即使將 Solvespace 中的 View -&gt; Dimension Units -&gt; Dimension in meter, 選擇以 m 執行繪圖, 但是從 Solvespace 轉出的 wrl 檔案仍以 mm 作為尺寸單位存檔).</p>
+<p style="padding-left: 30px;">因為 Webots 內建的尺寸單位為 m, 因此利用 Import 導入 wrl 檔案時, 該檔案從 Solvespace 以 mm 尺寸執行繪圖後, 轉為 wrl 後導入 Webots, 若 Solvespace 以 mm 數字輸出, 則必須將 scale 調整為 1/1000, 才能夠將該 mm 數字轉為 m, 得到正確的零件尺寸. 一般在 Solvespace 均以 mm 作圖, 因此轉出 wrl 時必須注意轉出內容與所使用繪圖單位之間的轉換.</p>
 <p style="padding-left: 30px;">使用者可以將零件從 Solvespace 轉出 wrl 後, 在 transform 中加入</p>
 <p style="padding-left: 30px;">scale 0.001 0.001 0.001</p>
 <p style="padding-left: 30px;">後重新存檔, 就可以在 Import 轉入 Webots 後, 得到正確的尺寸. 也可以修改 Solvespace 的原始碼, 自動在轉出的 wrl 檔案中加入 scale 轉換, 改以 m 作為尺寸單位.</p>
@@ -2253,7 +2256,14 @@ DEF a1m_block Transform {
 <p style="padding-left: 30px;">TCP/IP interface</p>
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/interfacing-webots-to-third-party-software-with-tcp-ip">https://cyberbotics.com/doc/guide/interfacing-webots-to-third-party-software-with-tcp-ip</a></p>
 <p style="padding-left: 30px;">SolidReference</p>
-<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/solidreference">https://cyberbotics.com/doc/reference/solidreference</a></p><h3>WB Tutorial1</h3>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/solidreference">https://cyberbotics.com/doc/reference/solidreference</a></p>
+<h4>Worldinfo</h4>
+<p style="padding-left: 30px;"><a href="https://www.cyberbotics.com/doc/reference/worldinfo">https://www.cyberbotics.com/doc/reference/worldinfo</a></p>
+<h4><a href="https://stackoverflow.com/questions/57441616/how-to-run-python-files-in-webots">Webots and Python Controller</a></h4>
+<p style="padding-left: 30px;"><span>When Webots launches a controller program, it searches inside the controller folder for a binary file with the same name as the folder, e.g., my_controller/my_controller.exe. if not found, it will try to copy it from the my_controller/build folder. If not such folder exists, it will try other possibilities, including launching my_controller/my_controller.py. This is certainly what you want to achieve. Therefore, I would recommend you to delete any file and subfolder from your controller folder except your Python controller program. That should fix your problem.</span></p>
+<p style="padding-left: 30px;"><span><a href="https://stackoverflow.com/questions/55702930/how-to-program-a-controller-using-python3">https://stackoverflow.com/questions/55702930/how-to-program-a-controller-using-python3</a></span></p>
+<p style="padding-left: 30px;"><span><a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></span></p>
+<p style="padding-left: 30px;"><span><a href="https://cyberbotics.com/doc/guide/controller-programming#languages-settings">https://cyberbotics.com/doc/guide/controller-programming#languages-settings</a></span></p><h3>WB Tutorial1</h3>
 <h4><span>Webots 啟動條件:</span></h4>
 <p><span>執行路徑設定</span></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
@@ -3610,6 +3620,7 @@ int main()
 <p><img alt="" src="/images/autodesk_inventor_15.png" width="600"/></p>
 <p>16</p>
 <p><img alt="" src="/images/autodesk_inventor_16.png" width="600"/></p>
+<p><a href="/downloads/solvespace/examples/ex16.slvs">ex16.slvs</a></p>
 <p><iframe height="480" src="/downloads/solvespace/examples/ex16.html" width="640"></iframe></p>
 <p>17</p>
 <p><img alt="" src="/images/autodesk_inventor_17.png" width="600"/></p>
