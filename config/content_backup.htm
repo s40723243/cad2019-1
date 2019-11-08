@@ -1790,7 +1790,8 @@ volume.run(1000, 50)</pre>
 <p>也可以嵌入 STL文字格式零件, 例如:</p>
 <p style="padding-left: 30px;"><a href="http://mde.tw/cad2019/content/STL.html">http://mde.tw/cad2019/content/STL.html</a></p>
 <p>也可以利用前端的 Javascript 與伺服器後端的程式進行非同步設計運算或遠端控制, 例如:</p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cad2019/content/Task1.html">http://mde.tw/cad2019/content/Task1.html</a> 中的網際虛擬雙輪車控制.</p><h2>STL</h2>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cad2019/content/Task1.html">http://mde.tw/cad2019/content/Task1.html</a> 中的網際虛擬雙輪車控制.</p>
+<h3>CMSiMDE 已知錯誤</h3><h2>STL</h2>
 <p>CMSiMDE 引用 ASCII STL方法:</p>
 <p>將 ascii.stl 檔案上傳至 downloads 目錄後, 利用 File List 功能, 後列出 ascii.stl, 以滑鼠點擊會出現顯示 stl 檔案的頁面, 導入頁面時, 以 iframe 標註之 src 對應至顯示 stl 檔案的 html 連結即可, 例如:  &lt;iframe width="600" height="400" src="/static/viewstl.html?src=./../../downloads/spikeball.stl"&gt;&lt;/iframe&gt;</p>
 <p><iframe height="400" src="/static/viewstl.html?src=./../../downloads/spikeball.stl" width="600"></iframe></p>
@@ -2308,6 +2309,7 @@ DEF a1m_block Transform {
 <p style="padding-left: 30px;">get SciTE.exe under scite\bin</p>
 <p style="padding-left: 30px;">need extra libgcc_s_seh-1.dll, libstdc++-6.dll and libwinpthread-1.dll along with <span>Scintilla.dll and </span><span>SciLexer.dll </span>to execute SciTE.exe</p>
 <p>SciTE properties files: <a href="/downloads/SciTE_properties_files.7z">SciTE_properties_files.7z</a></p>
+<p>上述編譯流程所有檔案: <a href="https://drive.google.com/file/d/1TM-aipbJ7cQZdceE1ETrZkiQU4IOM0Nu/view?usp=sharing">compile_scite.7z</a></p>
 <p style="padding-left: 30px;"></p><h3>WB Tutorial1</h3>
 <h4><span>Webots 啟動條件:</span></h4>
 <p><span>執行路徑設定</span></p>
@@ -3408,7 +3410,14 @@ int main()
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">2015 Space Modeling with SolidWorks and NX</a></p>
 <p>登入 @gm 電子郵箱後, <a href="https://drive.google.com/file/d/1MtT6W0kNAEhNZkgm3oZvAp-kREhgFPgT/view?usp=sharing">下載上述 Inventor_nx_sw_onshape_ebooks.7z</a></p>
 <p><span></span><span><img alt="" height="315" src="/images/sawppy_rover_onshape.png" width="560"/></span></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/acANiRFg-qA" width="560"></iframe><br/><span></span></p><h2>Task3</h2>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/acANiRFg-qA" width="560"></iframe><br/><span></span></p><h3>導入 GitExtensions</h3>
+<p>為了讓參與 Github 或 Gitlab 協同設計的成員能夠更方便使用 git 指令, 在此導入 <a href="https://github.com/gitextensions/gitextensions">https://github.com/gitextensions/gitextensions</a>.</p>
+<p>目前推薦使用 GitExtensions 的可攜版本.</p>
+<p>GitExtensions 的 Tools-&gt;Settings 包含Git-&gt;Path:</p>
+<p style="padding-left: 30px;">必須提供 portablegit 的 bin 路徑以及可攜系統啟動時所使用的 home 位置.</p>
+<p style="padding-left: 30px;">Git Extensions-&gt;SSH 則選擇使用 putty</p>
+<p>由於 GitExtensions 3.0.2 版尚無法新增提交以中文命名的檔案, 因此必須透過 Tools-&gt; Git GUI 執行新增提交與推送的指令.</p>
+<p>使用 Git GUI 的好處是, 使用者可以較方便採用中文說明提交訊息.</p><h2>Task3</h2>
 <h4>分組作業:</h4>
 <p style="padding-left: 30px;">請各組將 Task1 所完成的行走車, 轉入 Webots, 並設法利用 Python 程式驅動行走, 完成後, 以協同模式製作一個帶有中文字幕的流程教學導引影片, 上傳至 Youtube 並內嵌至各分組網站中.</p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1MolDH7kKJt_IIBTrKalsMfNWMrqqTWdt/view?usp=sharing">Webots_2019b_rev1.7z</a><span><span> </span>(登入 gm.nfu.edu.tw 後下載)</span></p>
