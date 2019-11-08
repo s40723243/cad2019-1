@@ -1774,7 +1774,9 @@ volume.run(1000, 50)</pre>
 <p style="padding-left: 30px;">3.在近端維護時, 更換目錄到倉儲中的 cmsimde, 以 python wsgi.py 啟動近端網際伺服器.</p>
 <p style="padding-left: 30px;">動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
 <p style="padding-left: 30px;">4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
-<p style="padding-left: 30px;">git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p><h2>CMSiMDE</h2>
+<p style="padding-left: 30px;">git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
+<p>參考資料:</p>
+<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/index.html">http://lab.kmol.info/2017fall/blog/index.html</a></p><h2>CMSiMDE</h2>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 是一套以 Python 加上 flask, bs4, lxml, mardown, pelican, flask_cors, leo 等模組所建構的網際內容管理系統.</p>
 <p>flask 模組是一套網際程式框架, CMSiMDE 利用此一框架編寫網際相關的函式, 用來執行動態的內容管理系統.</p>
 <p>bs4 在 CMSiMDE 擔任解析 config/content.htm 超文件檔案的工作, 根據 h1, h2 與 h3 標註, 對 content.htm 進行分頁, 因此使用者可以透過 3 個階次的內容架構進行編輯.</p>
@@ -2148,6 +2150,7 @@ print('Program ended')</pre>
 <p style="padding-left: 30px;"><a href="/downloads/webots_lab2.pdf">webots_lab2.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/webots_user_guide_2004.pdf">webots_user_guide_2004.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/webots_curriculum_2008.pdf">webots_curriculum_2008.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/tinkerbots">https://cyberbotics.com/doc/guide/tinkerbots</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/Revolve-An Evolutionary Robotics.pdf">Revolve-An Evolutionary Robotics.pdf</a></p>
 <p style="padding-left: 30px;"><a href="https://www.idi.ntnu.no/emner/it3708/index.php">https://www.idi.ntnu.no/emner/it3708/index.php</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/Analysis of Simple Planar Linkages.pdf">Analysis of Simple Planar Linkages.pdf</a></p>
@@ -2158,6 +2161,7 @@ print('Program ended')</pre>
 <p style="padding-left: 30px;"><a href="/downloads/intro_vrml97.pdf">intro_vrml97.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/vrml_2.0_specification.pdf">vrml_2.0_specification.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/VRML Primer and Tutorial.pdf">VRML Primer and Tutorial.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://www.whoishostingthis.com/resources/vrml/">https://www.whoishostingthis.com/resources/vrml/</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/Studying Geometry Color and Texture in VRML.pdf">Studying Geometry Color and Texture in VRML.pdf</a></p>
 <p style="padding-left: 30px;">標準檔案架構</p>
 <p style="padding-left: 30px;">The Root Directory of a Project</p>
@@ -2285,7 +2289,27 @@ DEF a1m_block Transform {
 <h4><span>VRML viewer in Javascript</span></h4>
 <p style="padding-left: 30px;"><span><a href="https://github.com/easyw/vrm360">https://github.com/easyw/vrm360</a></span></p>
 <h4><span>Numerical Optimization Methods</span></h4>
-<p style="padding-left: 30px;"><span><a href="https://cyberbotics.com/doc/guide/using-numerical-optimization-methods">https://cyberbotics.com/doc/guide/using-numerical-optimization-methods</a></span></p><h3>WB Tutorial1</h3>
+<p style="padding-left: 30px;"><span><a href="https://cyberbotics.com/doc/guide/using-numerical-optimization-methods">https://cyberbotics.com/doc/guide/using-numerical-optimization-methods</a></span></p><h3>VRML</h3>
+<p><a href="https://cyberbotics.com/doc/reference/group">https://cyberbotics.com/doc/reference/group</a></p>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/transform">https://cyberbotics.com/doc/reference/transform</a></p>
+<p style="padding-left: 60px;"><a href="https://cyberbotics.com/doc/reference/solid">https://cyberbotics.com/doc/reference/solid</a></p>
+<p style="padding-left: 90px;"><a href="https://cyberbotics.com/doc/reference/robot">https://cyberbotics.com/doc/reference/robot</a></p>
+<h3>SciTE</h3>
+<p><a href="https://github.com/mirror/scite">https://github.com/mirror/scite</a></p>
+<p><a href="https://github.com/mirror/scintilla">https://github.com/mirror/scintilla</a></p>
+<p>利用 MSYS2 編譯 SciTE 編輯器:</p>
+<p style="padding-left: 30px;">git clone <a href="https://github.com/mirror/scite.git">https://github.com/mirror/scite.git</a> </p>
+<p style="padding-left: 30px;">git clone <a href="https://github.com/mirror/scintilla.git">https://github.com/mirror/scintilla.git</a></p>
+<p style="padding-left: 30px;">cd scintilla\win32</p>
+<p style="padding-left: 30px;">get Scintilla.dll and SciLexer.dll under <span>scintilla\bin</span></p>
+<p style="padding-left: 30px;">mingw32-make</p>
+<p style="padding-left: 30px;">cd scite\win32</p>
+<p style="padding-left: 30px;">mingw32-make</p>
+<p style="padding-left: 30px;">get SciTE.exe under scite\bin</p>
+<p style="padding-left: 30px;">need extra libgcc_s_seh-1.dll, libstdc++-6.dll and libwinpthread-1.dll along with <span>Scintilla.dll and </span><span>SciLexer.dll </span>to execute SciTE.exe</p>
+<p>SciTE properties files: <a href="/downloads/SciTE_properties_files.7z">SciTE_properties_files.7z</a></p>
+<p>上述編譯流程所有檔案: <a href="https://drive.google.com/file/d/1TM-aipbJ7cQZdceE1ETrZkiQU4IOM0Nu/view?usp=sharing">compile_scite.7z</a></p>
+<p style="padding-left: 30px;"></p><h3>WB Tutorial1</h3>
 <h4><span>Webots 啟動條件:</span></h4>
 <p><span>執行路徑設定</span></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
@@ -2890,10 +2914,14 @@ def main() :
 if __name__ == '__main__':
     main()
 </pre>
-<p></p><h2>Bond Graphs</h2>
+<p></p><h2>TeX</h2>
+<p><a href="http://texdoc.net/texmf-dist/doc/plain/gentle/gentle.pdf">http://texdoc.net/texmf-dist/doc/plain/gentle/gentle.pdf</a></p>
+<p><a href="https://bitbucket.org/VictorEijkhout/tex-by-topic/src/default/">https://bitbucket.org/VictorEijkhout/tex-by-topic/src/default/</a></p>
+<p><a href="http://makingtexwork.sourceforge.net/mtw/">http://makingtexwork.sourceforge.net/mtw/</a></p>
+<p><a href="ftp://tug.org/tex/impatient/book.pdf">ftp://tug.org/tex/impatient/book.pdf</a> </p>
+<p><a href="https://yihui.name/tinytex/">https://yihui.name/tinytex/</a></p><h2>Bond Graphs</h2>
 <p><a href="https://github.com/mdecourse/BondGraphTools">https://github.com/mdecourse/BondGraphTools</a></p>
-<p></p>
-<h1>Tasks</h1>
+<p></p><h1>Tasks</h1>
 <h4>Task1</h4>
 <p style="padding-left: 30px;">參數式繪圖軟體 Solvespace 編譯、零組件繪圖與應用.</p>
 <h4>Task2</h4>
