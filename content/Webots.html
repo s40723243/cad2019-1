@@ -178,6 +178,23 @@ img.add_border {
 <p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
 <p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
+<p>Webots 執行時, 會將 prefs 相關設定存在 Registry 中:</p>
+<p style="padding-left: 30px;">Computer\HKEY_USERS\...\Software\Cyberbotics\Webots-R2019b</p>
+<p style="padding-left: 30px;">包括: </p>
+<p style="padding-left: 30px;">Directories -</p>
+<p style="padding-left: 30px;">Editor -</p>
+<p style="padding-left: 30px;">General -</p>
+<p style="padding-left: 30px;">Internal -</p>
+<p style="padding-left: 30px;">MainWindow -</p>
+<p style="padding-left: 30px;">Movie -</p>
+<p style="padding-left: 30px;">Network -</p>
+<p style="padding-left: 30px;">OpenGL -</p>
+<p style="padding-left: 30px;">RecentFiles -</p>
+<p style="padding-left: 30px;">Sound -</p>
+<p style="padding-left: 30px;">View3d - </p>
+<p style="padding-left: 30px;">VirtualRealityHeadset -</p>
+<p style="padding-left: 30px;">其中, 在 Tools-&gt;Preferences 只開放  General, OpenGL 與 Network 等三項透過視窗表單設定.</p>
+<p style="padding-left: 30px;">Webots 組態設定檔案: <a href="./../downloads/windows10_webots_registry.7z">windows10_webots_registry.7z</a></p>
 <hr/>
 <h4>Webots Tutorial</h4>
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/tutorials">https://cyberbotics.com/doc/guide/tutorials</a></p>

@@ -159,7 +159,49 @@ img.add_border {
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/transform">https://cyberbotics.com/doc/reference/transform</a></p>
 <p style="padding-left: 60px;"><a href="https://cyberbotics.com/doc/reference/solid">https://cyberbotics.com/doc/reference/solid</a></p>
 <p style="padding-left: 90px;"><a href="https://cyberbotics.com/doc/reference/robot">https://cyberbotics.com/doc/reference/robot</a></p>
-<br />Webots << <a href='Webots.html'>Previous</a> <a href='SciTE.html'>Next</a> >> SciTE</div>
+<h4>Group 節點</h4>
+<p>A Group node contains children nodes without introducing a new transformation. It is equivalent to a Transform node without the "translation" and "rotation" fields.</p>
+<h4>Transform 節點</h4>
+<p>The Transform node is a grouping node that defines a coordinate system for its children that is relative to the coordinate system of its parent. The 'scale' field of a Transform node can be adjusted only in a graphical context and not in a 'boundingObject' context.</p>
+<h4>Shape 節點</h4>
+<p>A Shape node is a visual objects that includes both an 'appearance' and a 'geometry'. A Shape can also be used in a 'boundingObject', in this case, only its 'geometry' field is taken into account.</p>
+<h4>建立模擬世界的地板</h4>
+<p style="padding-left: 30px;">第一階段: 先定義一個 Transform 節點, 然後在其下的 children 新增一個 Shape 節點, 然後將 Shape 節點中的 geometry 欄位設為 plane. 接著將此 Shape 命名 (DEF) 為 floor.</p>
+<p style="padding-left: 30px;">第二階段: 將第一階段所建立的 Transform 節點, 轉 (Transform to) 為 Solid 節點. 再將此一 Solid 命名為 FLOOR 後, 將此 FLOOR Solid 中的 boundingObject 欄位指定為第一階段所定義的 floor Shape 節點. 意即要以此 plane Shape 節點作為此 FLOOR Solid olid 節點的邊界物件.</p>
+<p style="padding-left: 30px;">第三階段: 利用 File -&gt; Save World 將所加入的地板實體節點內容存檔.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#VRML V2.0 utf8
+
+Switch {
+  choice [
+    DEF RedSphere Shape {
+      appearance Appearance {
+        material Material { diffuseColor 1 0 0 } }
+      geometry Sphere { }
+    }
+    DEF GreenSphere Shape {
+      appearance Appearance {
+        material Material { diffuseColor 0 1 0 } }
+      geometry Sphere { }
+    }
+    DEF BlueSphere Shape {
+      appearance Appearance {
+        material Material { diffuseColor 0 0 1 } }
+      geometry Sphere { }
+    }
+    DEF SphereColumn Group {
+      children [
+        Transform { translation 0 -5 0 children USE RedSphere }
+        Transform { translation 0  0 0 children USE GreenSphere }
+        Transform { translation 0  5 0 children USE BlueSphere }
+      ]
+    }
+  ]
+}
+
+Transform { translation -5 0 0 children USE SphereColumn }
+Transform { translation  0 0 0 children USE SphereColumn }
+Transform { translation  5 0 0 children USE SphereColumn }</pre>
+<p></p><br />Webots << <a href='Webots.html'>Previous</a> <a href='SciTE.html'>Next</a> >> SciTE</div>
         
     <!-- footer -->
       <div class="container">

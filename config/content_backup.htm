@@ -1776,7 +1776,8 @@ volume.run(1000, 50)</pre>
 <p style="padding-left: 30px;">4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
 <p style="padding-left: 30px;">git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
 <p>參考資料:</p>
-<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/index.html">http://lab.kmol.info/2017fall/blog/index.html</a></p><h2>CMSiMDE</h2>
+<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/index.html">http://lab.kmol.info/2017fall/blog/index.html</a></p>
+<p style="padding-left: 30px;"><a href="https://buttercms.com/blog/buttercms-vs-wordpress-headless-cms-vs-traditional-cms">https://buttercms.com/blog/buttercms-vs-wordpress-headless-cms-vs-traditional-cms</a></p><h2>CMSiMDE</h2>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 是一套以 Python 加上 flask, bs4, lxml, mardown, pelican, flask_cors, leo 等模組所建構的網際內容管理系統.</p>
 <p>flask 模組是一套網際程式框架, CMSiMDE 利用此一框架編寫網際相關的函式, 用來執行動態的內容管理系統.</p>
 <p>bs4 在 CMSiMDE 擔任解析 config/content.htm 超文件檔案的工作, 根據 h1, h2 與 h3 標註, 對 content.htm 進行分頁, 因此使用者可以透過 3 個階次的內容架構進行編輯.</p>
@@ -2144,6 +2145,23 @@ print('Program ended')</pre>
 <p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
 <p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
+<p>Webots 執行時, 會將 prefs 相關設定存在 Registry 中:</p>
+<p style="padding-left: 30px;">Computer\HKEY_USERS\...\Software\Cyberbotics\Webots-R2019b</p>
+<p style="padding-left: 30px;">包括: </p>
+<p style="padding-left: 30px;">Directories -</p>
+<p style="padding-left: 30px;">Editor -</p>
+<p style="padding-left: 30px;">General -</p>
+<p style="padding-left: 30px;">Internal -</p>
+<p style="padding-left: 30px;">MainWindow -</p>
+<p style="padding-left: 30px;">Movie -</p>
+<p style="padding-left: 30px;">Network -</p>
+<p style="padding-left: 30px;">OpenGL -</p>
+<p style="padding-left: 30px;">RecentFiles -</p>
+<p style="padding-left: 30px;">Sound -</p>
+<p style="padding-left: 30px;">View3d - </p>
+<p style="padding-left: 30px;">VirtualRealityHeadset -</p>
+<p style="padding-left: 30px;">其中, 在 Tools-&gt;Preferences 只開放  General, OpenGL 與 Network 等三項透過視窗表單設定.</p>
+<p style="padding-left: 30px;">Webots 組態設定檔案: <a href="/downloads/windows10_webots_registry.7z">windows10_webots_registry.7z</a></p>
 <hr/>
 <h4>Webots Tutorial</h4>
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/tutorials">https://cyberbotics.com/doc/guide/tutorials</a></p>
@@ -2295,7 +2313,49 @@ DEF a1m_block Transform {
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/transform">https://cyberbotics.com/doc/reference/transform</a></p>
 <p style="padding-left: 60px;"><a href="https://cyberbotics.com/doc/reference/solid">https://cyberbotics.com/doc/reference/solid</a></p>
 <p style="padding-left: 90px;"><a href="https://cyberbotics.com/doc/reference/robot">https://cyberbotics.com/doc/reference/robot</a></p>
-<h3>SciTE</h3>
+<h4>Group 節點</h4>
+<p>A Group node contains children nodes without introducing a new transformation. It is equivalent to a Transform node without the "translation" and "rotation" fields.</p>
+<h4>Transform 節點</h4>
+<p>The Transform node is a grouping node that defines a coordinate system for its children that is relative to the coordinate system of its parent. The 'scale' field of a Transform node can be adjusted only in a graphical context and not in a 'boundingObject' context.</p>
+<h4>Shape 節點</h4>
+<p>A Shape node is a visual objects that includes both an 'appearance' and a 'geometry'. A Shape can also be used in a 'boundingObject', in this case, only its 'geometry' field is taken into account.</p>
+<h4>建立模擬世界的地板</h4>
+<p style="padding-left: 30px;">第一階段: 先定義一個 Transform 節點, 然後在其下的 children 新增一個 Shape 節點, 然後將 Shape 節點中的 geometry 欄位設為 plane. 接著將此 Shape 命名 (DEF) 為 floor.</p>
+<p style="padding-left: 30px;">第二階段: 將第一階段所建立的 Transform 節點, 轉 (Transform to) 為 Solid 節點. 再將此一 Solid 命名為 FLOOR 後, 將此 FLOOR Solid 中的 boundingObject 欄位指定為第一階段所定義的 floor Shape 節點. 意即要以此 plane Shape 節點作為此 FLOOR Solid olid 節點的邊界物件.</p>
+<p style="padding-left: 30px;">第三階段: 利用 File -&gt; Save World 將所加入的地板實體節點內容存檔.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#VRML V2.0 utf8
+
+Switch {
+  choice [
+    DEF RedSphere Shape {
+      appearance Appearance {
+        material Material { diffuseColor 1 0 0 } }
+      geometry Sphere { }
+    }
+    DEF GreenSphere Shape {
+      appearance Appearance {
+        material Material { diffuseColor 0 1 0 } }
+      geometry Sphere { }
+    }
+    DEF BlueSphere Shape {
+      appearance Appearance {
+        material Material { diffuseColor 0 0 1 } }
+      geometry Sphere { }
+    }
+    DEF SphereColumn Group {
+      children [
+        Transform { translation 0 -5 0 children USE RedSphere }
+        Transform { translation 0  0 0 children USE GreenSphere }
+        Transform { translation 0  5 0 children USE BlueSphere }
+      ]
+    }
+  ]
+}
+
+Transform { translation -5 0 0 children USE SphereColumn }
+Transform { translation  0 0 0 children USE SphereColumn }
+Transform { translation  5 0 0 children USE SphereColumn }</pre>
+<p></p><h3>SciTE</h3>
 <p><a href="https://github.com/mirror/scite">https://github.com/mirror/scite</a></p>
 <p><a href="https://github.com/mirror/scintilla">https://github.com/mirror/scintilla</a></p>
 <p>利用 MSYS2 編譯 SciTE 編輯器:</p>
@@ -3412,7 +3472,8 @@ int main()
 <p><span></span><span><img alt="" height="315" src="/images/sawppy_rover_onshape.png" width="560"/></span></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/acANiRFg-qA" width="560"></iframe><br/><span></span></p><h3>導入 GitExtensions</h3>
 <p>為了讓參與 Github 或 Gitlab 協同設計的成員能夠更方便使用 git 指令, 在此導入 <a href="https://github.com/gitextensions/gitextensions">https://github.com/gitextensions/gitextensions</a>.</p>
-<p>目前推薦使用 GitExtensions 的可攜版本.</p>
+<p>目前推薦使用 GitExtensions 的可攜版本:</p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a> 或目前<a href="https://github.com/gitextensions/gitextensions/releases">最新版本</a>.</p>
 <p>GitExtensions 的 Tools-&gt;Settings 包含Git-&gt;Path:</p>
 <p style="padding-left: 30px;">必須提供 portablegit 的 bin 路徑以及可攜系統啟動時所使用的 home 位置.</p>
 <p style="padding-left: 30px;">Git Extensions-&gt;SSH 則選擇使用 putty</p>
