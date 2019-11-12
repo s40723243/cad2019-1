@@ -201,7 +201,27 @@ Switch {
 Transform { translation -5 0 0 children USE SphereColumn }
 Transform { translation  0 0 0 children USE SphereColumn }
 Transform { translation  5 0 0 children USE SphereColumn }</pre>
-<p></p><br />Webots << <a href='Webots.html'>Previous</a> <a href='SciTE.html'>Next</a> >> SciTE</div>
+<h4>控制程式</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot, Motor
+
+TIME_STEP = 64
+
+# create the Robot instance.
+robot = Robot()
+
+# get the motor devices
+leftMotor = robot.getMotor('left wheel motor')
+rightMotor = robot.getMotor('right wheel motor')
+# set the target position of the motors
+leftMotor.setPosition(10.0)
+rightMotor.setPosition(10.0)
+
+while robot.step(TIME_STEP) != -1:
+   pass</pre>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/urdf2webots">https://github.com/cyberbotics/urdf2webots</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/blender-webots-exporter">https://github.com/cyberbotics/blender-webots-exporter</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/sobotka/blender-addons/blob/master/io_scene_x3d/import_x3d.py">https://github.com/sobotka/blender-addons/blob/master/io_scene_x3d/import_x3d.py</a> (也許可以將此程式改為 Leo Editor 的 VRML  parser plugin)</p><br />Webots << <a href='Webots.html'>Previous</a> <a href='SciTE.html'>Next</a> >> SciTE</div>
         
     <!-- footer -->
       <div class="container">

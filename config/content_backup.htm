@@ -2216,6 +2216,7 @@ print('Program ended')</pre>
 <p style="padding-left: 30px;">Linux users should also hold down the Control key (Ctrl) together with the Alt key. Also, macOS users with a one-button mouse should hold down the Control key (Ctrl) to emulate the right mouse button. This way your are drawing a 3D-vector with origin the center of mass and whose end is located on the plane parallel to the view which passes through this center. The object is prompted to turn around the vector direction, the intensity of the applied torque is directly proportional to the product of the mass by the length of the 3D-vector.</p>
 <h4>Solvespace 零件尺寸與 Webots</h4>
 <p style="padding-left: 30px;">因為 Webots 內建的尺寸單位為 m, 因此利用 Import 導入 wrl 檔案時, 該檔案從 Solvespace 以 mm 尺寸執行繪圖後, 轉為 wrl 後導入 Webots, 若 Solvespace 以 mm 數字輸出, 則必須將 scale 調整為 1/1000, 才能夠將該 mm 數字轉為 m, 得到正確的零件尺寸. 一般在 Solvespace 均以 mm 作圖, 因此轉出 wrl 時必須注意轉出內容與所使用繪圖單位之間的轉換.</p>
+<p style="padding-left: 30px;">Solvespace 與轉出檔案有關的 export scale factor 在 home-&gt;configuration 中, 內建為 1, 以 mm 單位輸出, 若要改為以 m 輸出, 可將 export scale factor 設為 1:1000.</p>
 <p style="padding-left: 30px;">使用者可以將零件從 Solvespace 轉出 wrl 後, 在 transform 中加入</p>
 <p style="padding-left: 30px;">scale 0.001 0.001 0.001</p>
 <p style="padding-left: 30px;">後重新存檔, 就可以在 Import 轉入 Webots 後, 得到正確的尺寸. 也可以修改 Solvespace 的原始碼, 自動在轉出的 wrl 檔案中加入 scale 轉換, 改以 m 作為尺寸單位.</p>
@@ -2283,6 +2284,33 @@ DEF a1m_block Transform {
   ]
 }
 </pre>
+<h4>E-Puck Python control program</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">"""e-puck controller."""
+
+from controller import DifferentialWheels
+
+robot = DifferentialWheels()
+
+maxSpeed = 1000.0
+speed = 500.0
+timestep = int(robot.getBasicTimeStep())
+
+def clamp(value, minValue, maxValue):
+    return max(minValue, min(maxValue, value))
+
+distanceSensors = []
+for i in range(8):
+    name = 'ps' + str(i)
+    distanceSensor = robot.getDistanceSensor(name)
+    distanceSensor.enable(timestep)
+    distanceSensors.append(distanceSensor)
+
+while robot.step(timestep) != -1:
+    delta = distanceSensors[7].getValue() - distanceSensors[0].getValue()
+    robot.setSpeed(
+        clamp(speed + 4 * delta, -maxSpeed, maxSpeed),
+        clamp(speed - 4 * delta, -maxSpeed, maxSpeed)
+    )</pre>
 <h4>利用可攜系統中的 SciTE 控制 Webots 模擬世界</h4>
 <p style="padding-left: 30px;">目前 <a href="https://drive.google.com/file/d/1MolDH7kKJt_IIBTrKalsMfNWMrqqTWdt/view?usp=sharing">Webots_2019b_rev1.7z</a> 啟用 Python 執行 controller 程式時, 使用可攜系統所安裝的 Python 3.7 版, 假如要使用 SciTE 執行 Webots 中模擬世界中的 Controller, 必須:</p>
 <p style="padding-left: 30px;">1. 將 Webots 中 python 3.7 動態程式庫與 bin 中的 c++ 動態程式庫目錄, 納入可攜 Python 程式庫路徑設定, 例如:</p>
@@ -2308,7 +2336,14 @@ DEF a1m_block Transform {
 <h4><span>VRML viewer in Javascript</span></h4>
 <p style="padding-left: 30px;"><span><a href="https://github.com/easyw/vrm360">https://github.com/easyw/vrm360</a></span></p>
 <h4><span>Numerical Optimization Methods</span></h4>
-<p style="padding-left: 30px;"><span><a href="https://cyberbotics.com/doc/guide/using-numerical-optimization-methods">https://cyberbotics.com/doc/guide/using-numerical-optimization-methods</a></span></p><h3>VRML</h3>
+<p style="padding-left: 30px;"><span><a href="https://cyberbotics.com/doc/guide/using-numerical-optimization-methods">https://cyberbotics.com/doc/guide/using-numerical-optimization-methods</a></span></p>
+<h4><span>Webots archive</span></h4>
+<p style="padding-left: 30px;"><span><a href="https://www.cyberbotics.com/archive/">https://www.cyberbotics.com/archive/</a></span></p>
+<p><span>參考資料</span></p>
+<p style="padding-left: 30px;"><span><a href="https://janus.conf.meetecho.com/">https://janus.conf.meetecho.com/</a></span></p>
+<p style="padding-left: 30px;"><span><a href="https://www.x3dom.org/">https://www.x3dom.org/</a></span></p>
+<p style="padding-left: 30px;"><span>2016 報價: 約 NT$ 400,000. (<a href="https://www.cyberbotics.com/e-puck">https://www.cyberbotics.com/e-puck</a> 約 NT$ 25,000.)</span></p>
+<p><span><img alt="" height="262" src="/images/webots_and_5_e-pucks_price_2016.png" width="600"/></span></p><h3>VRML</h3>
 <p><a href="https://cyberbotics.com/doc/reference/group">https://cyberbotics.com/doc/reference/group</a></p>
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/transform">https://cyberbotics.com/doc/reference/transform</a></p>
 <p style="padding-left: 60px;"><a href="https://cyberbotics.com/doc/reference/solid">https://cyberbotics.com/doc/reference/solid</a></p>
@@ -2355,7 +2390,27 @@ Switch {
 Transform { translation -5 0 0 children USE SphereColumn }
 Transform { translation  0 0 0 children USE SphereColumn }
 Transform { translation  5 0 0 children USE SphereColumn }</pre>
-<p></p><h3>SciTE</h3>
+<h4>控制程式</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot, Motor
+
+TIME_STEP = 64
+
+# create the Robot instance.
+robot = Robot()
+
+# get the motor devices
+leftMotor = robot.getMotor('left wheel motor')
+rightMotor = robot.getMotor('right wheel motor')
+# set the target position of the motors
+leftMotor.setPosition(10.0)
+rightMotor.setPosition(10.0)
+
+while robot.step(TIME_STEP) != -1:
+   pass</pre>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/urdf2webots">https://github.com/cyberbotics/urdf2webots</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/blender-webots-exporter">https://github.com/cyberbotics/blender-webots-exporter</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/sobotka/blender-addons/blob/master/io_scene_x3d/import_x3d.py">https://github.com/sobotka/blender-addons/blob/master/io_scene_x3d/import_x3d.py</a> (也許可以將此程式改為 Leo Editor 的 VRML  parser plugin)</p><h3>SciTE</h3>
 <p><a href="https://github.com/mirror/scite">https://github.com/mirror/scite</a></p>
 <p><a href="https://github.com/mirror/scintilla">https://github.com/mirror/scintilla</a></p>
 <p>利用 MSYS2 編譯 SciTE 編輯器:</p>
@@ -2478,6 +2533,7 @@ if __name__ == '__main__':
 <p><a href="/downloads/nx12_python_setup.pdf">nx12_python_setup</a></p>
 <h4>NX3</h4>
 <p style="padding-left: 30px;"><span>登入 @gm 電子郵箱, 就可以</span><a href="https://drive.google.com/file/d/1UvjzhHPzNvUWPhxl8Cz5Ef4k3L5WJkAy/view?usp=sharing">下載 NX3_portable.7z</a><span>, 解開壓縮檔放入隨身碟, 並且連上網路擷取授權認證後, 就可以使用.</span></p>
+<p style="padding-left: 30px;"><span>滑鼠中鍵加上右鍵 - Pan</span></p>
 <p style="padding-left: 30px;"><a href="/downloads/UG-NX3-Tutorial.pdf">UG-NX3-Tutorial.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/UG-NX_Drafting.pdf">UG-NX_Drafting.pdf</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/nx2_UGOPEN_API.pdf">nx2_UGOPEN_API.pdf</a></p>
