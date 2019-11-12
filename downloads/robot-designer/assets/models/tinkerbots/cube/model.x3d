@@ -6,17 +6,17 @@
       <!--
       <Appearance>
         <Material diffuseColor="1 1 1" specularColor="1 1 1" shininess="1"/>
-        <ImageTexture url='"/assets/models/tinkerbots/cube/textures/cube_base_color.png"' containerField="" origChannelCount="3">
+        <ImageTexture url='"assets/models/tinkerbots/cube/textures/cube_base_color.png"' containerField="" origChannelCount="3">
           <TextureProperties anisotropicDegree="8" generateMipMaps="true" minificationFilter="AVG_PIXEL" magnificationFilter="AVG_PIXEL"/>
         </ImageTexture>
       </Appearance>
       -->
       <PBRAppearance>
-        <ImageTexture type="baseColor" url='"/assets/models/tinkerbots/cube/textures/cube_base_color.png"' />
-        <ImageTexture type="roughness" url='"/assets/models/tinkerbots/cube/textures/cube_roughness.png"' />
-        <ImageTexture type="metalness" url='"/assets/models/tinkerbots/cube/textures/cube_metalness.png"' />
-        <ImageTexture type="normal" url='"/assets/models/tinkerbots/cube/textures/cube_normal.png"' />
-        <ImageTexture type="occlusion" url='"/assets/models/tinkerbots/cube/textures/cube_occlusion.png"' />
+        <ImageTexture type="baseColor" url='"assets/models/tinkerbots/cube/textures/cube_base_color.png"' />
+        <ImageTexture type="roughness" url='"assets/models/tinkerbots/cube/textures/cube_roughness.png"' />
+        <ImageTexture type="metalness" url='"assets/models/tinkerbots/cube/textures/cube_metalness.png"' />
+        <ImageTexture type="normal" url='"assets/models/tinkerbots/cube/textures/cube_normal.png"' />
+        <ImageTexture type="occlusion" url='"assets/models/tinkerbots/cube/textures/cube_occlusion.png"' />
       </PBRAppearance>
       <IndexedFaceSet
         creaseAngle="0.5585"
