@@ -2050,12 +2050,15 @@ def stlReadAscii(fname):
   
 def stlRead(fname):
   fp = open(fname, "r")
-  if fp.readline().find("solid") &gt; -1:
-    fp.close()
-    return stlReadAscii(fname)
-  else:
-    fp.close()
-    return stlReadBinary(fname)
+  try:
+      if fp.readline().find("solid") &gt; -1:
+        fp.close()
+        return stlReadAscii(fname)
+      else:
+        fp.close()
+        return stlReadBinary(fname)
+  except:
+      return stlReadBinary(fname)
     
 def stlWriteBinary(fname, normals, v1, v2, v3):
   with open(fname, "wb") as fout:
