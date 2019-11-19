@@ -1919,15 +1919,15 @@ from os import path
 
 # maybe insert a tolerance for floating points?
 def check_connection(tri1, tri2):
-  for v1 in tri1[0:2]:
-    for v2 in tri2[0:2]:
-      if (v1[0] == v2[0] and v1[1] == v2[1] and v1[2] == v2[2]): return True
-  return False
+    for v1 in tri1[0:2]:
+        for v2 in tri2[0:2]:
+            if (v1[0] == v2[0] and v1[1] == v2[1] and v1[2] == v2[2]): return True
+    return False
     
 
 if len(sys.argv) &lt; 2:
-  print("Usage: " + sys.argv[0] + " &lt;file.stl&gt;")
-  sys.exit(-1)
+    print("Usage: " + sys.argv[0] + " &lt;file.stl&gt;")
+    sys.exit(-1)
 
 fname = sys.argv[1]
 
@@ -1940,29 +1940,29 @@ print("Analyzing...")
 faceTree = []
 
 for triangleIndex in range(0, len(v1)):
-  triangle = [ v1[triangleIndex], v2[triangleIndex], v3[triangleIndex], n[triangleIndex] ]
-  connectedTo = []
-  for treeindex in range(0, len(faceTree)):
-    for face in faceTree[treeindex]:
-      if check_connection(face, triangle):
-        connectedTo.append(treeindex) # the triangle is connected to at least one triangle of the current treeIndex
-        break
+    triangle = [ v1[triangleIndex], v2[triangleIndex], v3[triangleIndex], n[triangleIndex] ]
+    connectedTo = []
+    for treeindex in range(0, len(faceTree)):
+        for face in faceTree[treeindex]:
+            if check_connection(face, triangle):
+                connectedTo.append(treeindex) # the triangle is connected to at least one triangle of the current treeIndex
+                break
       
-  if len(connectedTo) == 0:
-    # this is a triangle from a new set
-    #print "new set"
-    faceTree.append([])
-    faceTree[len(faceTree)-1].append(triangle)
-  elif len(connectedTo) == 1:
-    #print "existing set"
-    # the triangle is connected to one set
-    faceTree[connectedTo[0]].append(triangle)
-  else:
-    #print "connecting triangle"
-    #this triangle connects two branches of the tree: collapse the branches
-    faceTree[connectedTo[0]].append(triangle)
-    for i in range(len(connectedTo)-1, 0, -1):
-      faceTree[connectedTo[0]].extend(faceTree.pop(connectedTo[i]))
+    if len(connectedTo) == 0:
+        # this is a triangle from a new set
+        #print "new set"
+        faceTree.append([])
+        faceTree[len(faceTree)-1].append(triangle)
+    elif len(connectedTo) == 1:
+        #print "existing set"
+        # the triangle is connected to one set
+        faceTree[connectedTo[0]].append(triangle)
+    else:
+        #print "connecting triangle"
+        #this triangle connects two branches of the tree: collapse the branches
+        faceTree[connectedTo[0]].append(triangle)
+        for i in range(len(connectedTo)-1, 0, -1):
+            faceTree[connectedTo[0]].extend(faceTree.pop(connectedTo[i]))
       
 print("Number of separate objects: ", len(faceTree))
 
@@ -1970,13 +1970,13 @@ print("Writing files")
 
 origFile, origExt = path.splitext(fname)
 for i in range(0, len(faceTree)):
-  newFile = origFile + "-" + str(i+1) + origExt
-  print("Writing ", newFile)
-  n = [field[2] for field in faceTree[i]]
-  v1 = [field[0] for field in faceTree[i]] 
-  v2 = [field[1] for field in faceTree[i]] 
-  v3 = [field[2] for field in faceTree[i]]
-  stlRW.stlWrite(newFile, n, v1, v2, v3)
+    newFile = origFile + "-" + str(i+1) + origExt
+    print("Writing ", newFile)
+    n = [field[2] for field in faceTree[i]]
+    v1 = [field[0] for field in faceTree[i]] 
+    v2 = [field[1] for field in faceTree[i]] 
+    v3 = [field[2] for field in faceTree[i]]
+    stlRW.stlWrite(newFile, n, v1, v2, v3)
 </pre>
 <p>stlRW.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># STL reader-writer
@@ -1992,126 +1992,127 @@ import numpy as np
 from struct import unpack, pack
 
 def stlReadBinary(fname):
-  fp = open(fname, 'rb')
-  Header = fp.read(80)
-  nn = fp.read(4)
-  Numtri = unpack('i', nn)[0]
-  #print nn
-  record_dtype = np.dtype([
+    fp = open(fname, 'rb')
+    Header = fp.read(80)
+    nn = fp.read(4)
+    Numtri = unpack('i', nn)[0]
+    #print nn
+    record_dtype = np.dtype([
                   ('normals', np.float32,(3,)),  
                   ('Vertex1', np.float32,(3,)),
                   ('Vertex2', np.float32,(3,)),
                   ('Vertex3', np.float32,(3,)) ,              
                   ('atttr', '&lt;i2',(1,) )
-  ])
-  data = np.fromfile(fp , dtype = record_dtype , count =Numtri)
-  fp.close()
+    ])
+    data = np.fromfile(fp , dtype = record_dtype , count =Numtri)
+    fp.close()
 
-  Normals = data['normals']
-  Vertex1= data['Vertex1']
-  Vertex2= data['Vertex2']
-  Vertex3= data['Vertex3']
+    Normals = data['normals']
+    Vertex1= data['Vertex1']
+    Vertex2= data['Vertex2']
+    Vertex3= data['Vertex3']
 
-  p = np.append(Vertex1,Vertex2,axis=0)
-  p = np.append(p,Vertex3,axis=0) #list(v1)
-  Points =np.array(list(set(tuple(p1) for p1 in p)))
-  
-  return Header,Points,Normals,Vertex1,Vertex2,Vertex3,False
+    p = np.append(Vertex1,Vertex2,axis=0)
+    p = np.append(p,Vertex3,axis=0) #list(v1)
+    Points =np.array(list(set(tuple(p1) for p1 in p)))
+
+    return Header,Points,Normals,Vertex1,Vertex2,Vertex3,False
 
 def stlReadAscii(fname):
-  fp = open(fname, 'r')
-  Normals = []
-  Vertex1 = []
-  Vertex2 = []
-  Vertex3 = []
-  Points = []
-  while True:
-    line = fp.readline()
-    if not line: break
-    if line.find("solid") &gt; -1 or line.find("endfacet") &gt; -1: continue
-    if line.find("facet normal") &gt; -1:
-      normline = line[line.find("facet normal")+len("facet normal"):]
-      normal = np.array([float(val.strip()) for val in normline.split()])
-      Normals.append(normal)
-      vertices = []
-      fp.readline() # outer loop
-      # read vertices after normal
-      for vIndex in range(0,3):
-        vLine = fp.readline()
-        vLine = vLine[vLine.find("vertex")+len("vertex"):]
-        vertices.append(np.array([float(val.strip()) for val in vLine.split()]))
-      Vertex1.append(vertices[0])
-      Vertex2.append(vertices[1])
-      Vertex3.append(vertices[2])
-      Points.extend(vertices)
-      fp.readline() # endloop
-  return "", Points, Normals, Vertex1, Vertex2, Vertex3,True
+    fp = open(fname, 'r')
+    Normals = []
+    Vertex1 = []
+    Vertex2 = []
+    Vertex3 = []
+    Points = []
+    while True:
+        line = fp.readline()
+        if not line: break
+        if line.find("solid") &gt; -1 or line.find("endfacet") &gt; -1: continue
+        if line.find("facet normal") &gt; -1:
+            normline = line[line.find("facet normal")+len("facet normal"):]
+            normal = np.array([float(val.strip()) for val in normline.split()])
+            Normals.append(normal)
+            vertices = []
+            fp.readline() # outer loop
+            # read vertices after normal
+            for vIndex in range(0,3):
+                vLine = fp.readline()
+                vLine = vLine[vLine.find("vertex")+len("vertex"):]
+                vertices.append(np.array([float(val.strip()) for val in vLine.split()]))
+            Vertex1.append(vertices[0])
+            Vertex2.append(vertices[1])
+            Vertex3.append(vertices[2])
+            Points.extend(vertices)
+            fp.readline() # endloop
+    return "", Points, Normals, Vertex1, Vertex2, Vertex3,True
     
   
 def stlRead(fname):
-  fp = open(fname, "r")
-  try:
-      if fp.readline().find("solid") &gt; -1:
-        fp.close()
-        return stlReadAscii(fname)
-      else:
-        fp.close()
+    fp = open(fname, "r")
+    try:
+        if fp.readline().find("solid") &gt; -1:
+            fp.close()
+            return stlReadAscii(fname)
+        else:
+            fp.close()
+            return stlReadBinary(fname)
+    except:
         return stlReadBinary(fname)
-  except:
-      return stlReadBinary(fname)
     
 def stlWriteBinary(fname, normals, v1, v2, v3):
-  with open(fname, "wb") as fout:
-    # write 80 bytes header
-    for i in range(0, 80): fout.write(pack("&lt;c", b" "))
-    fout.write(pack("&lt;I", len(normals))) # number of triangles
-    for i in range(0, len(normals)):
-      fout.write(pack("&lt;fff", *normals[i]))
-      fout.write(pack("&lt;fff", *v1[i]))
-      fout.write(pack("&lt;fff", *v2[i]))
-      fout.write(pack("&lt;fff", *v3[i]))
-      fout.write(pack("&lt;H", 0)) # attribute
+    with open(fname, "wb") as fout:
+        # write 80 bytes header
+        for i in range(0, 80): fout.write(pack("&lt;c", b" "))
+        fout.write(pack("&lt;I", len(normals))) # number of triangles
+        for i in range(0, len(normals)):
+            fout.write(pack("&lt;fff", *normals[i]))
+            fout.write(pack("&lt;fff", *v1[i]))
+            fout.write(pack("&lt;fff", *v2[i]))
+            fout.write(pack("&lt;fff", *v3[i]))
+            fout.write(pack("&lt;H", 0)) # attribute
       
 def writeVector(fd, vec):
-  for v in vec:
-    fd.write("{:.7e}".format(v))
-    fd.write(" ")
+    for v in vec:
+        fd.write("{:.7e}".format(v))
+        fd.write(" ")
       
 def stlWriteAscii(fname, normals, v1, v2, v3):
-  with open(fname, "w") as fout:
-    fout.write("solid \n")
-    for i in range(0, len(normals)):
-      fout.write("  facet normal ")
-      writeVector(fout, normals[i])
-      fout.write("\n")
-      fout.write("    outer loop\n")
-      fout.write("      vertex ")
-      writeVector(fout, v1[i])
-      fout.write("\n")
-      fout.write("      vertex ")
-      writeVector(fout, v2[i])
-      fout.write("\n")
-      fout.write("      vertex ")
-      writeVector(fout, v3[i])
-      fout.write("\n")
-      fout.write("    endloop\n")
-      fout.write("  endfacet\n")
+    with open(fname, "w") as fout:
+        fout.write("solid \n")
+        for i in range(0, len(normals)):
+            fout.write("  facet normal ")
+            writeVector(fout, normals[i])
+            fout.write("\n")
+            fout.write("    outer loop\n")
+            fout.write("      vertex ")
+            writeVector(fout, v1[i])
+            fout.write("\n")
+            fout.write("      vertex ")
+            writeVector(fout, v2[i])
+            fout.write("\n")
+            fout.write("      vertex ")
+            writeVector(fout, v3[i])
+            fout.write("\n")
+            fout.write("    endloop\n")
+            fout.write("  endfacet\n")
       
       
 def stlWrite(fname, normals, v1, v2, v3, isAscii=False):
-  if isAscii:
-    stlWriteAscii(fname, normals, v1, v2, v3)
-  else:
-    stlWriteBinary(fname, normals, v1, v2, v3)
+    if isAscii:
+        stlWriteAscii(fname, normals, v1, v2, v3)
+    else:
+        stlWriteBinary(fname, normals, v1, v2, v3)
+      
 # test
 if __name__ == "__main__":
-  import sys
-  fname = sys.argv[1]
-  h,p,n,v1,v2,v3,isAscii = stlRead(fname)
-  print(len(n))
-  print(v1[0])
-  stlWriteBinary("binary.stl", n, v1, v2, v3);
-  stlWriteAscii("ascii.stl", n, v1, v2, v3);
+    import sys
+    fname = sys.argv[1]
+    h,p,n,v1,v2,v3,isAscii = stlRead(fname)
+    print(len(n))
+    print(v1[0])
+    stlWriteBinary("binary.stl", n, v1, v2, v3);
+    stlWriteAscii("ascii.stl", n, v1, v2, v3);
 </pre>
 <p>用法:</p>
 <p style="padding-left: 30px;">python stlSplitter.py solvespace_assembly_ascii.stl</p>
@@ -2641,11 +2642,13 @@ while robot.step(TIME_STEP) != -1:
 <p><a href="https://github.com/mirror/scite">https://github.com/mirror/scite</a></p>
 <p><a href="https://github.com/mirror/scintilla">https://github.com/mirror/scintilla</a></p>
 <p>利用 MSYS2 編譯 SciTE 編輯器:</p>
-<p style="padding-left: 30px;">git clone <a href="https://github.com/mirror/scite.git">https://github.com/mirror/scite.git</a> </p>
-<p style="padding-left: 30px;">git clone <a href="https://github.com/mirror/scintilla.git">https://github.com/mirror/scintilla.git</a></p>
+<p style="padding-left: 30px;">首先必須確認 y:\portable\bin 中 sh.exe 已經改名, 因為 shell 指令將取自 MSYS2 系統中的對應指令.</p>
+<p style="padding-left: 30px;">分別 git clone scite 與 scintilla, 兩個目錄並列.</p>
+<p style="padding-left: 60px;">git clone <a href="https://github.com/mirror/scite.git">https://github.com/mirror/scite.git</a> </p>
+<p style="padding-left: 60px;">git clone <a href="https://github.com/mirror/scintilla.git">https://github.com/mirror/scintilla.git</a></p>
 <p style="padding-left: 30px;">cd scintilla\win32</p>
-<p style="padding-left: 30px;">get Scintilla.dll and SciLexer.dll under <span>scintilla\bin</span></p>
-<p style="padding-left: 30px;">mingw32-make</p>
+<p style="padding-left: 30px;"><span>mingw32-make</span></p>
+<p style="padding-left: 60px;">get Scintilla.dll and SciLexer.dll under <span>scintilla\bin</span></p>
 <p style="padding-left: 30px;">cd scite\win32</p>
 <p style="padding-left: 30px;">mingw32-make</p>
 <p style="padding-left: 30px;">get SciTE.exe under scite\bin</p>
@@ -2673,7 +2676,27 @@ while robot.step(TIME_STEP) != -1:
 <p>"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
 <p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
 <p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
-<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h3>Three.js</h3>
+<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h3>Webots Doc</h3>
+<p><a href="https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b">https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b</a></p>
+<p>頁面的對應 Markdown 檔案為: </p>
+<p><a href="https://github.com/cyberbotics/webots/blob/revision/docs/guide/robotis-op2.md">https://github.com/cyberbotics/webots/blob/revision/docs/guide/robotis-op2.md</a></p>
+<p><a href="https://cyberbotics.com/doc/guide/menu">https://cyberbotics.com/doc/guide/menu</a><span> (</span><a href="https://github.com/omichel/webots">Github 倉儲</a><span>) 中的 docs 目錄則有一系列的 Markdown 檔案, 目前 Webots 採用 Javascript 以動態模式, 將 Markdown 文件轉為 html, 並且透過倉儲 tag 的版次號, 讓使用者可以直接在網際以 URL 參數擷取不同版次下的技術文件.</span><br/><br/><span>Webots 目前對於技術文件處理的流程, 除了能夠將網際文件 (目前有英文版的 guide, reference 與 automobile 等三個文件目錄) 以分散式多人協同進行管理外, 對於之後建立不同語系技術文件, 也相對較有效率, 因為只要透過 URL 的參數指向不同語系 Markdown 所在目錄即可讓使用者選擇各語系、各版次 (透過倉儲 tag release) 的網際技術文件.</span><br/><br/><span>例如:</span><br/><br/><span>以下為 R2019a 版次, guide, reference 與 automobile 目錄下的文件.</span><br/><br/><a href="https://www.cyberbotics.com/doc/guide/page?version=R2019a">https://www.cyberbotics.com/doc/guide/page?version=R2019a</a><br/><br/><a href="https://www.cyberbotics.com/doc/reference/page?version=R2019a">https://www.cyberbotics.com/doc/reference/page?version=R2019a</a><br/><br/><a href="https://www.cyberbotics.com/doc/automobile/page?version=R2019a">https://www.cyberbotics.com/doc/automobile/page?version=R2019a</a><br/><br/><span>R2019a-rev1 版次文件則分別如下:</span><br/><br/><a href="https://www.cyberbotics.com/doc/guide/page?version=R2019a-rev1">https://www.cyberbotics.com/doc/guide/page?version=R2019a-rev1</a><br/><a href="https://www.blogger.com/goog_1794104869"><br/></a><span></span><a href="https://www.cyberbotics.com/doc/reference/page?version=R2019a-rev1">https://www.cyberbotics.com/doc/reference/page?version=R2019a-rev1</a><br/><br/><a href="https://www.cyberbotics.com/doc/automobile/page?version=R2019a-rev1">https://www.cyberbotics.com/doc/automobile/page?version=R2019a-rev1</a><br/><br/><span>至於 CMSimfly 直接讓使用者編輯 html 檔案的方式, 只要設法引入網際<span> </span></span><a href="https://github.com/mundimark/awesome-markdown-editors">Markdown Editor</a><span>, 並採用上述 Webots 處理 Markdown 文件與版次的方式即可!?</span></p>
+<h4><span>相關技術:</span></h4>
+<p style="padding-left: 30px;"><span>Markdown 與 HTML轉換:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/showdownjs/showdown">https://github.com/showdownjs/showdown</a></span></p>
+<p style="padding-left: 30px;"><span>以 Markdown 建立流程圖:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/mermaid-js/mermaid">https://github.com/mermaid-js/mermaid</a></span></p>
+<p style="padding-left: 30px;"><span>語法 hightlight:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://highlightjs.org/">https://highlightjs.org/</a></span></p>
+<p style="padding-left: 30px;"><span>網際編輯器:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://ace.c9.io/">https://ace.c9.io/</a></span></p>
+<p style="padding-left: 30px;"><span>Javascript 程式庫:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://jquery.com/">https://jquery.com/</a></span></p><h3>Robot Curriculum</h3>
+<p><a href="https://en.wikibooks.org/wiki/Cyberbotics%27_Robot_Curriculum">https://en.wikibooks.org/wiki/Cyberbotics%27_Robot_Curriculum</a></p>
+<p><a href="/downloads/webots_robot_curriculum.pdf">webots_robot_curriculum.pdf</a></p>
+<p><a href="/downloads/An Application Example of Webots in Solving Control Tasks of Robotic System.pdf">An Application Example of Webots in Solving Control Tasks of Robotic System.pdf</a></p>
+<p><a href="https://github.com/BerkeleyLearnVerify/VerifAI">https://github.com/BerkeleyLearnVerify/VerifAI</a></p>
+<p><a href="https://github.com/dsadigh/driving-interactions">https://github.com/dsadigh/driving-interactions</a></p><h3>Three.js</h3>
 <p><a href="https://github.com/mrdoob/three.js">https://github.com/mrdoob/three.js</a></p>
 <p><a href="https://github.com/josdirksen/essential-threejs">https://github.com/josdirksen/essential-threejs</a></p>
 <p><a href="https://github.com/josdirksen/learning-threejs-third">https://github.com/josdirksen/learning-threejs-third</a></p>

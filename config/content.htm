@@ -2642,11 +2642,13 @@ while robot.step(TIME_STEP) != -1:
 <p><a href="https://github.com/mirror/scite">https://github.com/mirror/scite</a></p>
 <p><a href="https://github.com/mirror/scintilla">https://github.com/mirror/scintilla</a></p>
 <p>利用 MSYS2 編譯 SciTE 編輯器:</p>
-<p style="padding-left: 30px;">git clone <a href="https://github.com/mirror/scite.git">https://github.com/mirror/scite.git</a> </p>
-<p style="padding-left: 30px;">git clone <a href="https://github.com/mirror/scintilla.git">https://github.com/mirror/scintilla.git</a></p>
+<p style="padding-left: 30px;">首先必須確認 y:\portable\bin 中 sh.exe 已經改名, 因為 shell 指令將取自 MSYS2 系統中的對應指令.</p>
+<p style="padding-left: 30px;">分別 git clone scite 與 scintilla, 兩個目錄並列.</p>
+<p style="padding-left: 60px;">git clone <a href="https://github.com/mirror/scite.git">https://github.com/mirror/scite.git</a> </p>
+<p style="padding-left: 60px;">git clone <a href="https://github.com/mirror/scintilla.git">https://github.com/mirror/scintilla.git</a></p>
 <p style="padding-left: 30px;">cd scintilla\win32</p>
-<p style="padding-left: 30px;">get Scintilla.dll and SciLexer.dll under <span>scintilla\bin</span></p>
-<p style="padding-left: 30px;">mingw32-make</p>
+<p style="padding-left: 30px;"><span>mingw32-make</span></p>
+<p style="padding-left: 60px;">get Scintilla.dll and SciLexer.dll under <span>scintilla\bin</span></p>
 <p style="padding-left: 30px;">cd scite\win32</p>
 <p style="padding-left: 30px;">mingw32-make</p>
 <p style="padding-left: 30px;">get SciTE.exe under scite\bin</p>
@@ -2674,7 +2676,28 @@ while robot.step(TIME_STEP) != -1:
 <p>"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
 <p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
 <p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
-<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h3>Three.js</h3>
+<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h3>Webots Doc</h3>
+<p><iframe height="600" src="/downloads/webots/RobotisOP2/index.html" width="800"></iframe></p>
+<p><a href="https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b">https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b</a></p>
+<p>頁面的對應 Markdown 檔案為: </p>
+<p><a href="https://github.com/cyberbotics/webots/blob/revision/docs/guide/robotis-op2.md">https://github.com/cyberbotics/webots/blob/revision/docs/guide/robotis-op2.md</a></p>
+<p><a href="https://cyberbotics.com/doc/guide/menu">https://cyberbotics.com/doc/guide/menu</a><span> (</span><a href="https://github.com/omichel/webots">Github 倉儲</a><span>) 中的 docs 目錄則有一系列的 Markdown 檔案, 目前 Webots 採用 Javascript 以動態模式, 將 Markdown 文件轉為 html, 並且透過倉儲 tag 的版次號, 讓使用者可以直接在網際以 URL 參數擷取不同版次下的技術文件.</span><br/><br/><span>Webots 目前對於技術文件處理的流程, 除了能夠將網際文件 (目前有英文版的 guide, reference 與 automobile 等三個文件目錄) 以分散式多人協同進行管理外, 對於之後建立不同語系技術文件, 也相對較有效率, 因為只要透過 URL 的參數指向不同語系 Markdown 所在目錄即可讓使用者選擇各語系、各版次 (透過倉儲 tag release) 的網際技術文件.</span><br/><br/><span>例如:</span><br/><br/><span>以下為 R2019a 版次, guide, reference 與 automobile 目錄下的文件.</span><br/><br/><a href="https://www.cyberbotics.com/doc/guide/page?version=R2019a">https://www.cyberbotics.com/doc/guide/page?version=R2019a</a><br/><br/><a href="https://www.cyberbotics.com/doc/reference/page?version=R2019a">https://www.cyberbotics.com/doc/reference/page?version=R2019a</a><br/><br/><a href="https://www.cyberbotics.com/doc/automobile/page?version=R2019a">https://www.cyberbotics.com/doc/automobile/page?version=R2019a</a><br/><br/><span>R2019a-rev1 版次文件則分別如下:</span><br/><br/><a href="https://www.cyberbotics.com/doc/guide/page?version=R2019a-rev1">https://www.cyberbotics.com/doc/guide/page?version=R2019a-rev1</a><br/><a href="https://www.blogger.com/goog_1794104869"><br/></a><span></span><a href="https://www.cyberbotics.com/doc/reference/page?version=R2019a-rev1">https://www.cyberbotics.com/doc/reference/page?version=R2019a-rev1</a><br/><br/><a href="https://www.cyberbotics.com/doc/automobile/page?version=R2019a-rev1">https://www.cyberbotics.com/doc/automobile/page?version=R2019a-rev1</a><br/><br/><span>至於 CMSimfly 直接讓使用者編輯 html 檔案的方式, 只要設法引入網際<span> </span></span><a href="https://github.com/mundimark/awesome-markdown-editors">Markdown Editor</a><span>, 並採用上述 Webots 處理 Markdown 文件與版次的方式即可!?</span></p>
+<h4><span>相關技術:</span></h4>
+<p style="padding-left: 30px;"><span>Markdown 與 HTML轉換:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/showdownjs/showdown">https://github.com/showdownjs/showdown</a></span></p>
+<p style="padding-left: 30px;"><span>以 Markdown 建立流程圖:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/mermaid-js/mermaid">https://github.com/mermaid-js/mermaid</a></span></p>
+<p style="padding-left: 30px;"><span>語法 hightlight:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://highlightjs.org/">https://highlightjs.org/</a></span></p>
+<p style="padding-left: 30px;"><span>網際編輯器:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://ace.c9.io/">https://ace.c9.io/</a></span></p>
+<p style="padding-left: 30px;"><span>Javascript 程式庫:</span></p>
+<p style="padding-left: 60px;"><span><a href="https://jquery.com/">https://jquery.com/</a></span></p><h3>Robot Curriculum</h3>
+<p><a href="https://en.wikibooks.org/wiki/Cyberbotics%27_Robot_Curriculum">https://en.wikibooks.org/wiki/Cyberbotics%27_Robot_Curriculum</a></p>
+<p><a href="/downloads/webots_robot_curriculum.pdf">webots_robot_curriculum.pdf</a></p>
+<p><a href="/downloads/An Application Example of Webots in Solving Control Tasks of Robotic System.pdf">An Application Example of Webots in Solving Control Tasks of Robotic System.pdf</a></p>
+<p><a href="https://github.com/BerkeleyLearnVerify/VerifAI">https://github.com/BerkeleyLearnVerify/VerifAI</a></p>
+<p><a href="https://github.com/dsadigh/driving-interactions">https://github.com/dsadigh/driving-interactions</a></p><h3>Three.js</h3>
 <p><a href="https://github.com/mrdoob/three.js">https://github.com/mrdoob/three.js</a></p>
 <p><a href="https://github.com/josdirksen/essential-threejs">https://github.com/josdirksen/essential-threejs</a></p>
 <p><a href="https://github.com/josdirksen/learning-threejs-third">https://github.com/josdirksen/learning-threejs-third</a></p>
