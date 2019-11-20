@@ -2540,6 +2540,16 @@ while robot.step(timestep) != -1:
 <p style="padding-left: 30px;">1. 將 Webots 中 python 3.7 動態程式庫與 bin 中的 c++ 動態程式庫目錄, 納入可攜 Python 程式庫路徑設定, 例如:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set PYTHONPATH=%CDisk%\py373\DLLs;%CDisk%\py373\Lib;%CDisk%\py373\Lib\site-packages;Y:\Webots_2019b_rev1\msys64\mingw64\bin;Y:\Webots_2019b_rev1\lib\python37;</pre>
 <p style="padding-left: 30px;">2.  將模型中 controller 設為 &lt;extern&gt;, 然後啟動 Webots 模擬後, 以 SciTE 開啟位於 controller 目錄中的控制器 python 程式後, 以 Tools-&gt;Go 執行 controller 程式, 以便控制 Webots 中的對應模型.</p>
+<h4>NX  以 WRL 轉入 Webots:</h4>
+<p style="padding-left: 30px;">輸入格式:</p>
+<p style="padding-left: 30px;">DEF 名稱 Transform{</p>
+<p style="padding-left: 60px;">child[</p>
+<p style="padding-left: 90px;">shape{}</p>
+<p style="padding-left: 90px;">shape{}</p>
+<p style="padding-left: 90px;">]}</p>
+<p>若要將轉入零件當作 boundingObject, 必須先將 Transoform  to Solid, 接著展開 children, 並在 children 之下, 以 Add New 加入 Group 節點, 並將所有轉入的 Shape 放入 Group 節點中的 Children 節點之內, 並將 Group 命名後, 放入 Solid 節點中的 boundingObject.</p>
+<p>若要將 NX 轉入的 wrl 零組件之間加入連接軸, 必須分別將各零件的 Shape 放入各 Group 節點下的  Children, 並對各零件所處的 Group 命名且設定為其上層 Solid 節點所屬的 boundingObject.</p>
+<p style="padding-left: 30px;">範例: <a href="/downloads/NX_export_to_Webots_example.7z">NX_export_to_Webots_example.7z</a></p>
 <h4>Controller Programming</h4>
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/guide/controller-programming">https://cyberbotics.com/doc/guide/controller-programming</a></p>
 <h4>Web Simulation</h4>
@@ -2677,6 +2687,7 @@ while robot.step(TIME_STEP) != -1:
 <p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
 <p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
 <p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h3>Webots Doc</h3>
+<p><iframe height="600" src="/downloads/webots/RobotisOP2/index.html" width="800"></iframe></p>
 <p><a href="https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b">https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b</a></p>
 <p>頁面的對應 Markdown 檔案為: </p>
 <p><a href="https://github.com/cyberbotics/webots/blob/revision/docs/guide/robotis-op2.md">https://github.com/cyberbotics/webots/blob/revision/docs/guide/robotis-op2.md</a></p>
