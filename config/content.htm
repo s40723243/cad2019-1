@@ -2670,28 +2670,7 @@ while robot.step(TIME_STEP) != -1:
 <p style="padding-left: 30px;">need extra libgcc_s_seh-1.dll, libstdc++-6.dll and libwinpthread-1.dll along with <span>Scintilla.dll and </span><span>SciLexer.dll </span>to execute SciTE.exe</p>
 <p>SciTE properties files: <a href="/downloads/SciTE_properties_files.7z">SciTE_properties_files.7z</a></p>
 <p>上述編譯流程所有檔案: <a href="https://drive.google.com/file/d/1TM-aipbJ7cQZdceE1ETrZkiQU4IOM0Nu/view?usp=sharing">compile_scite.7z</a></p>
-<p style="padding-left: 30px;"></p><h3>WB Tutorial1</h3>
-<h4><span>Webots 啟動條件:</span></h4>
-<p><span>執行路徑設定</span></p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
-<p>啟動指令:</p>
-<p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
-<p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
-<p>建立新專案</p>
-<p>利用下拉式功能表中的 Wizards 精靈, 選擇 New Project Directory.  將會自動建立:</p>
-<p style="padding-left: 30px;">controllers</p>
-<p style="padding-left: 30px;">libraries</p>
-<p style="padding-left: 30px;">plugins</p>
-<p style="padding-left: 30px;">protos</p>
-<p style="padding-left: 30px;">worlds </p>
-<p>等目錄. 各目錄內容說明如下:</p>
-<p>The Root Directory of a Project</p>
-<p>The root directory of a project contains at least a directory called "worlds" containing a single world file. But several other directories are often required:</p>
-<p>"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
-<p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
-<p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
-<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h3>Webots Doc</h3>
+<p style="padding-left: 30px;"></p><h3>Webots Doc</h3>
 <p><iframe height="600" src="/downloads/webots/RobotisOP2/index.html" width="800"></iframe></p>
 <p><a href="https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b">https://cyberbotics.com/doc/guide/robotis-op2?version=R2019b</a></p>
 <p>頁面的對應 Markdown 檔案為: </p>
@@ -3854,8 +3833,29 @@ int main()
 <p style="padding-left: 30px;">必須提供 portablegit 的 bin 路徑以及可攜系統啟動時所使用的 home 位置.</p>
 <p style="padding-left: 30px;">Git Extensions-&gt;SSH 則選擇使用 putty</p>
 <p>由於 GitExtensions 3.0.2 版尚無法新增提交以中文命名的檔案, 因此必須透過 Tools-&gt; Git GUI 執行新增提交與推送的指令.</p>
-<p>使用 Git GUI 的好處是, 使用者可以較方便採用中文說明提交訊息.</p><h2>Task3</h2>
+<p>使用 Git GUI 的好處是, 使用者可以較方便採用中文說明提交訊息.</p>
+<h3>Batch Command</h3>
+<p>使用者在維護 CMSiMDE 倉儲與網頁時, 經常需要在瀏覽器中檢視動態與靜態頁面資料, 其中包括以 python 執行位於 cmsimde 子目錄中的 wsgi.py  以及位於倉儲根目錄中的 http-server.py, 為了方便, 可以在 y:\ 目錄建立下列兩個命令批次檔案:</p>
+<p>cad.bat - 啟動 wsgi.py 並且在瀏覽器開啟 https 9443 動態網頁</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+y:
+cd tmp\cad2019\cmsimde
+start python wsgi.py | start chrome https://localhost:9443</pre>
+<p>其中的 | 是同時執行 wsgi.py 的啟動以及瀏覽器網頁的開啟</p>
+<p>而 cadh.bat - 啟動 http-server 並且在瀏覽氣開啟 https 8444 靜態網頁</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+y:
+cd tmp\cad2019\
+start python http-server.py | start chrome https://localhost:8444</pre>
+<p>至於近端倉儲維護告一段落後, 啟動 gitextensions 開啟 cad2019 倉儲時, 使用:</p>
+<p>cadg.bat</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+H:\mde\data\cad\201906_fall\data\GitExtensions\gitextensions.exe  browse y:\tmp\cad2019\</pre>
+<p></p><h2>Task3</h2>
 <h4>分組作業:</h4>
+<p style="padding-left: 30px;">分組任務: </p>
+<p style="padding-left: 60px;">Webots: <a href="https://cyberbotics.com/doc/guide/tutorials">https://cyberbotics.com/doc/guide/tutorials</a></p>
+<p style="padding-left: 60px;">V-rep: <a href="http://www.coppeliarobotics.com/helpFiles/en/tutorials.htm">http://www.coppeliarobotics.com/helpFiles/en/tutorials.htm</a></p>
 <p style="padding-left: 30px;">請各組將 Task1 所完成的行走車, 轉入 Webots, 並設法利用 Python 程式驅動行走, 完成後, 以協同模式製作一個帶有中文字幕的流程教學導引影片, 上傳至 Youtube 並內嵌至各分組網站中.</p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1MolDH7kKJt_IIBTrKalsMfNWMrqqTWdt/view?usp=sharing">Webots_2019b_rev1.7z</a><span><span> </span>(登入 gm.nfu.edu.tw 後下載)</span></p>
 <p><span>Rover 零組件轉入<a href="http://www.coppeliarobotics.com/"> V-rep</a> 與 <a href="https://cyberbotics.com/">Webots</a> 執行機電控制系統設計</span></p>
@@ -3865,7 +3865,31 @@ int main()
 <p style="padding-left: 90px;">下載 <a href="https://drive.google.com/file/d/1alczEGcvayA19SA6kdV38UeU-Y5vvZGx/view?usp=sharing">Webots_reference_pdfs.7z</a></p>
 <p style="padding-left: 90px;">下載 <a href="https://drive.google.com/file/d/1NpIVSnVHUWUbXP30SgOiB61-bqWcsjNz/view?usp=sharing">Webots_2012_guide.pdf</a></p>
 <p style="padding-left: 90px;">下載 <a href="https://drive.google.com/file/d/18MfpW65vZngRWKE42B69AsDs9aeyKhGZ/view?usp=sharing">Vrep_reference_pdfs.7z</a></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/_9d_vukS0Qg" width="560"></iframe></p><h2>Project</h2>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/_9d_vukS0Qg" width="560"></iframe></p>
+<h3>WB Tutorial1</h3>
+<h4>下載 Webots 2019b rev1 可攜系統:</h4>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1MolDH7kKJt_IIBTrKalsMfNWMrqqTWdt/view?usp=sharing">Webots_2019b_rev1.7z</a><span><span> </span>(登入 gm.nfu.edu.tw 後下載)</span></p>
+<h4><span>Webots 啟動條件:</span></h4>
+<p><span>執行路徑設定</span></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set path_webots=%Disk%:\Webots_2019b_rev1\msys64\mingw64\bin;%Disk%:\Webots_2019b_rev1\msys64\usr\bin</pre>
+<p>啟動指令:</p>
+<p>在 y:\ 根目錄建立 start_webots.bat, 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">start Y:\Webots_2019b_rev1\msys64\mingw64\bin\webots.exe</pre>
+<p>當隨身程式系統納入上述兩個條件並啟動後, 可以直接在命令列輸入 start_webots.bat 啟動.</p>
+<p>建立新專案</p>
+<p>利用下拉式功能表中的 Wizards 精靈, 選擇 New Project Directory.  將會自動建立:</p>
+<p style="padding-left: 30px;">controllers</p>
+<p style="padding-left: 30px;">libraries</p>
+<p style="padding-left: 30px;">plugins</p>
+<p style="padding-left: 30px;">protos</p>
+<p style="padding-left: 30px;">worlds </p>
+<p>等目錄. 各目錄內容說明如下:</p>
+<p>The Root Directory of a Project</p>
+<p>The root directory of a project contains at least a directory called "worlds" containing a single world file. But several other directories are often required:</p>
+<p>"controllers": this directory contains the controllers available in each world files of the current project. The link between the world files and this directory is done through the controller field of the Robot node. More information about this directory in the following subsections.</p>
+<p>"protos": this directory contains the PROTO files available for all the world files of the current project.</p>
+<p>"plugins": this directory contains the plugins available in the current project. The link between the world files and this directory is done through the physics field of the WordInfo node.</p>
+<p>"worlds": this directory contains the world files, the project files (see below) and the textures (typically in a subdirectory called "textures").</p><h2>Project</h2>
 <h4><span>機電資整合分組專案執行</span></h4>
 <p style="padding-left: 30px;">請各組參考先前已完成之<span>多段式頂球機構與循環鋼球運動系統 (例如:<span> </span><a href="https://www.youtube.com/watch?v=Zc17Azvmx9M">1</a>,<span> </span><a href="https://www.youtube.com/watch?v=1WWKgAMN5LI">2</a>,<span> </span><a href="https://www.youtube.com/watch?v=ZAGrFV1jCdk">3</a>), 每組在 V-rep 或 Webots 中建立一個鋼球運動系統站, 並</span>結合 Task2 所完成的 Rover, 以執行各站鋼球搬運<span> </span><a href="https://en.wikipedia.org/wiki/Automated_storage_and_retrieval_system">AS/RS</a><span> </span>工作, 以組為單位, 完成結合機械設計、電子感測配置、電機驅動與程式控制的機電資整合專案.</p>
 <p style="padding-left: 30px;">完成後請<span>將相關過程與心得整理在分組網站, 製作一個帶有中文字幕的說明影片, 上傳至 Youtube 並內嵌至各分組網站, 過程中請利用 Blogger 網誌紀錄各階段心得, 最後再利用 Reveal 於 Week 17 進行期末分組簡報.</span></p>

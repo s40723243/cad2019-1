@@ -154,74 +154,24 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Webots << <a href='Webots.html'>Previous</a> <a href='SciTE.html'>Next</a> >> SciTE<br /><h1>VRML</h1>
-<p><a href="https://cyberbotics.com/doc/reference/group">https://cyberbotics.com/doc/reference/group</a></p>
-<p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/transform">https://cyberbotics.com/doc/reference/transform</a></p>
-<p style="padding-left: 60px;"><a href="https://cyberbotics.com/doc/reference/solid">https://cyberbotics.com/doc/reference/solid</a></p>
-<p style="padding-left: 90px;"><a href="https://cyberbotics.com/doc/reference/robot">https://cyberbotics.com/doc/reference/robot</a></p>
-<h4>Group 節點</h4>
-<p>A Group node contains children nodes without introducing a new transformation. It is equivalent to a Transform node without the "translation" and "rotation" fields.</p>
-<h4>Transform 節點</h4>
-<p>The Transform node is a grouping node that defines a coordinate system for its children that is relative to the coordinate system of its parent. The 'scale' field of a Transform node can be adjusted only in a graphical context and not in a 'boundingObject' context.</p>
-<h4>Shape 節點</h4>
-<p>A Shape node is a visual objects that includes both an 'appearance' and a 'geometry'. A Shape can also be used in a 'boundingObject', in this case, only its 'geometry' field is taken into account.</p>
-<h4>建立模擬世界的地板</h4>
-<p style="padding-left: 30px;">第一階段: 先定義一個 Transform 節點, 然後在其下的 children 新增一個 Shape 節點, 然後將 Shape 節點中的 geometry 欄位設為 plane. 接著將此 Shape 命名 (DEF) 為 floor.</p>
-<p style="padding-left: 30px;">第二階段: 將第一階段所建立的 Transform 節點, 轉 (Transform to) 為 Solid 節點. 再將此一 Solid 命名為 FLOOR 後, 將此 FLOOR Solid 中的 boundingObject 欄位指定為第一階段所定義的 floor Shape 節點. 意即要以此 plane Shape 節點作為此 FLOOR Solid olid 節點的邊界物件.</p>
-<p style="padding-left: 30px;">第三階段: 利用 File -&gt; Save World 將所加入的地板實體節點內容存檔.</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#VRML V2.0 utf8
-
-Switch {
-  choice [
-    DEF RedSphere Shape {
-      appearance Appearance {
-        material Material { diffuseColor 1 0 0 } }
-      geometry Sphere { }
-    }
-    DEF GreenSphere Shape {
-      appearance Appearance {
-        material Material { diffuseColor 0 1 0 } }
-      geometry Sphere { }
-    }
-    DEF BlueSphere Shape {
-      appearance Appearance {
-        material Material { diffuseColor 0 0 1 } }
-      geometry Sphere { }
-    }
-    DEF SphereColumn Group {
-      children [
-        Transform { translation 0 -5 0 children USE RedSphere }
-        Transform { translation 0  0 0 children USE GreenSphere }
-        Transform { translation 0  5 0 children USE BlueSphere }
-      ]
-    }
-  ]
-}
-
-Transform { translation -5 0 0 children USE SphereColumn }
-Transform { translation  0 0 0 children USE SphereColumn }
-Transform { translation  5 0 0 children USE SphereColumn }</pre>
-<h4>控制程式</h4>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot, Motor
-
-TIME_STEP = 64
-
-# create the Robot instance.
-robot = Robot()
-
-# get the motor devices
-leftMotor = robot.getMotor('left wheel motor')
-rightMotor = robot.getMotor('right wheel motor')
-# set the target position of the motors
-leftMotor.setPosition(10.0)
-rightMotor.setPosition(10.0)
-
-while robot.step(TIME_STEP) != -1:
-   pass</pre>
-<h4>參考資料</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/urdf2webots">https://github.com/cyberbotics/urdf2webots</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/cyberbotics/blender-webots-exporter">https://github.com/cyberbotics/blender-webots-exporter</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/sobotka/blender-addons/blob/master/io_scene_x3d/import_x3d.py">https://github.com/sobotka/blender-addons/blob/master/io_scene_x3d/import_x3d.py</a> (也許可以將此程式改為 Leo Editor 的 VRML  parser plugin)</p><br />Webots << <a href='Webots.html'>Previous</a> <a href='SciTE.html'>Next</a> >> SciTE</div>
+    <div id="tipue_search_content">導入 GitExtensions << <a href='導入 GitExtensions.html'>Previous</a> <a href='Task3.html'>Next</a> >> Task3<br /><h1>Batch Command</h1>
+<p>使用者在維護 CMSiMDE 倉儲與網頁時, 經常需要在瀏覽器中檢視動態與靜態頁面資料, 其中包括以 python 執行位於 cmsimde 子目錄中的 wsgi.py  以及位於倉儲根目錄中的 http-server.py, 為了方便, 可以在 y:\ 目錄建立下列兩個命令批次檔案:</p>
+<p>cad.bat - 啟動 wsgi.py 並且在瀏覽器開啟 https 9443 動態網頁</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+y:
+cd tmp\cad2019\cmsimde
+start python wsgi.py | start chrome https://localhost:9443</pre>
+<p>其中的 | 是同時執行 wsgi.py 的啟動以及瀏覽器網頁的開啟</p>
+<p>而 cadh.bat - 啟動 http-server 並且在瀏覽氣開啟 https 8444 靜態網頁</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+y:
+cd tmp\cad2019\
+start python http-server.py | start chrome https://localhost:8444</pre>
+<p>至於近端倉儲維護告一段落後, 啟動 gitextensions 開啟 cad2019 倉儲時, 使用:</p>
+<p>cadg.bat</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+H:\mde\data\cad\201906_fall\data\GitExtensions\gitextensions.exe  browse y:\tmp\cad2019\</pre>
+<p></p><br />導入 GitExtensions << <a href='導入 GitExtensions.html'>Previous</a> <a href='Task3.html'>Next</a> >> Task3</div>
         
     <!-- footer -->
       <div class="container">
