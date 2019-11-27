@@ -9,6 +9,16 @@ TexturedBackground {
 }
 TexturedBackgroundLight {
 }
+DirectionalLight {
+  ambientIntensity 1
+  direction -12000 -12000 -3000
+  intensity 0.7
+}
+DirectionalLight {
+  ambientIntensity 1
+  direction 12000 -6000 -12000
+  intensity 0.7
+}
 DEF Floor Solid {
   children [
     DEF floor Group {
