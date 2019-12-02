@@ -34,12 +34,30 @@ function init() {
 
 
   // Binary files
+  // material1 and mesh1
+  
+  var material1 = new THREE.MeshPhongMaterial( { color: 0x0e2045, specular: 0x111111, shininess: 200 } );
+  loader.load( 'https://mde.tw/cad2019/downloads/solvespace/two_links/fourbar_assembly.stl', function ( geometry ) {
+    var mesh1 = new THREE.Mesh( geometry, material1 );
 
-  var material = new THREE.MeshPhongMaterial( { color: 0x0e2045, specular: 0x111111, shininess: 200 } );
-  loader.load( 'http://mde.tw/cad2019/downloads/solvespace/two_links/fourbar_assembly.stl', function ( geometry ) {
+    mesh1.position.set( 0, 0, 0 );
+    mesh1.rotation.set( 0, 0, 0 );
+    mesh1.scale.set( .02, .02, .02 );
+
+    mesh1.castShadow = true;
+    mesh1.receiveShadow = true;
+
+    scene.add( mesh1 );
+    render();
+  });
+  
+  // material and mesh
+  
+    var material = new THREE.MeshPhongMaterial( { color: 0x45200e, specular: 0x111111, shininess: 200 } );
+  loader.load( 'https://mde.tw/cad2019/downloads/solvespace/one_link/onelink_assembly.stl', function ( geometry ) {
     var mesh = new THREE.Mesh( geometry, material );
 
-    mesh.position.set( 0, 0, 0 );
+    mesh.position.set( 4, 0, 0 );
     mesh.rotation.set( 0, 0, 0 );
     mesh.scale.set( .02, .02, .02 );
 
