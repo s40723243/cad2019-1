@@ -20,8 +20,8 @@ function AngularConstraint(arg1, arg2) {
     this.angle;
     if (arguments.length > 0) {
         this.setLink(this.BASE, arg1);
-		this.setLink(this.TARGET, arg2);
-		this.angle = arg2.getAngle() - arg1.getAngle();
+        this.setLink(this.TARGET, arg2);
+        this.angle = arg2.getAngle() - arg1.getAngle();
     }
 
     this.name = "AngularConstraint" + AngularConstraint.COUNTER++;

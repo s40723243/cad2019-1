@@ -2,8 +2,8 @@
 // Point2D
 //--------------------
 function Point2D(_x, _y){
-	this.x = _x;
-	this.y = _y;
+    this.x = _x;
+    this.y = _y;
 }
 Point2D.prototype.getX = function(){
     return this.x;
@@ -58,38 +58,38 @@ function ArrayList(){
         return true;
     };
     this.remove = function (obj){
-    	if (!(obj instanceof ArrayList)){
-	    	var _index = this.array.indexOf(obj);
-	    	if(_index != -1){
-	    		this.array.splice(_index, 1);
+        if (!(obj instanceof ArrayList)){
+            var _index = this.array.indexOf(obj);
+            if(_index != -1){
+                this.array.splice(_index, 1);
                 return true;
-	    	}
+            }
             else{
                 return false;
             }
-	    }
-	    else if(obj instanceof ArrayList){
-	    	for(var _e in obj.array){
-	    		this.remove(obj.get(_e));
-	    	}
-	    }
+        }
+        else if(obj instanceof ArrayList){
+            for(var _e in obj.array){
+                this.remove(obj.get(_e));
+            }
+        }
 
     };
     this.removeOf = function (_index){
         this.array.splice(_index, 1);
     };
     this.clear = function (obj){
-    	this.array = [];
+        this.array = [];
     };
     this.isEmpty = function (obj){
-    	var _isEmpty = false;
-    	if(this.array.length==0){
-    		_isEmpty = true;
-    	}
-    	else{
-    		_isEmpty = false;
-    	}
-    	return _isEmpty;
+        var _isEmpty = false;
+        if(this.array.length==0){
+            _isEmpty = true;
+        }
+        else{
+            _isEmpty = false;
+        }
+        return _isEmpty;
     };
     this.contains = function(obj){
         var _index = this.array.indexOf(obj);
@@ -171,7 +171,7 @@ Math.degrees = function(radians) {
   return radians * 180 / Math.PI;
 };
 Math.map = function(value, low1, high1, low2, high2) {
-	return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
 

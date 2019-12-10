@@ -6,11 +6,11 @@
 
 //-------------------- Constructor --------------------
 function Space(){
-	Link.apply(this, arguments);
+    Link.apply(this, arguments);
 
-	this.name = "Anchor";
-	this.originPoint = new Point2D(0, 0);
-	this.DOF = 0;
+    this.name = "Anchor";
+    this.originPoint = new Point2D(0, 0);
+    this.DOF = 0;
 
   //console.log("[Space] new space: " + this.name);
 }

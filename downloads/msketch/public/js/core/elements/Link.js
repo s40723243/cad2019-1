@@ -6,13 +6,13 @@
 
 //-------------------- Constructor --------------------
 function Link(arg1, arg2, arg3){
-	MechElement.apply(this, arguments);
+    MechElement.apply(this, arguments);
 
-	this.pointList = new ArrayList();
-	this.vertex = [];
-	this.angle = 0;
-	this.DOF = 3;
-  	this.lengths = [];
+    this.pointList = new ArrayList();
+    this.vertex = [];
+    this.angle = 0;
+    this.DOF = 3;
+    this.lengths = [];
 
   this.backup_angle = 0;
   this.backup_pointNum = 0;
@@ -27,12 +27,12 @@ function Link(arg1, arg2, arg3){
     }
     this.init();
   }
-	// for 3D
-	this.stack = 0;
+    // for 3D
+    this.stack = 0;
 
-	// for Slider
-	this.isSlider = false;
-	this.baseSC = null;
+    // for Slider
+    this.isSlider = false;
+    this.baseSC = null;
 }
 Link.counter = 1;
 Link.sliderCount = 1;
@@ -44,48 +44,48 @@ Link.prototype.toString = function(){
   return this.name;
 }
 Link.prototype.getAngle = function(){
-	return this.angle;
+    return this.angle;
 }
 Link.prototype.setAngle = function(_angle){
-	this.angle = _angle;
+    this.angle = _angle;
 }
 Link.prototype.getPointList = function(){
-	return this.pointList;
+    return this.pointList;
 }
 Link.prototype.addGlobalPoint = function(arg1, arg2){
-	var arg_num = arguments.length;
-	var returnValue;
+    var arg_num = arguments.length;
+    var returnValue;
 
-	switch(arg_num){
-		case 1: // Point2D
-			var localPt = this.getLocalPosition(arg1);
-			arg1.setLocation(localPt);
-			returnValue = this.addLocalPoint(arg1);
-			break;
-		case 2: // x, y
-			returnValue = this.addGlobalPoint(new Point2D(arg1, arg2));
-			break;
+    switch(arg_num){
+        case 1: // Point2D
+            var localPt = this.getLocalPosition(arg1);
+            arg1.setLocation(localPt);
+            returnValue = this.addLocalPoint(arg1);
+            break;
+        case 2: // x, y
+            returnValue = this.addGlobalPoint(new Point2D(arg1, arg2));
+            break;
 
-	}
-	return returnValue;
+    }
+    return returnValue;
 }
 
 Link.prototype.addLocalPoint = function(_pt){
-	var returnValue = this.pointList.add(_pt);
-	this.redefineVertex();
-	return returnValue;
+    var returnValue = this.pointList.add(_pt);
+    this.redefineVertex();
+    return returnValue;
 }
 Link.prototype.removePoint = function(_pt){
-	var returnValue = this.pointList.remove(_pt);
-	this.redefineVertex();
-	return returnValue;
+    var returnValue = this.pointList.remove(_pt);
+    this.redefineVertex();
+    return returnValue;
 }
 Link.prototype.getVertex = function(){
-	return this.vertex;
+    return this.vertex;
 }
 Link.prototype.getGlobalPosition = function(_p){
-	var returnValue = new Point2D(this.originPoint.getX()+_p.getX()*Math.cos(this.angle)-_p.getY()*Math.sin(this.angle),
-								this.originPoint.getY()+_p.getX()*Math.sin(this.angle)+_p.getY()*Math.cos(this.angle));
+    var returnValue = new Point2D(this.originPoint.getX()+_p.getX()*Math.cos(this.angle)-_p.getY()*Math.sin(this.angle),
+                                this.originPoint.getY()+_p.getX()*Math.sin(this.angle)+_p.getY()*Math.cos(this.angle));
     return returnValue;
 }
 Link.prototype.getLocalPosition = function(_p){
@@ -98,7 +98,7 @@ Link.prototype.getLocalPosition = function(_p){
 }
 Link.prototype.getGlobalVertex = function(){
     if(this.vertex==null){
-		return null;
+        return null;
     }
 
     var returnValue = new Array(this.vertex.length);
@@ -122,16 +122,16 @@ Link.prototype.restorePosition = function(){
 
 
 Link.prototype.init = function(){
-	var firstPoint = new Point2D(0, 0);
+    var firstPoint = new Point2D(0, 0);
     this.pointList.add(firstPoint);
 }
 
 Link.prototype.redefineVertex = function(){
-	if(this.pointList.length() < 2) return;
+    if(this.pointList.length() < 2) return;
 
-	var vertexOrder = new ArrayList();
+    var vertexOrder = new ArrayList();
 
-	// finding the first point //
+    // finding the first point //
     var firstPoint = this.pointList.get(0);
     for(var i=1; i<this.pointList.length(); i++){
       if(firstPoint.getY() < this.pointList.get(i).getY()){
@@ -176,32 +176,32 @@ Link.prototype.redefineVertex = function(){
       }
     }
 
-	// simplify
-	this.vertex = new Array(vertexOrder.length()*4-4);
+    // simplify
+    this.vertex = new Array(vertexOrder.length()*4-4);
     this.lengths = [];
 
-	if(!this.isSlider){
-		for(var i=0; i<vertexOrder.length()-1; i++){
-			this.vertex[i*4+0] = vertexOrder.get(i).getX();
-	        this.vertex[i*4+1] = vertexOrder.get(i).getY();
-	        this.vertex[i*4+2] = vertexOrder.get(i+1).getX();
-	        this.vertex[i*4+3] = vertexOrder.get(i+1).getY();
+    if(!this.isSlider){
+        for(var i=0; i<vertexOrder.length()-1; i++){
+            this.vertex[i*4+0] = vertexOrder.get(i).getX();
+            this.vertex[i*4+1] = vertexOrder.get(i).getY();
+            this.vertex[i*4+2] = vertexOrder.get(i+1).getX();
+            this.vertex[i*4+3] = vertexOrder.get(i+1).getY();
 
-	        this.lengths.push(this.distance(this.vertex[i*4+0], this.vertex[i*4+1], this.vertex[i*4+2], this.vertex[i*4+3]));
-		}
-	}
-	else{
-		// for slider rect
-		for(var i=0; i<vertexOrder.length()-1; i++){
-	      var angle = Math.atan2(vertexOrder.get(i+1).getY()-vertexOrder.get(i).getY(), vertexOrder.get(i+1).getX()-vertexOrder.get(i).getX())-Math.PI/2;
-	      var dist = 20;
-	      this.vertex[i*4+0] = vertexOrder.get(i).getX() + dist*Math.cos(angle);
-	      this.vertex[i*4+1] = vertexOrder.get(i).getY() + dist*Math.sin(angle);
-	      this.vertex[i*4+2] = vertexOrder.get(i+1).getX() + dist*Math.cos(angle);
-	      this.vertex[i*4+3] = vertexOrder.get(i+1).getY() + dist*Math.sin(angle);
-	      this.lengths.push(this.distance(this.vertex[i*4+0], this.vertex[i*4+1], this.vertex[i*4+2], this.vertex[i*4+3]));
-	    }
-	}
+            this.lengths.push(this.distance(this.vertex[i*4+0], this.vertex[i*4+1], this.vertex[i*4+2], this.vertex[i*4+3]));
+        }
+    }
+    else{
+        // for slider rect
+        for(var i=0; i<vertexOrder.length()-1; i++){
+          var angle = Math.atan2(vertexOrder.get(i+1).getY()-vertexOrder.get(i).getY(), vertexOrder.get(i+1).getX()-vertexOrder.get(i).getX())-Math.PI/2;
+          var dist = 20;
+          this.vertex[i*4+0] = vertexOrder.get(i).getX() + dist*Math.cos(angle);
+          this.vertex[i*4+1] = vertexOrder.get(i).getY() + dist*Math.sin(angle);
+          this.vertex[i*4+2] = vertexOrder.get(i+1).getX() + dist*Math.cos(angle);
+          this.vertex[i*4+3] = vertexOrder.get(i+1).getY() + dist*Math.sin(angle);
+          this.lengths.push(this.distance(this.vertex[i*4+0], this.vertex[i*4+1], this.vertex[i*4+2], this.vertex[i*4+3]));
+        }
+    }
 
 }
 
@@ -271,18 +271,18 @@ Link.prototype.getGlobalRoundedVertex = function(_rot){
       vertexList.add(vertexOrder.get(i+1).getX() + dist*Math.cos(angle));
       vertexList.add(vertexOrder.get(i+1).getY() + dist*Math.sin(angle));
 
-	  // for fixed rounded angle
-	  for(var k=0; k<step; k++){
-		  var _newAngle = angle + (angle2-angle)*(k/step)
-		  vertexList.add(vertexOrder.get(i+1).getX() + dist*Math.cos(_newAngle));
+      // for fixed rounded angle
+      for(var k=0; k<step; k++){
+          var _newAngle = angle + (angle2-angle)*(k/step)
+          vertexList.add(vertexOrder.get(i+1).getX() + dist*Math.cos(_newAngle));
           vertexList.add(vertexOrder.get(i+1).getY() + dist*Math.sin(_newAngle));
-	  }
-	  /*
+      }
+      /*
       for(;angle<angle2;angle+=step){
         vertexList.add(vertexOrder.get(i+1).getX() + dist*Math.cos(angle));
         vertexList.add(vertexOrder.get(i+1).getY() + dist*Math.sin(angle));
       }
-	  */
+      */
 
     }
 
@@ -367,9 +367,9 @@ Link.prototype.pointIsChanged = function(){
 }
 
 Link.prototype.setSlider = function(_sc){
-	this.isSlider = true;
-	this.baseSC = _sc;
-	this.name = this.name.replace("Link", "Slider");
+    this.isSlider = true;
+    this.baseSC = _sc;
+    this.name = this.name.replace("Link", "Slider");
 }
 
 
@@ -378,11 +378,11 @@ Link.prototype.setSlider = function(_sc){
 // Space Class
 //--------------------
 function Space(){
-	Link.apply(this, arguments);
+    Link.apply(this, arguments);
 
-	this.name = "Global Space";
-	this.originPoint = new Point2D(0, 0);
-	this.DOF = 0;
+    this.name = "Global Space";
+    this.originPoint = new Point2D(0, 0);
+    this.DOF = 0;
 
   //console.log("[Space] new space: " + this.name);
 }
