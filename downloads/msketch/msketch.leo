@@ -6,6 +6,9 @@
 <preferences/>
 <find_panel_settings/>
 <vnodes>
+<v t="leo.20191210220017.1"><vh>開發註記</vh>
+<v t="leo.20191210220042.1"><vh>有關 jquery.min.js 位置</vh></v>
+</v>
 <v t="leo.20191210192811.1"><vh>@clean http-server.py</vh></v>
 <v t="leo.20191210163956.1"><vh>@clean index.html</vh>
 <v t="leo.20191210194051.1"><vh>&lt;&lt; head &gt;&gt;</vh></v>
@@ -70,7 +73,6 @@
 <v t="leo.20191210203004.30"><vh>function getTimeStamp</vh></v>
 <v t="leo.20191210203004.31"><vh>function leadingZeros</vh></v>
 </v>
-<v t="leo.20191210203226.1"><vh>newHeadline</vh></v>
 </v>
 <v t="leo.20191210203049.1"><vh>@path core/constraints</vh>
 <v t="leo.20191210203119.1"><vh>@clean Constraint.js</vh>
@@ -1137,21 +1139,20 @@ def domake():
 make = threading.Thread(target=domake)
 make.start()
 </t>
-<t tx="leo.20191210194051.1">        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
-        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"&gt;
-        
-        &lt;title&gt;EDISON m.Sketch&lt;/title&gt;
-        
-        &lt;link rel="stylesheet" href="./public/style/spectre.css"&gt;
-        &lt;link rel="stylesheet" href="./public/style/spectre-exp.css"&gt;
-        &lt;link rel="stylesheet" href="./public/style/spectre-icons.css"&gt;
-        
-        &lt;link rel="stylesheet" href="./public/style/icon.css" /&gt;
-        &lt;link rel="stylesheet" href="./public/style/style.css" type="text/css" /&gt;
-</t>
-<t tx="leo.20191210194333.1">&lt;script src="./public/js/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script src="./public/libs/three.min.85.js"&gt;&lt;/script&gt;
+<t tx="leo.20191210194051.1">    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"&gt;
+    
+    &lt;title&gt;EDISON m.Sketch&lt;/title&gt;
+    
+    &lt;link rel="stylesheet" href="./public/style/spectre.css"&gt;
+    &lt;link rel="stylesheet" href="./public/style/spectre-exp.css"&gt;
+    &lt;link rel="stylesheet" href="./public/style/spectre-icons.css"&gt;
+    
+    &lt;link rel="stylesheet" href="./public/style/icon.css" /&gt;
+    &lt;link rel="stylesheet" href="./public/style/style.css" type="text/css" /&gt;
+    &lt;script src="./public/js/jquery.min.js"&gt;&lt;/script&gt;</t>
+<t tx="leo.20191210194333.1">&lt;script src="./public/libs/three.min.85.js"&gt;&lt;/script&gt;
 &lt;script src="./public/libs/OrbitControls.js"&gt;&lt;/script&gt;
 &lt;script src="./public/libs/Projector.js"&gt;&lt;/script&gt;
 &lt;script src="./public/libs/TransformControls.js"&gt;&lt;/script&gt;
@@ -3629,35 +3630,35 @@ function initSettings(){
 $.ajax({
 url: '/loadSettings',
 method: 'post',
-success: function (data) {
-msketchSettings = JSON.parse(data.settings);
+    success: function (data) {
+        msketchSettings = JSON.parse(data.settings);
+    
+    // apply settings
+    MAX_HISTORY = parseInt( msketchSettings.MaxHistorySize );
 
-// apply settings
-MAX_HISTORY = parseInt( msketchSettings.MaxHistorySize );
-
-for(var i=0; i&lt;AssemblyGroupList.length; i++){
-AssemblyGroupList[i].setSettings(msketchSettings);
-AssemblyGroupList[i].needsUpdate = true;
-AssemblyGroupList[i].load();
-}
+    for(var i=0; i&lt;AssemblyGroupList.length; i++){
+        AssemblyGroupList[i].setSettings(msketchSettings);
+        AssemblyGroupList[i].needsUpdate = true;
+        AssemblyGroupList[i].load();
+    }
 },
-error: function (err) {
-showMessage("Setting Load failed");
-}
+    error: function (err) {
+        showMessage("Setting Load failed");
+    }
 });
 }
 
 function applySettings(){
-msketchSettings.showGrid = $("#setting_showGrid").prop("checked");
-msketchSettings.showText = $("#setting_showText").prop("checked");
-msketchSettings.showPlane = $("#setting_showPlane").prop("checked");
-
-msketchSettings.gridGap = parseFloat( $('#setting_gridGap').val() );
-msketchSettings.planeSize = parseFloat( $('#setting_planeSize').val() );
-
-msketchSettings.holeDiameter = parseFloat( $('#setting_holeDiameter').val() );
-msketchSettings.linkWidth = parseFloat( $('#setting_linkWidth').val() );
-msketchSettings.linkThickness = parseFloat( $('#setting_linkThickness').val() );
+    msketchSettings.showGrid = $("#setting_showGrid").prop("checked");
+    msketchSettings.showText = $("#setting_showText").prop("checked");
+    msketchSettings.showPlane = $("#setting_showPlane").prop("checked");
+    
+    msketchSettings.gridGap = parseFloat( $('#setting_gridGap').val() );
+    msketchSettings.planeSize = parseFloat( $('#setting_planeSize').val() );
+    
+    msketchSettings.holeDiameter = parseFloat( $('#setting_holeDiameter').val() );
+    msketchSettings.linkWidth = parseFloat( $('#setting_linkWidth').val() );
+    msketchSettings.linkThickness = parseFloat( $('#setting_linkThickness').val() );
 
 //apply setting to 3D link (yw_edited)
 Link3D.HEIGHT = msketchSettings.linkThickness;
@@ -3667,18 +3668,18 @@ Link3D.HOLE_SIZE = (msketchSettings.holeDiameter/SCALE_TRANS)/2;
 msketchSettings.MaxHistorySize = parseInt( $('#setting_maxHistory').val() );
 
 $.ajax({
-url: '/saveSettings',
-method: 'post',
-data: {
-settings: JSON.stringify(msketchSettings, null, '\t')
+    url: '/saveSettings',
+    method: 'post',
+    data: {
+    settings: JSON.stringify(msketchSettings, null, '\t')
 },
 success: function (data) {
-showMessage("Setting was applied.");
-initSettings();
+    showMessage("Setting was applied.");
+    initSettings();
 },
-error: function (err) {
-showMessage("Setting save failed");
-}
+    error: function (err) {
+        showMessage("Setting save failed");
+    }
 });
 
 }
@@ -4085,7 +4086,6 @@ function MMath(){}
     return MechConstraint.DOF;
 }
 </t>
-<t tx="leo.20191210203226.1">FileIO.js</t>
 <t tx="leo.20191210203240.1">/**
  * @author juwhan kim
  * @author hanjong kim
@@ -8506,98 +8506,98 @@ var canvasWidth, canvasHeight;
 @tabwidth -4
 </t>
 <t tx="leo.20191210204048.1">function init(){
-    canvasWidth = $('#threejs_canvas').innerWidth();
-    canvasHeight = $('#threejs_canvas').innerHeight();
-    //scene and camera
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera( 1, canvasWidth/canvasHeight, 10000, 100000000 );
-    camera.position.set( 0, 0, 100000 );
-    scene.add( camera );
+	canvasWidth = $('#threejs_canvas').innerWidth();
+	canvasHeight = $('#threejs_canvas').innerHeight();
+	//scene and camera
+	scene = new THREE.Scene();
+	camera = new THREE.PerspectiveCamera( 1, canvasWidth/canvasHeight, 10000, 100000000 );
+	camera.position.set( 0, 0, 100000 );
+	scene.add( camera );
 
-    //scene basic setup
-    scene.add( new THREE.AmbientLight( WHITE_COLOR ) );
-    var light = new THREE.PointLight( WHITE_COLOR, 0.5);
-    light.position.set( 0, 1000, 1000 );
-    /*
-    light.castShadow = true;
-    light.shadow.camera.near = camera.near;
-    light.shadow.camera.far = camera.far;
-    light.shadow.camera.fov = 70;
-    light.shadow.mapSize.width = 1024;
-    light.shadow.mapSize.height = 1024;
-    */
-    scene.add( light );
+	//scene basic setup
+	scene.add( new THREE.AmbientLight( WHITE_COLOR ) );
+	var light = new THREE.PointLight( WHITE_COLOR, 0.5);
+	light.position.set( 0, 1000, 1000 );
+	/*
+	light.castShadow = true;
+	light.shadow.camera.near = camera.near;
+	light.shadow.camera.far = camera.far;
+	light.shadow.camera.fov = 70;
+	light.shadow.mapSize.width = 1024;
+	light.shadow.mapSize.height = 1024;
+	*/
+	scene.add( light );
 
-    var globalAxis = new THREE.AxisHelper();
-    globalAxis.position.set( 0, 0, 0 );
-    globalAxis.scale.set(200, 200, 200);
-    scene.add( globalAxis );
+	var globalAxis = new THREE.AxisHelper();
+	globalAxis.position.set( 0, 0, 0 );
+	globalAxis.scale.set(200, 200, 200);
+	scene.add( globalAxis );
 
-    //renderer
-    //IE Competible
-
-
-    if ( webglAvailable() ) {
-        renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true} );
-        renderer.shadowMap.enabled = true;
-        console.log("WebGL Renderer Enabled");
-    } else {
-        renderer = new THREE.CanvasRenderer();
-        console.log("Canvas Renderer Enabled");
-    }
+	//renderer
+	//IE Competible
 
 
-    //renderer = new THREE.WebGLRenderer( { antialias: true } );
-    renderer.setClearColor( BACKGROUND_COLOR );
-    renderer.setSize( canvasWidth, canvasHeight );
-    document.getElementById("threejs_canvas").appendChild( renderer.domElement );
+	if ( webglAvailable() ) {
+		renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true} );
+		renderer.shadowMap.enabled = true;
+		console.log("WebGL Renderer Enabled");
+	} else {
+		renderer = new THREE.CanvasRenderer();
+		console.log("Canvas Renderer Enabled");
+	}
 
 
-    // Controls
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.rotateSpeed = 0.8;
-    controls.zoomSpeed = 1.2;
-    controls.panSpeed = 0.8;
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.75;
+	//renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setClearColor( BACKGROUND_COLOR );
+	renderer.setSize( canvasWidth, canvasHeight );
+	document.getElementById("threejs_canvas").appendChild( renderer.domElement );
 
-    transformControl = new THREE.TransformControls( camera, renderer.domElement );
-    transformControl.addEventListener( 'change', render );
-    transformControl.setSize(0.008);
-    transformControl.setRotationSnap(Math.PI/12);
 
-    scene.add( transformControl );
+	// Controls
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls.rotateSpeed = 0.8;
+	controls.zoomSpeed = 1.2;
+	controls.panSpeed = 0.8;
+	controls.enableDamping = true;
+	controls.dampingFactor = 0.75;
 
-    raycaster = new THREE.Raycaster();
-    mouse = new THREE.Vector3(0,0,0);
+	transformControl = new THREE.TransformControls( camera, renderer.domElement );
+	transformControl.addEventListener( 'change', render );
+	transformControl.setSize(0.008);
+	transformControl.setRotationSnap(Math.PI/12);
 
-    // Event Listener
-    window.addEventListener( 'resize', onWindowResize, false );
-    renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
-    renderer.domElement.addEventListener( 'mouseout', onDocumentMouseOut, false );
-    renderer.domElement.addEventListener( 'touchmove', onDocumentTouchMove, false );
-    renderer.domElement.addEventListener( 'touchstart', onDocumentTouchDown, false );
-    renderer.domElement.addEventListener( 'touchend', onDocumentTouchUp, false );
+	scene.add( transformControl );
 
-    transformControl.addEventListener( 'change', onUpdatePlanePanel, false );
-    window.addEventListener( 'keydown', onDocumentKeyDown, false);
-    window.addEventListener( 'keyup', onDocumentKeyUp, false);
+	raycaster = new THREE.Raycaster();
+	mouse = new THREE.Vector3(0,0,0);
+
+	// Event Listener
+	window.addEventListener( 'resize', onWindowResize, false );
+	renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
+	renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
+	renderer.domElement.addEventListener( 'mouseout', onDocumentMouseOut, false );
+	renderer.domElement.addEventListener( 'touchmove', onDocumentTouchMove, false );
+	renderer.domElement.addEventListener( 'touchstart', onDocumentTouchDown, false );
+	renderer.domElement.addEventListener( 'touchend', onDocumentTouchUp, false );
+
+	transformControl.addEventListener( 'change', onUpdatePlanePanel, false );
+	window.addEventListener( 'keydown', onDocumentKeyDown, false);
+	window.addEventListener( 'keyup', onDocumentKeyUp, false);
 
 }
 
 </t>
 <t tx="leo.20191210204048.2">function webglAvailable() {
-    try {
-        var canvas = document.createElement( 'canvas' );
-        return !!( window.WebGLRenderingContext &amp;&amp; (
-            canvas.getContext( 'webgl' ) ||
-            canvas.getContext( 'experimental-webgl' ) )
-        );
-    } catch ( e ) {
-        return false;
-    }
+	try {
+		var canvas = document.createElement( 'canvas' );
+		return !!( window.WebGLRenderingContext &amp;&amp; (
+			canvas.getContext( 'webgl' ) ||
+			canvas.getContext( 'experimental-webgl' ) )
+		);
+	} catch ( e ) {
+		return false;
+	}
 }
 </t>
 <t tx="leo.20191210204116.1"></t>
@@ -8622,210 +8622,210 @@ var ctrlDown = false;
 @tabwidth -4
 </t>
 <t tx="leo.20191210204148.1">function getMousePoints(_event, _target){
-    if(!isTouchScreen){
-        mouse.x = ( _event.offsetX / canvasWidth ) * 2 - 1;
-        mouse.y = - ( _event.offsetY / canvasHeight ) * 2 + 1;
-    }
-    else if ( _event.touches != null ){
-        isTouchScreen = true;
-        if ( _event.touches.length === 1 ) {
-            var tgOffset = _event.target.getBoundingClientRect();
-            mouse.x = ( (_event.targetTouches[0].clientX -  tgOffset.left) / canvasWidth ) * 2 - 1;
-            mouse.y = -( (_event.targetTouches[0].clientY -  tgOffset.top) / canvasHeight ) * 2 + 1;
-        }
-    }
+	if(!isTouchScreen){
+		mouse.x = ( _event.offsetX / canvasWidth ) * 2 - 1;
+		mouse.y = - ( _event.offsetY / canvasHeight ) * 2 + 1;
+	}
+	else if ( _event.touches != null ){
+		isTouchScreen = true;
+		if ( _event.touches.length === 1 ) {
+			var tgOffset = _event.target.getBoundingClientRect();
+			mouse.x = ( (_event.targetTouches[0].clientX -  tgOffset.left) / canvasWidth ) * 2 - 1;
+			mouse.y = -( (_event.targetTouches[0].clientY -  tgOffset.top) / canvasHeight ) * 2 + 1;
+		}
+	}
 
-    raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObject( _target, true );
+	raycaster.setFromCamera( mouse, camera );
+	intersects = raycaster.intersectObject( _target, true );
 
-    var mVector;
-    if (intersects.length &gt; 0) {
-        mVector = new THREE.Vector3().copy( intersects[ 0 ].point );
+	var mVector;
+	if (intersects.length &gt; 0) {
+		mVector = new THREE.Vector3().copy( intersects[ 0 ].point );
         intersects[ 0 ].object.worldToLocal( mVector );
         mouseX = mVector.x;
-        mouseY = mVector.y;
-    }
+		mouseY = mVector.y;
+	}
 
 }
 
+function getTargetPlane(){
+	var assemblySelection = raycaster.intersectObject( scene, true );
+	if(assemblySelection.length&gt;0){
+		for(var i=0; i&lt;assemblySelection.length; i++){
+			for(var j=0; j&lt;AssemblyGroupList.length; j++){
+				if(assemblySelection[i].object == AssemblyGroupList[j].selectCube){
+					return j;
+				}
+			}
+		}
+	}
+	return -1;
+}
+
+function onDocumentMouseMove( event ) {
+	event.preventDefault();
+
+	getMousePoints(event, currentMousePlane);
+
+	if (currentInterface!=null &amp;&amp; mouseX!=lastX &amp;&amp; mouseY!=lastY) {
+	    switch(mouseState) {
+	    case STATE_NULL:
+	      currentInterface.mouseMove(mouseX, mouseY);
+	      break;
+	    case STATE_DOWN:
+	      currentInterface.mouseDownAndMoveFirst(mouseX, mouseY);
+	      currentInterface.mouseDownAndMove(mouseX, mouseY);
+	      mouseState=STATE_DOWN_AND_MOVE;
+	      break;
+	    case STATE_DOWN_AND_MOVE:
+	      currentInterface.mouseDownAndMove(mouseX, mouseY);
+	      break;
+      	case STATE_DOWN_AND_OUT:
+	      currentInterface.mouseDownAndMove(mouseX, mouseY);
+	      break;
+	    }
+
+    }
+
+	controls.enabled = true;
+
 </t>
 <t tx="leo.20191210204148.10">function onDocumentKeyDown( event ){
-    ctrlDown = false;
-    if (event.ctrlKey) ctrlDown = true;
-    if (event.ctrlKey &amp;&amp; event.keyCode == 90){
-        undo();
-    }
-    if (event.ctrlKey &amp;&amp; event.keyCode == 89){
-        redo();
-    }
+	ctrlDown = false;
+	if (event.ctrlKey) ctrlDown = true;
+	if (event.ctrlKey &amp;&amp; event.keyCode == 90){
+		undo();
+	}
+	if (event.ctrlKey &amp;&amp; event.keyCode == 89){
+		redo();
+	}
 
     //var ctrlKey = 17, vKey = 86, cKey = 67;
 }
 
 </t>
 <t tx="leo.20191210204148.11">function onDocumentKeyUp( event ){
-    ctrlDown = false;
+	ctrlDown = false;
 
-    checkHistory();
+	checkHistory();
 
-    if(event.keyCode == 32){
-        //interfaceSelect(TOOL_NAV);
-    }
+	if(event.keyCode == 32){
+		//interfaceSelect(TOOL_NAV);
+	}
 }
 
 </t>
 <t tx="leo.20191210204148.12">function onWindowResize() {
-    canvasWidth = $('#threejs_canvas').innerWidth();
-    canvasHeight = $('#threejs_canvas').innerHeight();
+	canvasWidth = $('#threejs_canvas').innerWidth();
+	canvasHeight = $('#threejs_canvas').innerHeight();
 
-    windowHalfX = canvasWidth / 2;
-    windowHalfY = canvasHeight / 2;
+	windowHalfX = canvasWidth / 2;
+	windowHalfY = canvasHeight / 2;
 
-    camera.aspect = canvasWidth / canvasHeight;
-    camera.updateProjectionMatrix();
+	camera.aspect = canvasWidth / canvasHeight;
+	camera.updateProjectionMatrix();
 
-    renderer.setSize( canvasWidth, canvasHeight );
+	renderer.setSize( canvasWidth, canvasHeight );
 }
 
 </t>
 <t tx="leo.20191210204148.13">function onUpdatePlanePanel(){
-    getPlaneInfoToPlanePanel();
+	getPlaneInfoToPlanePanel();
 }
 </t>
-<t tx="leo.20191210204148.2">function getTargetPlane(){
-    var assemblySelection = raycaster.intersectObject( scene, true );
-    if(assemblySelection.length&gt;0){
-        for(var i=0; i&lt;assemblySelection.length; i++){
-            for(var j=0; j&lt;AssemblyGroupList.length; j++){
-                if(assemblySelection[i].object == AssemblyGroupList[j].selectCube){
-                    return j;
-                }
-            }
-        }
-    }
-    return -1;
-}
+<t tx="leo.20191210204148.2">	if(event.type == "mousemove") {
+		isTouchScreen = false;
+		controls.zoomSpeed = 1.2;
 
+	}
+	lastX = mouseX;
 </t>
-<t tx="leo.20191210204148.3">function onDocumentMouseMove( event ) {
-    event.preventDefault();
-
-    getMousePoints(event, currentMousePlane);
-
-    if (currentInterface!=null &amp;&amp; mouseX!=lastX &amp;&amp; mouseY!=lastY) {
-        switch(mouseState) {
-        case STATE_NULL:
-          currentInterface.mouseMove(mouseX, mouseY);
-          break;
-        case STATE_DOWN:
-          currentInterface.mouseDownAndMoveFirst(mouseX, mouseY);
-          currentInterface.mouseDownAndMove(mouseX, mouseY);
-          mouseState=STATE_DOWN_AND_MOVE;
-          break;
-        case STATE_DOWN_AND_MOVE:
-          currentInterface.mouseDownAndMove(mouseX, mouseY);
-          break;
-        case STATE_DOWN_AND_OUT:
-          currentInterface.mouseDownAndMove(mouseX, mouseY);
-          break;
-        }
-
-    }
-
-    controls.enabled = true;
-
-    if(event.type == "mousemove") {
-        isTouchScreen = false;
-        controls.zoomSpeed = 1.2;
-
-    }
-    lastX = mouseX;
-    lastY = mouseY;
+<t tx="leo.20191210204148.3">    lastY = mouseY;
 
 }
 
 </t>
 <t tx="leo.20191210204148.4">function onDocumentMouseDown( event ) {
-    event.preventDefault();
+	event.preventDefault();
 
-    getMousePoints(event, currentMousePlane);
+	getMousePoints(event, currentMousePlane);
 
-    if(event.which!=1 &amp;&amp; !isTouchScreen) return;
+	if(event.which!=1 &amp;&amp; !isTouchScreen) return;
 
-    if (currentInterface!=null &amp;&amp; mouseState!=STATE_DOWN_AND_OUT) {
-        currentInterface.mouseDown(mouseX, mouseY);
-        mouseState=STATE_DOWN;
-    }
+	if (currentInterface!=null &amp;&amp; mouseState!=STATE_DOWN_AND_OUT) {
+		currentInterface.mouseDown(mouseX, mouseY);
+		mouseState=STATE_DOWN;
+	}
 
 }
 
 </t>
 <t tx="leo.20191210204148.5">function onDocumentMouseUp( event ) {
-    event.preventDefault();
+	event.preventDefault();
 
-    getMousePoints(event, currentMousePlane);
+	getMousePoints(event, currentMousePlane);
 
-    if (currentInterface!=null) {
-        switch(mouseState) {
-        case STATE_NULL:
-          currentInterface.mouseDownAndUp(mouseX, mouseY);
-          break;
-        case STATE_DOWN:
-          currentInterface.mouseDownAndUp(mouseX, mouseY);
-          currentInterface.mouseMove(mouseX, mouseY);
-          break;
-        case STATE_DOWN_AND_MOVE:
-          currentInterface.mouseMoveAndUp(mouseX, mouseY);
-          currentInterface.mouseMove(mouseX, mouseY);
-          break;
-        }
-        currentAssemblyGroup.onStart();
-        currentAssemblyGroup.calculateAssembly();
-    }
-    mouseState=STATE_NULL;
+	if (currentInterface!=null) {
+	    switch(mouseState) {
+	    case STATE_NULL:
+	      currentInterface.mouseDownAndUp(mouseX, mouseY);
+	      break;
+	    case STATE_DOWN:
+	      currentInterface.mouseDownAndUp(mouseX, mouseY);
+	      currentInterface.mouseMove(mouseX, mouseY);
+	      break;
+	    case STATE_DOWN_AND_MOVE:
+	      currentInterface.mouseMoveAndUp(mouseX, mouseY);
+	      currentInterface.mouseMove(mouseX, mouseY);
+	      break;
+	    }
+	    currentAssemblyGroup.onStart();
+	    currentAssemblyGroup.calculateAssembly();
+	}
+	mouseState=STATE_NULL;
 
-    if(toolState==TOOL_PSEL){
-        if(getTargetPlane()!=-1){
-            selectAssembly(getTargetPlane());
-        }
-    }
+	if(toolState==TOOL_PSEL){
+		if(getTargetPlane()!=-1){
+			selectAssembly(getTargetPlane());
+		}
+	}
 
-    checkHistory();
+	checkHistory();
 }
 
 </t>
 <t tx="leo.20191210204148.6">function onDocumentMouseOut( event ) {
-    event.preventDefault();
+	event.preventDefault();
 
-    getMousePoints(event, currentMousePlane);
+	getMousePoints(event, currentMousePlane);
 
-    if(mouseState == STATE_DOWN_AND_MOVE &amp;&amp; event.which == 1){
-        mouseState=STATE_DOWN_AND_OUT;
-    }
-    controls.enabled = false;
+	if(mouseState == STATE_DOWN_AND_MOVE &amp;&amp; event.which == 1){
+		mouseState=STATE_DOWN_AND_OUT;
+	}
+	controls.enabled = false;
 }
 
 // touch events
 </t>
 <t tx="leo.20191210204148.7">function onDocumentTouchDown( event ){
-    event.preventDefault();
-    isTouchScreen = true;
-    controls.zoomSpeed = 0.3;
-    onDocumentMouseMove(event);
-    onDocumentMouseDown(event);
+	event.preventDefault();
+	isTouchScreen = true;
+	controls.zoomSpeed = 0.3;
+	onDocumentMouseMove(event);
+	onDocumentMouseDown(event);
 }
 </t>
 <t tx="leo.20191210204148.8">function onDocumentTouchUp( event ){
-    event.preventDefault();
-    onDocumentMouseMove(event);
-    onDocumentMouseUp(event);
-    hoverPoint = new Point2D;
-    hoverLink = null;
+	event.preventDefault();
+	onDocumentMouseMove(event);
+	onDocumentMouseUp(event);
+	hoverPoint = new Point2D;
+	hoverLink = null;
 }
 </t>
 <t tx="leo.20191210204148.9">function onDocumentTouchMove( event ){
-    event.preventDefault();
-    onDocumentMouseMove(event);
+	event.preventDefault();
+	onDocumentMouseMove(event);
 
 }
 
@@ -8839,51 +8839,51 @@ var ctrlDown = false;
 //* ===== Tool function variables =====
 var toolState 			= -1;
 var TOOL_RUN 			= 1,
-    TOOL_NAV 			= 2,
+	TOOL_NAV 			= 2,
 
-    TOOL_LINK 			= 3,
-    TOOL_JA 			= 4,
-    TOOL_MARK 			= 5,
-    TOOL_MOVE 			= 6,
-    TOOL_REMOVE 		= 7,
+	TOOL_LINK 			= 3,
+	TOOL_JA 			= 4,
+	TOOL_MARK 			= 5,
+	TOOL_MOVE 			= 6,
+	TOOL_REMOVE 		= 7,
 
-    TOOL_PCAM 			= 8,
-    TOOL_PADD 			= 9,
-    TOOL_PREMOVE 		= 10,
-    TOOL_PSEL 			= 11,
-    TOOL_PTRANS 		= 12,
-    TOOL_PROT 			= 13,
+	TOOL_PCAM 			= 8,
+	TOOL_PADD 			= 9,
+	TOOL_PREMOVE 		= 10,
+	TOOL_PSEL 			= 11,
+	TOOL_PTRANS 		= 12,
+	TOOL_PROT 			= 13,
 
-    TOOL_SLIDER			= 14;
-    TOOL_PCOPY 			= 15;
+	TOOL_SLIDER			= 14;
+	TOOL_PCOPY 			= 15;
 
-    // Menubar
-    TOOL_NEWFILE 		= 21,
-    TOOL_SAVE	 		= 22,
-    TOOL_OPEN 			= 23,
-    TOOL_EXPORT 		= 24,
-    TOOL_IMPORT 		= 25,
-    TOOL_DRAWING 		= 26,
-    TOOL_EXAMPLE 		= 27,
-    TOOL_MANUAL 		= 28,
+	// Menubar
+	TOOL_NEWFILE 		= 21,
+	TOOL_SAVE	 		= 22,
+	TOOL_OPEN 			= 23,
+	TOOL_EXPORT 		= 24,
+	TOOL_IMPORT 		= 25,
+	TOOL_DRAWING 		= 26,
+	TOOL_EXAMPLE 		= 27,
+	TOOL_MANUAL 		= 28,
 
-    TOOL_CAMEO_DRAWING 	= 29,
-    TOOL_EDISON_XML 	= 30;
+	TOOL_CAMEO_DRAWING 	= 29,
+	TOOL_EDISON_XML 	= 30;
 
-    // Panel and External Functions
-    PANEL_MOVE 			= 51;
-    TOOL_OPT 			= 40;
-    TOOL_PPATTERN		= 41;
-    TOOL_PMOTOR			= 42;
-    TOOL_PANALYSIS		= 43;
-    TOOL_FAB			= 44;
+	// Panel and External Functions
+	PANEL_MOVE 			= 51;
+	TOOL_OPT 			= 40;
+	TOOL_PPATTERN		= 41;
+	TOOL_PMOTOR			= 42;
+	TOOL_PANALYSIS		= 43;
+	TOOL_FAB			= 44;
 
-    TOOL_ADDLOAD		= 61;
-    TOOL_EDITLOAD		= 62;
-    TOOL_REMOVELOAD		= 63;
+	TOOL_ADDLOAD		= 61;
+	TOOL_EDITLOAD		= 62;
+	TOOL_REMOVELOAD		= 63;
 
 var	PANEL_MOVE_INDEX	= 1,
-    PANEL_PLANE_INDEX 	= 2;
+	PANEL_PLANE_INDEX 	= 2;
 
 
 
@@ -8895,236 +8895,236 @@ var prevTool = -1;
 @tabwidth -4
 </t>
 <t tx="leo.20191210204203.1">function interfaceSelect(_selected){
-    switch(_selected){
-        // Header Toolbar
-        case TOOL_RUN:
-            isPlaying=!isPlaying;
-            if (isPlaying) {
-                toolState = -1;
-                setTool(toolState);
-                prevMillis = new Date().getTime();
-                globalAngle = 0;
+	switch(_selected){
+		// Header Toolbar
+		case TOOL_RUN:
+			isPlaying=!isPlaying;
+			if (isPlaying) {
+				toolState = -1;
+				setTool(toolState);
+				prevMillis = new Date().getTime();
+				globalAngle = 0;
 
-                for(var i=0; i&lt;AssemblyGroupList.length; i++){
-                    AssemblyGroupList[i].load();
-                    AssemblyGroupList[i].savePositions();
-                    AssemblyGroupList[i].onStart();
-                    AssemblyGroupList[i].flushTrajectories();
-                    AssemblyGroupList[i].hideCube();
-                    AssemblyGroupList[i].setOpacity(1);
-                }
+				for(var i=0; i&lt;AssemblyGroupList.length; i++){
+					AssemblyGroupList[i].load();
+					AssemblyGroupList[i].savePositions();
+					AssemblyGroupList[i].onStart();
+					AssemblyGroupList[i].flushTrajectories();
+					AssemblyGroupList[i].hideCube();
+					AssemblyGroupList[i].setOpacity(1);
+				}
 
-                currentAssemblyGroup.hidePlane();
-                currentAssemblyGroup.setOpacity(1);
-            }
-            else{
-                for(var i=0; i&lt;AssemblyGroupList.length; i++){
-                    AssemblyGroupList[i].restorePositions()
-                    AssemblyGroupList[i].onEnd();
-                    AssemblyGroupList[i].flushTrajectories();
-                    AssemblyGroupList[i].initTrajectories();
-                    AssemblyGroupList[i].showCube();
-                    AssemblyGroupList[i].setOpacity(DISABLED_PLANE_OPA);
-                }
+				currentAssemblyGroup.hidePlane();
+				currentAssemblyGroup.setOpacity(1);
+			}
+			else{
+				for(var i=0; i&lt;AssemblyGroupList.length; i++){
+					AssemblyGroupList[i].restorePositions()
+					AssemblyGroupList[i].onEnd();
+					AssemblyGroupList[i].flushTrajectories();
+					AssemblyGroupList[i].initTrajectories();
+					AssemblyGroupList[i].showCube();
+					AssemblyGroupList[i].setOpacity(DISABLED_PLANE_OPA);
+				}
 
-                currentAssemblyGroup.showPlane();
-                if(isAnalysisOn) isAnalysisOn=false;
-                try360forAssemblies();
-            }
-            break;
-        case TOOL_NAV:
-            isControlable = !isControlable;
-            prevControlable = isControlable;
-            if(isControlable){
-                prevTool=toolState;
-                if(toolState!=TOOL_PTRANS &amp;&amp; toolState!=TOOL_PROT &amp;&amp; toolState!=TOOL_PSEL){
-                    toolState = -1;
-                    setTool(toolState);
-                }
-            }else{
-                if(prevTool == TOOL_LINK || prevTool == TOOL_JA || prevTool == TOOL_MARK || prevTool == TOOL_MOVE || prevTool == TOOL_REMOVE ){
-                    toolState=prevTool;
-                    setTool(toolState);
-                }
-            }
-            break;
+				currentAssemblyGroup.showPlane();
+				if(isAnalysisOn) isAnalysisOn=false;
+				try360forAssemblies();
+			}
+			break;
+		case TOOL_NAV:
+			isControlable = !isControlable;
+			prevControlable = isControlable;
+			if(isControlable){
+				prevTool=toolState;
+				if(toolState!=TOOL_PTRANS &amp;&amp; toolState!=TOOL_PROT &amp;&amp; toolState!=TOOL_PSEL){
+					toolState = -1;
+					setTool(toolState);
+				}
+			}else{
+				if(prevTool == TOOL_LINK || prevTool == TOOL_JA || prevTool == TOOL_MARK || prevTool == TOOL_MOVE || prevTool == TOOL_REMOVE ){
+					toolState=prevTool;
+					setTool(toolState);
+				}
+			}
+			break;
 
-        case TOOL_LINK:
-            if(toolState!=TOOL_LINK) toolState = TOOL_LINK;
-            else if(toolState==TOOL_LINK) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_JA:
-            if(toolState!=TOOL_JA) toolState = TOOL_JA;
-            else if(toolState==TOOL_JA) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_SLIDER:
-            if(toolState!=TOOL_SLIDER) toolState = TOOL_SLIDER;
-            else if(toolState==TOOL_SLIDER) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_MARK:
-            if(toolState!=TOOL_MARK) toolState = TOOL_MARK;
-            else if(toolState==TOOL_MARK) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_MOVE:
-            if(toolState!=TOOL_MOVE) toolState = TOOL_MOVE;
-            else if(toolState==TOOL_MOVE) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_REMOVE:
-            if(toolState!=TOOL_REMOVE) toolState = TOOL_REMOVE;
-            else if(toolState==TOOL_REMOVE) toolState = -1;
-            setTool(toolState);
-            break;
+		case TOOL_LINK:
+			if(toolState!=TOOL_LINK) toolState = TOOL_LINK;
+			else if(toolState==TOOL_LINK) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_JA:
+			if(toolState!=TOOL_JA) toolState = TOOL_JA;
+			else if(toolState==TOOL_JA) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_SLIDER:
+			if(toolState!=TOOL_SLIDER) toolState = TOOL_SLIDER;
+			else if(toolState==TOOL_SLIDER) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_MARK:
+			if(toolState!=TOOL_MARK) toolState = TOOL_MARK;
+			else if(toolState==TOOL_MARK) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_MOVE:
+			if(toolState!=TOOL_MOVE) toolState = TOOL_MOVE;
+			else if(toolState==TOOL_MOVE) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_REMOVE:
+			if(toolState!=TOOL_REMOVE) toolState = TOOL_REMOVE;
+			else if(toolState==TOOL_REMOVE) toolState = -1;
+			setTool(toolState);
+			break;
 
-        case TOOL_PCAM:
-            var rX = currentAssemblyGroup.group.rotation.x;
-            var rY = currentAssemblyGroup.group.rotation.y;
-            var rZ = currentAssemblyGroup.group.rotation.z;
+		case TOOL_PCAM:
+			var rX = currentAssemblyGroup.group.rotation.x;
+			var rY = currentAssemblyGroup.group.rotation.y;
+			var rZ = currentAssemblyGroup.group.rotation.z;
 
-            camera.position.x = 100000*Math.sin(rY);
-            camera.position.y = 100000*Math.sin(rX)*Math.cos(rY)*(-1);
-            camera.position.z = 100000*Math.cos(rX)*Math.cos(rY);
+			camera.position.x = 100000*Math.sin(rY);
+			camera.position.y = 100000*Math.sin(rX)*Math.cos(rY)*(-1);
+			camera.position.z = 100000*Math.cos(rX)*Math.cos(rY);
 
-            _target = new THREE.Vector3(currentAssemblyGroup.group.position.x,currentAssemblyGroup.group.position.y,currentAssemblyGroup.group.position.z);
+			_target = new THREE.Vector3(currentAssemblyGroup.group.position.x,currentAssemblyGroup.group.position.y,currentAssemblyGroup.group.position.z);
 
-            controls.target.set(Number(_target.x), Number(_target.y), Number(_target.z));
-            camera.lookAt( currentAssemblyGroup.group.position );
-            break;
-        case TOOL_PADD:
-            addAssemblyGroup(currentAssemblyGroup.group.position.z+100);
-            currentAssemblyGroup.init();
-            selectAssembly(AssemblyGroupList.length-1);
-            checkHistory();
-            break;
-        case TOOL_PREMOVE:
-            removeAssemblyGroup(findCurrentAssemblyNum());
-            checkHistory();
-            break;
-        case TOOL_PSEL:
-            if(toolState!=TOOL_PSEL) toolState = TOOL_PSEL;
-            else if(toolState==TOOL_PSEL) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_PTRANS:
-            if(toolState!=TOOL_PTRANS) toolState = TOOL_PTRANS;
-            else if(toolState==TOOL_PTRANS) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_PROT:
-            if(toolState!=TOOL_PROT) toolState = TOOL_PROT;
-            else if(toolState==TOOL_PROT) toolState = -1;
-            setTool(toolState);
-            break;
-        case TOOL_PCOPY:
-            var _data = getMsketchInfoForPlane();
-            loadMsketchInfoForPlane(JSON.parse(_data).sketch, true);
+			controls.target.set(Number(_target.x), Number(_target.y), Number(_target.z));
+			camera.lookAt( currentAssemblyGroup.group.position );
+			break;
+		case TOOL_PADD:
+			addAssemblyGroup(currentAssemblyGroup.group.position.z+100);
+			currentAssemblyGroup.init();
+			selectAssembly(AssemblyGroupList.length-1);
+			checkHistory();
+			break;
+		case TOOL_PREMOVE:
+			removeAssemblyGroup(findCurrentAssemblyNum());
+			checkHistory();
+			break;
+		case TOOL_PSEL:
+			if(toolState!=TOOL_PSEL) toolState = TOOL_PSEL;
+			else if(toolState==TOOL_PSEL) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_PTRANS:
+			if(toolState!=TOOL_PTRANS) toolState = TOOL_PTRANS;
+			else if(toolState==TOOL_PTRANS) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_PROT:
+			if(toolState!=TOOL_PROT) toolState = TOOL_PROT;
+			else if(toolState==TOOL_PROT) toolState = -1;
+			setTool(toolState);
+			break;
+		case TOOL_PCOPY:
+			var _data = getMsketchInfoForPlane();
+			loadMsketchInfoForPlane(JSON.parse(_data).sketch, true);
 
-            break;
-
-
-        // Manubar
-        case TOOL_NEWFILE:
-            if(isPlaying)	interfaceSelect(TOOL_RUN);
-            makeNewFile();
-            //showSnackBar("새 파일 생성됨.", "New File was created.");
-            showMessage("New File was created.")
-            closeDrawer();
-            break;
-        case TOOL_SAVE:
-            break;
-        case TOOL_OPEN:
-            break;
-        case TOOL_EXPORT:
-            if(isPlaying)	interfaceSelect(TOOL_RUN);
-
-            var dataOut = getMsketchInfoForPlane();
-            saveAsText($('#msketch-titlebar-filename').val()+"_Plane"+findCurrentAssemblyNum()+".json", dataOut);
-            closeDrawer();
-            break;
-        case TOOL_IMPORT:
-            if(isPlaying)	interfaceSelect(TOOL_RUN);
-
-            interfaceSelect(TOOL_PADD);
-            loadFromStringData(dataFile, true);
-            dataFile=null;
-            toggleDrawer();
-            break;
-        case TOOL_DRAWING:
-            exportDrawing();
-            closeDrawer();
-            break;
-        case TOOL_CAMEO_DRAWING:
-            exportCameoDrawing();
-            toggleDrawer();
-            break;
-        case TOOL_EDISON_XML:
-            if(isPlaying)	interfaceSelect(TOOL_RUN);
-            exportEdisonXML();
-            toggleDrawer();
-            break;
-        case TOOL_EXAMPLE:
-            if(isPlaying)	interfaceSelect(TOOL_RUN);
-            openFileFromStringData(dataFile, true);
-            dataFile=null;
-            toggleDrawer();
-            break;
-        case TOOL_MANUAL:
-            window.open(MANUAL_URL, '_blank');
-            toggleDrawer();
-            break;
-
-        // External Tools
-        case TOOL_ADDLOAD:
-            if(toolState!=TOOL_ADDLOAD) toolState = TOOL_ADDLOAD;
-            else if(toolState==TOOL_ADDLOAD) toolState = -1;
-            setTool(toolState);
-            break;
-
-        case TOOL_EDITLOAD:
-            if(toolState!=TOOL_EDITLOAD) toolState = TOOL_EDITLOAD;
-            else if(toolState==TOOL_EDITLOAD) toolState = -1;
-            setTool(toolState);
-            break;
-
-        case TOOL_REMOVELOAD:
-            if(toolState!=TOOL_REMOVELOAD) toolState = TOOL_REMOVELOAD;
-            else if(toolState==TOOL_REMOVELOAD) toolState = -1;
-            setTool(toolState);
-            break;
+			break;
 
 
+		// Manubar
+		case TOOL_NEWFILE:
+			if(isPlaying)	interfaceSelect(TOOL_RUN);
+			makeNewFile();
+			//showSnackBar("새 파일 생성됨.", "New File was created.");
+			showMessage("New File was created.")
+			closeDrawer();
+			break;
+		case TOOL_SAVE:
+			break;
+		case TOOL_OPEN:
+			break;
+		case TOOL_EXPORT:
+			if(isPlaying)	interfaceSelect(TOOL_RUN);
 
-    }
+			var dataOut = getMsketchInfoForPlane();
+			saveAsText($('#msketch-titlebar-filename').val()+"_Plane"+findCurrentAssemblyNum()+".json", dataOut);
+			closeDrawer();
+			break;
+		case TOOL_IMPORT:
+			if(isPlaying)	interfaceSelect(TOOL_RUN);
 
-    checkToolSet();
-    //checkPanelSet();
+			interfaceSelect(TOOL_PADD);
+			loadFromStringData(dataFile, true);
+			dataFile=null;
+			toggleDrawer();
+			break;
+		case TOOL_DRAWING:
+			exportDrawing();
+			closeDrawer();
+			break;
+		case TOOL_CAMEO_DRAWING:
+			exportCameoDrawing();
+			toggleDrawer();
+			break;
+		case TOOL_EDISON_XML:
+			if(isPlaying)	interfaceSelect(TOOL_RUN);
+			exportEdisonXML();
+			toggleDrawer();
+			break;
+		case TOOL_EXAMPLE:
+			if(isPlaying)	interfaceSelect(TOOL_RUN);
+			openFileFromStringData(dataFile, true);
+			dataFile=null;
+			toggleDrawer();
+			break;
+		case TOOL_MANUAL:
+			window.open(MANUAL_URL, '_blank');
+			toggleDrawer();
+			break;
 
-    //* ===== Check orbit control =====
-    if (isControlable) {
-        //controls.enabled = true;
-        controls.enableRotate = true;
-    } else {
-        //controls.enabled = false;
-        controls.enableRotate = false;
-    }
+		// External Tools
+		case TOOL_ADDLOAD:
+			if(toolState!=TOOL_ADDLOAD) toolState = TOOL_ADDLOAD;
+			else if(toolState==TOOL_ADDLOAD) toolState = -1;
+			setTool(toolState);
+			break;
+
+		case TOOL_EDITLOAD:
+			if(toolState!=TOOL_EDITLOAD) toolState = TOOL_EDITLOAD;
+			else if(toolState==TOOL_EDITLOAD) toolState = -1;
+			setTool(toolState);
+			break;
+
+		case TOOL_REMOVELOAD:
+			if(toolState!=TOOL_REMOVELOAD) toolState = TOOL_REMOVELOAD;
+			else if(toolState==TOOL_REMOVELOAD) toolState = -1;
+			setTool(toolState);
+			break;
 
 
 
-    //* ===== Plane Selection =====
-    if(toolState==TOOL_PSEL){
-        for(var i=0; i&lt;AssemblyGroupList.length; i++){
-            AssemblyGroupList[i].showCube();
-        }
-    }
-    else{
-        for(var i=0; i&lt;AssemblyGroupList.length; i++){
-            AssemblyGroupList[i].hideCube();
-        }
-    }
+	}
+
+	checkToolSet();
+	//checkPanelSet();
+
+	//* ===== Check orbit control =====
+	if (isControlable) {
+		//controls.enabled = true;
+		controls.enableRotate = true;
+	} else {
+		//controls.enabled = false;
+		controls.enableRotate = false;
+	}
+
+
+
+	//* ===== Plane Selection =====
+	if(toolState==TOOL_PSEL){
+		for(var i=0; i&lt;AssemblyGroupList.length; i++){
+			AssemblyGroupList[i].showCube();
+		}
+	}
+	else{
+		for(var i=0; i&lt;AssemblyGroupList.length; i++){
+			AssemblyGroupList[i].hideCube();
+		}
+	}
 
 }
 
@@ -9132,170 +9132,170 @@ var prevTool = -1;
 
 </t>
 <t tx="leo.20191210204203.2">function setTool(_tool){
-    var _dettach = true;
-    var _allowNav = true;
-    switch(_tool){
-        case -1:
-            currentInterface = null;
-            isControlable = prevControlable;
-            break;
-        case TOOL_LINK:
-            currentInterface = new LinkInterface();
-            _allowNav = false;
-            break;
-        case TOOL_JA:
-            currentInterface = new JAInterface();
-            _allowNav = false;
-            break;
-        case TOOL_SLIDER:
-            currentInterface = new SliderInterface();
-            _allowNav = false;
-            break;
-        case TOOL_MARK:
-            currentInterface = new MarkInterface();
-            _allowNav = false;
-            break;
-        case TOOL_MOVE:
-            currentInterface = new MoveInterface();
-            _allowNav = false;
-            break;
-        case TOOL_REMOVE:
-            currentInterface = new RemoveInterface();
-            _allowNav = false;
-            break;
-        case TOOL_PTRANS:
-            transformControl.attach( currentAssemblyGroup.group );
-            transformControl.setMode( "translate" );
-            currentInterface = null;
-            _dettach=false;
-            break;
-        case TOOL_PROT:
-            transformControl.attach( currentAssemblyGroup.group );
-            transformControl.setMode( "rotate" );
-            currentInterface = null;
-            _dettach=false;
-            break;
-        case TOOL_PSEL:
-            currentInterface = null;
-            break;
-        case TOOL_OPT:
-            currentInterface = new OptInterface();
-            _allowNav = false;
-            break;
+	var _dettach = true;
+	var _allowNav = true;
+	switch(_tool){
+		case -1:
+			currentInterface = null;
+			isControlable = prevControlable;
+			break;
+		case TOOL_LINK:
+			currentInterface = new LinkInterface();
+			_allowNav = false;
+			break;
+		case TOOL_JA:
+			currentInterface = new JAInterface();
+			_allowNav = false;
+			break;
+		case TOOL_SLIDER:
+			currentInterface = new SliderInterface();
+			_allowNav = false;
+			break;
+		case TOOL_MARK:
+			currentInterface = new MarkInterface();
+			_allowNav = false;
+			break;
+		case TOOL_MOVE:
+			currentInterface = new MoveInterface();
+			_allowNav = false;
+			break;
+		case TOOL_REMOVE:
+			currentInterface = new RemoveInterface();
+			_allowNav = false;
+			break;
+		case TOOL_PTRANS:
+			transformControl.attach( currentAssemblyGroup.group );
+			transformControl.setMode( "translate" );
+			currentInterface = null;
+			_dettach=false;
+			break;
+		case TOOL_PROT:
+			transformControl.attach( currentAssemblyGroup.group );
+			transformControl.setMode( "rotate" );
+			currentInterface = null;
+			_dettach=false;
+			break;
+		case TOOL_PSEL:
+			currentInterface = null;
+			break;
+		case TOOL_OPT:
+			currentInterface = new OptInterface();
+			_allowNav = false;
+			break;
 
 
-        // External Interface
-        case TOOL_ADDLOAD:
-            currentInterface = new AddLoadInterface();
-            _allowNav = false;
-            break;
+		// External Interface
+		case TOOL_ADDLOAD:
+			currentInterface = new AddLoadInterface();
+			_allowNav = false;
+			break;
 
-        case TOOL_EDITLOAD:
-            currentInterface = new EditLoadInterface();
-            _allowNav = false;
-            break;
+		case TOOL_EDITLOAD:
+			currentInterface = new EditLoadInterface();
+			_allowNav = false;
+			break;
 
-        case TOOL_REMOVELOAD:
-            currentInterface = new RemoveLoadInterface();
-            _allowNav = false;
-            break;
-    }
+		case TOOL_REMOVELOAD:
+			currentInterface = new RemoveLoadInterface();
+			_allowNav = false;
+			break;
+	}
 
-    if(_allowNav == false &amp;&amp; isControlable){
-        isControlable = false;
-    }
+	if(_allowNav == false &amp;&amp; isControlable){
+		isControlable = false;
+	}
 
 
-    if(_dettach){
-        transformControl.detach( currentAssemblyGroup.group );
-    }
-    if(toolState!=TOOL_OPT &amp;&amp; !isPlaying){
-        //flushAllTargetTrj();
-    }
+	if(_dettach){
+		transformControl.detach( currentAssemblyGroup.group );
+	}
+	if(toolState!=TOOL_OPT &amp;&amp; !isPlaying){
+		//flushAllTargetTrj();
+	}
 }
 
 
 /* added for drawer */
 </t>
 <t tx="leo.20191210204203.3">$('#msketch_drawer_open').click(function(){
-    if( $('#msketch_drawer_open').hasClass('active') ){
-        $('#msketch_drawer').css('left', -240);
-    }else{
-        $('#msketch_drawer').css('left', 0);
-    }
+	if( $('#msketch_drawer_open').hasClass('active') ){
+		$('#msketch_drawer').css('left', -240);
+	}else{
+		$('#msketch_drawer').css('left', 0);
+	}
 
-    $('#msketch_drawer_open').toggleClass('active');
+	$('#msketch_drawer_open').toggleClass('active');
 });
 
-</t>
-<t tx="leo.20191210204203.4">function closeDrawer(){
-    if( $('#msketch_drawer_open').hasClass('active') ){
-        $('#msketch_drawer').css('left', -240);
-    }
-    $('#msketch_drawer_open').removeClass('active');
+function closeDrawer(){
+	if( $('#msketch_drawer_open').hasClass('active') ){
+		$('#msketch_drawer').css('left', -240);
+	}
+	$('#msketch_drawer_open').removeClass('active');
 }
 
 
 
 
-</t>
-<t tx="leo.20191210204203.5">function checkToolSet() {
-    if(isPlaying)		$('#btn_play').addClass('active');
-    else 				$('#btn_play').removeClass('active');
+function checkToolSet() {
+	if(isPlaying)		$('#btn_play').addClass('active');
+	else 				$('#btn_play').removeClass('active');
 
-    if(isControlable)	$('#btn_nav').addClass('active');
-    else 				$('#btn_nav').removeClass('active');
+	if(isControlable)	$('#btn_nav').addClass('active');
+	else 				$('#btn_nav').removeClass('active');
 
-    if(toolState == TOOL_LINK)		$('#btn_link').addClass('active');
-    else 							$('#btn_link').removeClass('active');
-    if(toolState == TOOL_JA)		$('#btn_ja').addClass('active');
-    else 							$('#btn_ja').removeClass('active');
-    if(toolState == TOOL_SLIDER)	$('#btn_slider').addClass('active');
-    else 							$('#btn_slider').removeClass('active');
-    if(toolState == TOOL_MARK)		$('#btn_mark').addClass('active');
-    else 							$('#btn_mark').removeClass('active');
-    if(toolState == TOOL_MOVE)		$('#btn_move').addClass('active');
-    else 							$('#btn_move').removeClass('active');
-    if(toolState == TOOL_REMOVE)	$('#btn_remove').addClass('active');
-    else 							$('#btn_remove').removeClass('active');
-    if(toolState == TOOL_PSEL)		$('#btn_psel').addClass('active');
-    else 							$('#btn_psel').removeClass('active');
-    if(toolState == TOOL_PTRANS)	$('#btn_ptrans').addClass('active');
-    else 							$('#btn_ptrans').removeClass('active');
-    if(toolState == TOOL_PROT)		$('#btn_prot').addClass('active');
-    else 							$('#btn_prot').removeClass('active');
-    if(toolState == TOOL_OPT){
-        $('#panel_opt_draw').addClass('active');
-        // for drawing derised path of linkage generation function (yw_edited)
-        $('#panel_gen_draw').addClass('active');
-        $('#panel_opt_run').removeClass('disableClick');
-        $('#panel_opt_stop').removeClass('disableClick');
-        checkBaseTrj(true);
-    }else{
-        $('#panel_opt_draw').removeClass('active');
-        // for drawing derised path of linkage generation function (yw_edited)
-        $('#panel_gen_draw').removeClass('active');
-        $('#panel_opt_run').addClass('disableClick');
-        $('#panel_opt_stop').addClass('disableClick');
-        checkBaseTrj(false);
-    }
+	if(toolState == TOOL_LINK)		$('#btn_link').addClass('active');
+	else 							$('#btn_link').removeClass('active');
+	if(toolState == TOOL_JA)		$('#btn_ja').addClass('active');
+	else 							$('#btn_ja').removeClass('active');
+	if(toolState == TOOL_SLIDER)	$('#btn_slider').addClass('active');
+	else 							$('#btn_slider').removeClass('active');
+	if(toolState == TOOL_MARK)		$('#btn_mark').addClass('active');
+	else 							$('#btn_mark').removeClass('active');
+	if(toolState == TOOL_MOVE)		$('#btn_move').addClass('active');
+	else 							$('#btn_move').removeClass('active');
+	if(toolState == TOOL_REMOVE)	$('#btn_remove').addClass('active');
+	else 							$('#btn_remove').removeClass('active');
+	if(toolState == TOOL_PSEL)		$('#btn_psel').addClass('active');
+	else 							$('#btn_psel').removeClass('active');
+	if(toolState == TOOL_PTRANS)	$('#btn_ptrans').addClass('active');
+	else 							$('#btn_ptrans').removeClass('active');
+	if(toolState == TOOL_PROT)		$('#btn_prot').addClass('active');
+	else 							$('#btn_prot').removeClass('active');
+	if(toolState == TOOL_OPT){
+		$('#panel_opt_draw').addClass('active');
+		// for drawing derised path of linkage generation function (yw_edited)
+		$('#panel_gen_draw').addClass('active');
+		$('#panel_opt_run').removeClass('disableClick');
+		$('#panel_opt_stop').removeClass('disableClick');
+		checkBaseTrj(true);
+	}else{
+		$('#panel_opt_draw').removeClass('active');
+		// for drawing derised path of linkage generation function (yw_edited)
+		$('#panel_gen_draw').removeClass('active');
+		$('#panel_opt_run').addClass('disableClick');
+		$('#panel_opt_stop').addClass('disableClick');
+		checkBaseTrj(false);
+	}
 
-    // Load
-    if(toolState == TOOL_ADDLOAD)		$('#btn_addload').addClass('active');
-    else 								$('#btn_addload').removeClass('active');
-    if(toolState == TOOL_EDITLOAD)		$('#btn_editload').addClass('active');
-    else 								$('#btn_editload').removeClass('active');
-    if(toolState == TOOL_REMOVELOAD)	$('#btn_removeload').addClass('active');
-    else 								$('#btn_removeload').removeClass('active');
+	// Load
+	if(toolState == TOOL_ADDLOAD)		$('#btn_addload').addClass('active');
+	else 								$('#btn_addload').removeClass('active');
+	if(toolState == TOOL_EDITLOAD)		$('#btn_editload').addClass('active');
+	else 								$('#btn_editload').removeClass('active');
+	if(toolState == TOOL_REMOVELOAD)	$('#btn_removeload').addClass('active');
+	else 								$('#btn_removeload').removeClass('active');
 
-    if (isPlaying) {
-        $('#msketch_toolbar').addClass('disableClick')
+	if (isPlaying) {
+		$('#msketch_toolbar').addClass('disableClick')
     } else {
-        $('#msketch_toolbar').removeClass('disableClick');
+		$('#msketch_toolbar').removeClass('disableClick');
     }
 
-    if (toolState != TOOL_MOVE) {
-        selectedPoint = null;
+	if (toolState != TOOL_MOVE) {
+</t>
+<t tx="leo.20191210204203.4"></t>
+<t tx="leo.20191210204203.5">        selectedPoint = null;
         selectedPointTg = null;
         selectedLink = null;
         selectedPointPair = null;
@@ -9305,11 +9305,11 @@ var prevTool = -1;
 
 </t>
 <t tx="leo.20191210204203.6">function setViewMode(_index){
-    viewMode = _index;
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        AssemblyGroupList[i].needsUpdate = true;
-        AssemblyGroupList[i].load();
-    }
+	viewMode = _index;
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		AssemblyGroupList[i].needsUpdate = true;
+		AssemblyGroupList[i].load();
+	}
 }
 </t>
 <t tx="leo.20191210204211.1">//--------------------
@@ -9445,17 +9445,17 @@ MarkInterface.prototype.mouseDownAndUp = function(_x, _y){}
 //--------------------
 </t>
 <t tx="leo.20191210204217.15">function MoveInterface(){
-    this.linkToMove;
-    this.pointToMove;
-    this.activePoint = null;
-    this.activeLink = null;
-    this.lastX;
-    this.lastY;
+	this.linkToMove;
+	this.pointToMove;
+	this.activePoint = null;
+	this.activeLink = null;
+	this.lastX;
+	this.lastY;
 }
 
 </t>
 <t tx="leo.20191210204217.16">MoveInterface.prototype.mouseMove = function(_x, _y){
-    hoverPoint = getPointByPosition(_x, _y);
+	hoverPoint = getPointByPosition(_x, _y);
 
     // for selecting slider
     /*
@@ -9475,8 +9475,8 @@ MarkInterface.prototype.mouseDownAndUp = function(_x, _y){}
 
 </t>
 <t tx="leo.20191210204217.17">MoveInterface.prototype.mouseDown = function(_x, _y){
-    if (hoverPoint!=null) {
-    this.activePoint = hoverPoint;
+	if (hoverPoint!=null) {
+  	this.activePoint = hoverPoint;
     this.activeLink  = null;
   }
   var targetLink = getLinkByPosition(_x, _y);
@@ -9492,7 +9492,7 @@ MarkInterface.prototype.mouseDownAndUp = function(_x, _y){}
 
 </t>
 <t tx="leo.20191210204217.18">MoveInterface.prototype.mouseDownAndMoveFirst = function(_x, _y){
-    this.linkToMove  = new ArrayList();
+	this.linkToMove  = new ArrayList();
     this.pointToMove = new ArrayList();
 
     if (this.activePoint!=null) {
@@ -10065,8 +10065,8 @@ RemoveLoadInterface.prototype.mouseMoveAndUp = function(_x, _y){}
 
 </t>
 <t tx="leo.20191210204217.45">function getPointByPosition(_x, _y, _ignorePointList){
-    var arg_num = arguments.length;
-    var returnValue;
+	var arg_num = arguments.length;
+	var returnValue;
 
   DISTANCE_SNAP = (!isTouchScreen)? 24 : 64;
 
@@ -10411,53 +10411,53 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
 @tabwidth -4
 </t>
 <t tx="leo.20191210204232.1">function checkHistory(){
-    if(isPlaying) return;
+	if(isPlaying) return;
 
-    tempInfo = getMsketchInfo();
+	tempInfo = getMsketchInfo();
 
-    if( tempInfo != historyInfo[ historyInfo.length - 1 - historyAddress ] ){
-        historyInfo.splice( historyInfo.length - 1 - historyAddress + 1 , historyAddress );
-        historyAddress = 0;
-    }
+	if( tempInfo != historyInfo[ historyInfo.length - 1 - historyAddress ] ){
+		historyInfo.splice( historyInfo.length - 1 - historyAddress + 1 , historyAddress );
+		historyAddress = 0;
+	}
 
-    if(historyInfo[historyInfo.length-1] != tempInfo &amp;&amp; historyAddress==0){
-        historyInfo.push(tempInfo);
-    }
+	if(historyInfo[historyInfo.length-1] != tempInfo &amp;&amp; historyAddress==0){
+		historyInfo.push(tempInfo);
+	}
 
-    if(historyInfo.length &gt; MAX_HISTORY){
-        historyInfo.splice(0, 1);
-    }
+	if(historyInfo.length &gt; MAX_HISTORY){
+		historyInfo.splice(0, 1);
+	}
 
 }
 
 </t>
 <t tx="leo.20191210204232.2">function undo(){
-    if(isPlaying) return;
-    if(historyInfo.length - 2 - historyAddress &lt; 0) return;
+	if(isPlaying) return;
+	if(historyInfo.length - 2 - historyAddress &lt; 0) return;
 
-    var _tempIndex = findCurrentAssemblyNum();
+	var _tempIndex = findCurrentAssemblyNum();
 
-    historyAddress++;
-    loadMsketchInfo( historyInfo[historyInfo.length - 1 - historyAddress] , false);
+	historyAddress++;
+	loadMsketchInfo( historyInfo[historyInfo.length - 1 - historyAddress] , false);
 
-    try360forAssemblies();
+	try360forAssemblies();
 
-    selectAssembly(_tempIndex);
+	selectAssembly(_tempIndex);
 }
 
 </t>
 <t tx="leo.20191210204232.3">function redo(){
-    if(isPlaying) return;
-    if(historyAddress&lt;1) return;
+	if(isPlaying) return;
+	if(historyAddress&lt;1) return;
 
-    var _tempIndex = findCurrentAssemblyNum();
+	var _tempIndex = findCurrentAssemblyNum();
 
-    historyAddress--;
-    loadMsketchInfo( historyInfo[historyInfo.length - 1 - historyAddress] , false);
+	historyAddress--;
+	loadMsketchInfo( historyInfo[historyInfo.length - 1 - historyAddress] , false);
 
-    try360forAssemblies();
+	try360forAssemblies();
 
-    selectAssembly(_tempIndex);
+	selectAssembly(_tempIndex);
 }
 </t>
 <t tx="leo.20191210204255.1"></t>
@@ -10470,443 +10470,443 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
 @tabwidth -4
 </t>
 <t tx="leo.20191210204310.1">function makeNewFile(){
-    addAssemblyGroup(0);
-    currentAssemblyGroup.init();
-    selectAssembly(AssemblyGroupList.length-1);
+	addAssemblyGroup(0);
+	currentAssemblyGroup.init();
+	selectAssembly(AssemblyGroupList.length-1);
 
-    for(var i=AssemblyGroupList.length-2; i&gt;=0; i--){
-        removeAssemblyGroup(i);
-    }
-    updateMotorList();
+	for(var i=AssemblyGroupList.length-2; i&gt;=0; i--){
+		removeAssemblyGroup(i);
+	}
+	updateMotorList();
 }
 
 // Load File
 </t>
 <t tx="leo.20191210204310.2">function loadMsketchInfo(_data, _isNew){
 
-    var _dataJSON = JSON.parse(_data);
+	var _dataJSON = JSON.parse(_data);
 
-    //check header
-    if(_dataJSON.app != "EDISON" || _dataJSON.type != "Assembly"){
-        showMessage("Wrong File");
-        return null;
-    }else{
-        makeNewFile();
-    }
+	//check header
+	if(_dataJSON.app != "EDISON" || _dataJSON.type != "Assembly"){
+		showMessage("Wrong File");
+		return null;
+	}else{
+		makeNewFile();
+	}
 
-    // generate planes
-    for(var i=0; i&lt;_dataJSON.sketches.length; i++){
-        loadMsketchInfoForPlane(_dataJSON.sketches[i], _isNew)
-    }
-    try360forAssemblies();
-    updateMotorList();
-    removeAssemblyGroup(0);
+	// generate planes
+	for(var i=0; i&lt;_dataJSON.sketches.length; i++){
+		loadMsketchInfoForPlane(_dataJSON.sketches[i], _isNew)
+	}
+	try360forAssemblies();
+	updateMotorList();
+	removeAssemblyGroup(0);
 }
 
 </t>
 <t tx="leo.20191210204310.3">function importPlaneInfo(_data, _isNew){
-    var _dataJSON = JSON.parse(_data);
+	var _dataJSON = JSON.parse(_data);
 
-    //check header
-    if(_dataJSON.app != "EDISON" || _dataJSON.type != "Sketch"){
-        showMessage("Wrong File");
-        return null;
-    }
+	//check header
+	if(_dataJSON.app != "EDISON" || _dataJSON.type != "Sketch"){
+		showMessage("Wrong File");
+		return null;
+	}
 
-    loadMsketchInfoForPlane(_dataJSON.sketch, _isNew)
+	loadMsketchInfoForPlane(_dataJSON.sketch, _isNew)
 
-    try360forAssemblies();
-    updateMotorList();
-    selectAssembly(AssemblyGroupList.length-1);
+	try360forAssemblies();
+	updateMotorList();
+	selectAssembly(AssemblyGroupList.length-1);
 }
 
 // Load File
 </t>
 <t tx="leo.20191210204310.4">function loadMsketchInfoForPlane(_sketch, _isNew){
-    var nameTag = (_isNew)? "*":""; // to avoid duplicate of element names
+	var nameTag = (_isNew)? "*":""; // to avoid duplicate of element names
 
-    addAssemblyGroup(0);
-    currentAssemblyGroup.init();
+	addAssemblyGroup(0);
+	currentAssemblyGroup.init();
 
-    //Space
-    for(var j=0; j&lt;_sketch.anchor.points.length; j++){
-        var _points = _sketch.anchor.points[j];
-        currentSpace.addGlobalPoint( new Point2D( parseFloat(_points.x)/SCALE_TRANS, parseFloat(_points.y)/SCALE_TRANS ) );
-    }
+	//Space
+	for(var j=0; j&lt;_sketch.anchor.points.length; j++){
+		var _points = _sketch.anchor.points[j];
+		currentSpace.addGlobalPoint( new Point2D( parseFloat(_points.x)/SCALE_TRANS, parseFloat(_points.y)/SCALE_TRANS ) );
+	}
 
-    //Links
-    for(var j=0; j&lt;_sketch.links.length; j++){
-        var _link = _sketch.links[j];
-        var _linkElement = new Link(_link.name + nameTag, parseFloat(_link.points[0].x)/SCALE_TRANS, parseFloat(_link.points[0].y)/SCALE_TRANS )
-        _linkElement.stack = _link.points[0].z/Link3D.HEIGHT; //yw_edited
-        currentAssembly.addElement(_linkElement);
+	//Links
+	for(var j=0; j&lt;_sketch.links.length; j++){
+		var _link = _sketch.links[j];
+		var _linkElement = new Link(_link.name + nameTag, parseFloat(_link.points[0].x)/SCALE_TRANS, parseFloat(_link.points[0].y)/SCALE_TRANS )
+		_linkElement.stack = _link.points[0].z/Link3D.HEIGHT; //yw_edited
+		currentAssembly.addElement(_linkElement);
 
-        currentAssemblyGroup.load();
+		currentAssemblyGroup.load();
 
-        for(var k=1; k&lt;_link.points.length; k++){
-            _linkElement.addGlobalPoint( parseFloat(_link.points[k].x)/SCALE_TRANS, parseFloat(_link.points[k].y)/SCALE_TRANS )
-        }
-    }
+		for(var k=1; k&lt;_link.points.length; k++){
+			_linkElement.addGlobalPoint( parseFloat(_link.points[k].x)/SCALE_TRANS, parseFloat(_link.points[k].y)/SCALE_TRANS )
+		}
+	}
 
-    // CC
-    for(var j=0; j&lt;_sketch.constraints.length; j++){
-        var _cc = _sketch.constraints[j];
-        var _baseName = _cc.points[0].targetLink;
-        var _baseIndex = parseInt(_cc.points[0].targetIndex);
-        var _targetName =  _cc.points[1].targetLink;
-        var _targetIndex = parseInt(_cc.points[1].targetIndex);
+	// CC
+	for(var j=0; j&lt;_sketch.constraints.length; j++){
+		var _cc = _sketch.constraints[j];
+		var _baseName = _cc.points[0].targetLink;
+		var _baseIndex = parseInt(_cc.points[0].targetIndex);
+		var _targetName =  _cc.points[1].targetLink;
+		var _targetIndex = parseInt(_cc.points[1].targetIndex);
 
-        var _base, _target;
+		var _base, _target;
 
-        if(_baseName!="Anchor"){
-            _baseName = _baseName+nameTag;
-        }
-        if(_targetName!="Anchor"){
-            _targetName = _targetName+nameTag;
-        }
+		if(_baseName!="Anchor"){
+			_baseName = _baseName+nameTag;
+		}
+		if(_targetName!="Anchor"){
+			_targetName = _targetName+nameTag;
+		}
 
-        _base = currentAssembly.getLinkByName(_baseName);
-        _target = currentAssembly.getLinkByName(_targetName);
+		_base = currentAssembly.getLinkByName(_baseName);
+		_target = currentAssembly.getLinkByName(_targetName);
 
-        var _ccElement = new CoaxialConstraint(_cc.name + nameTag , _base, _base.getPointList().get(_baseIndex), _target, _target.getPointList().get(_targetIndex));;
+		var _ccElement = new CoaxialConstraint(_cc.name + nameTag , _base, _base.getPointList().get(_baseIndex), _target, _target.getPointList().get(_targetIndex));;
 
-        // Apendding CC
-        for(var k=2; k&lt;_cc.points.length; k++){
-            var _targetName =  _cc.points[k].targetLink;
-            var _targetIndex = parseInt(_cc.points[k].targetIndex);
-            var _target;
+		// Apendding CC
+		for(var k=2; k&lt;_cc.points.length; k++){
+			var _targetName =  _cc.points[k].targetLink;
+			var _targetIndex = parseInt(_cc.points[k].targetIndex);
+			var _target;
 
-            if(_targetName!="Anchor"){
-                _targetName = _targetName+nameTag;
-            }
+			if(_targetName!="Anchor"){
+				_targetName = _targetName+nameTag;
+			}
 
-            _target = currentAssembly.getLinkByName(_targetName);
+			_target = currentAssembly.getLinkByName(_targetName);
 
-            _ccElement.addPoint(_target, _target.getPointList().get(_targetIndex));
-        }
+			_ccElement.addPoint(_target, _target.getPointList().get(_targetIndex));
+		}
 
-        currentAssembly.addConstraint(_ccElement);
-    }
+		currentAssembly.addConstraint(_ccElement);
+	}
 
-    // Slider
-    for(var j=0; j&lt;_sketch.sliders.length; j++){
-        var _sc = _sketch.sliders[j];
-        var _baseName = _sc.baseLink +nameTag;
-        var _targetName = _sc.targetLink +nameTag;
+	// Slider
+	for(var j=0; j&lt;_sketch.sliders.length; j++){
+		var _sc = _sketch.sliders[j];
+		var _baseName = _sc.baseLink +nameTag;
+		var _targetName = _sc.targetLink +nameTag;
 
-        var _base = currentAssembly.getLinkByName(_baseName);
-        var _target = currentAssembly.getLinkByName(_targetName);
+		var _base = currentAssembly.getLinkByName(_baseName);
+		var _target = currentAssembly.getLinkByName(_targetName);
 
-        var _scElement = new SliderConstraint(_base, null, _base.getPointList().get(_sc.baseIndex1), _base.getPointList().get(_sc.baseIndex2) );
+		var _scElement = new SliderConstraint(_base, null, _base.getPointList().get(_sc.baseIndex1), _base.getPointList().get(_sc.baseIndex2) );
 
-        _target.setSlider(_scElement);
-        _scElement.setLink(_scElement.TARGET, _target);
+		_target.setSlider(_scElement);
+		_scElement.setLink(_scElement.TARGET, _target);
 
-        _target.addLocalPoint(new Point2D(+50, 0));
-        _target.addLocalPoint(new Point2D(-50, 0));
-        _target.setAngle(_scElement.getLink(_scElement.BASE).getAngle()+_scElement.getAngle());
+		_target.addLocalPoint(new Point2D(+50, 0));
+		_target.addLocalPoint(new Point2D(-50, 0));
+		_target.setAngle(_scElement.getLink(_scElement.BASE).getAngle()+_scElement.getAngle());
 
-        currentAssembly.addConstraint(_scElement);
-        _target.redefineVertex();
-    }
+		currentAssembly.addConstraint(_scElement);
+		_target.redefineVertex();
+	}
 
-    // JA
-    for(var j=0; j&lt;_sketch.motors.length; j++){
-        var _motor = _sketch.motors[j];
+	// JA
+	for(var j=0; j&lt;_sketch.motors.length; j++){
+		var _motor = _sketch.motors[j];
 
-        var _ccName 	= _motor.targetConstraint + nameTag;
-        var _baseName 	= _motor.targetLink1;
-        var _targetName = _motor.targetLink2;
+		var _ccName 	= _motor.targetConstraint + nameTag;
+		var _baseName 	= _motor.targetLink1;
+		var _targetName = _motor.targetLink2;
 
-        var _base, _target, _cc;
+		var _base, _target, _cc;
 
-        if(_baseName!="Anchor"){
-            _baseName = _baseName+nameTag;
-        }
-        if(_targetName!="Anchor"){
-            _targetName = _targetName+nameTag;
-        }
+		if(_baseName!="Anchor"){
+			_baseName = _baseName+nameTag;
+		}
+		if(_targetName!="Anchor"){
+			_targetName = _targetName+nameTag;
+		}
 
-        _base = currentAssembly.getLinkByName(_baseName);
-        _target = currentAssembly.getLinkByName(_targetName);
-        _cc = currentAssembly.getConstraintByName(_ccName);
-
-
-        var _motorElement = new JointActuator(_motor.name, _cc, _base, _target);
-        currentAssembly.addActuator(_motorElement);
+		_base = currentAssembly.getLinkByName(_baseName);
+		_target = currentAssembly.getLinkByName(_targetName);
+		_cc = currentAssembly.getConstraintByName(_ccName);
 
 
-        _motorElement.isServo = (_motor.type=="SERVO")? true:false;
-        _motorElement.setPhase( Math.radians(parseFloat(_motor.phase)) );
-        _motorElement.setSpeedMultiply( parseFloat(_motor.speed)/100 );
-        _motorElement.setReverse( (parseInt(_motor.direction)==1)? true : false );
-        _motorElement.setStartAngle( Math.radians(parseFloat(_motor.range.split("-")[0])) );
-        _motorElement.setEndAngle( Math.radians(parseFloat(_motor.range.split("-")[1])) );
-        if(_motorElement.isServo){
-            //a.setInitAngle( a.startAngle );
-            _motorElement.setValue( _motorElement.startAngle + _motorElement.phaseShift );
-        }
-        else{
-            //a.setInitAngle( a.phaseShift );
-            _motorElement.setValue( _motorElement.phaseShift );
-        }
-    }
+		var _motorElement = new JointActuator(_motor.name, _cc, _base, _target);
+		currentAssembly.addActuator(_motorElement);
 
-    // Markers
-    for(var j=0; j&lt;_sketch.markers.length; j++){
-        var _marker = _sketch.markers[j];
 
-        var _linkName 	= _marker.targetLink;
-        var _index 		= _marker.targetIndex;
+		_motorElement.isServo = (_motor.type=="SERVO")? true:false;
+		_motorElement.setPhase( Math.radians(parseFloat(_motor.phase)) );
+		_motorElement.setSpeedMultiply( parseFloat(_motor.speed)/100 );
+		_motorElement.setReverse( (parseInt(_motor.direction)==1)? true : false );
+		_motorElement.setStartAngle( Math.radians(parseFloat(_motor.range.split("-")[0])) );
+		_motorElement.setEndAngle( Math.radians(parseFloat(_motor.range.split("-")[1])) );
+		if(_motorElement.isServo){
+			//a.setInitAngle( a.startAngle );
+			_motorElement.setValue( _motorElement.startAngle + _motorElement.phaseShift );
+		}
+		else{
+			//a.setInitAngle( a.phaseShift );
+			_motorElement.setValue( _motorElement.phaseShift );
+		}
+	}
 
-        if(_linkName!="Anchor"){
-            _linkName = _linkName+nameTag;
-        }
+	// Markers
+	for(var j=0; j&lt;_sketch.markers.length; j++){
+		var _marker = _sketch.markers[j];
 
-        _link = currentAssembly.getLinkByName(_linkName);
+		var _linkName 	= _marker.targetLink;
+		var _index 		= _marker.targetIndex;
 
-        currentAssemblyGroup.newTrajectory(_link.getPointList().get(_index));
-    }
+		if(_linkName!="Anchor"){
+			_linkName = _linkName+nameTag;
+		}
 
-    // Plane Info
-    var _planeData = {};
-    _planeData.tx = parseFloat(_sketch.plane.translation.x)/SCALE_TRANS;
-    _planeData.ty = parseFloat(_sketch.plane.translation.y)/SCALE_TRANS;
-    _planeData.tz = parseFloat(_sketch.plane.translation.z)/SCALE_TRANS;
-    _planeData.rx = Math.radians( parseFloat(_sketch.plane.rotation.x) );
-    _planeData.ry = Math.radians( parseFloat(_sketch.plane.rotation.y) );
-    _planeData.rz = Math.radians( parseFloat(_sketch.plane.rotation.z) );
-    currentAssemblyGroup.setPositionData(_planeData);
+		_link = currentAssembly.getLinkByName(_linkName);
 
-    currentAssemblyGroup.load();
+		currentAssemblyGroup.newTrajectory(_link.getPointList().get(_index));
+	}
+
+	// Plane Info
+	var _planeData = {};
+	_planeData.tx = parseFloat(_sketch.plane.translation.x)/SCALE_TRANS;
+	_planeData.ty = parseFloat(_sketch.plane.translation.y)/SCALE_TRANS;
+	_planeData.tz = parseFloat(_sketch.plane.translation.z)/SCALE_TRANS;
+	_planeData.rx = Math.radians( parseFloat(_sketch.plane.rotation.x) );
+	_planeData.ry = Math.radians( parseFloat(_sketch.plane.rotation.y) );
+	_planeData.rz = Math.radians( parseFloat(_sketch.plane.rotation.z) );
+	currentAssemblyGroup.setPositionData(_planeData);
+
+	currentAssemblyGroup.load();
 }
 
 
 // Get Info
 </t>
 <t tx="leo.20191210204310.5">function getMsketchInfo(){
-    var tempObject = {};
+	var tempObject = {};
 
-    tempObject.app = "EDISON";
-    tempObject.type = "Assembly";
-    tempObject.fileVersion = "2.0";
-    tempObject.description = "Saved From M.Sketch v3.0";
+	tempObject.app = "EDISON";
+	tempObject.type = "Assembly";
+	tempObject.fileVersion = "2.0";
+	tempObject.description = "Saved From M.Sketch v3.0";
 
-    //part setting (yw_edited)
-    tempObject.thickness = msketchSettings.linkThickness;
-    tempObject.holeSize = msketchSettings.holeDiameter;
-    tempObject.linkWidth = msketchSettings.linkWidth;
+	//part setting (yw_edited)
+	tempObject.thickness = msketchSettings.linkThickness;
+	tempObject.holeSize = msketchSettings.holeDiameter;
+	tempObject.linkWidth = msketchSettings.linkWidth;
 
-    saveAssemblyPositions();
+	saveAssemblyPositions();
 
-    // Start to Save File
-    tempObject.sketches = [];
+	// Start to Save File
+	tempObject.sketches = [];
 
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        var tempAssembly = {};
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		var tempAssembly = {};
 
-        // Plane Info
-        planeData = AssemblyGroupList[i].getPositionData();
-        tempAssembly.plane = {};
-        tempAssembly.plane.name = "Plane"+i;
-        tempAssembly.plane.translation = {
-                                        x: (planeData.tx*SCALE_TRANS).toFixed(2),
-                                        y: (planeData.ty*SCALE_TRANS).toFixed(2),
-                                        z: (planeData.tz*SCALE_TRANS).toFixed(2)
-                                        }
+		// Plane Info
+		planeData = AssemblyGroupList[i].getPositionData();
+		tempAssembly.plane = {};
+		tempAssembly.plane.name = "Plane"+i;
+		tempAssembly.plane.translation = {
+										x: (planeData.tx*SCALE_TRANS).toFixed(2),
+										y: (planeData.ty*SCALE_TRANS).toFixed(2),
+										z: (planeData.tz*SCALE_TRANS).toFixed(2)
+										}
 
-        tempAssembly.plane.rotation = {
-                                        x: Math.degrees(planeData.rx).toFixed(2),
-                                        y: Math.degrees(planeData.ry).toFixed(2),
-                                        z: Math.degrees(planeData.rz).toFixed(2)
-        }
+		tempAssembly.plane.rotation = {
+										x: Math.degrees(planeData.rx).toFixed(2),
+										y: Math.degrees(planeData.ry).toFixed(2),
+										z: Math.degrees(planeData.rz).toFixed(2)
+		}
 
-        // Element Info
-        var elementList = AssemblyGroupList[i].assembly.getAllElement();
+		// Element Info
+		var elementList = AssemblyGroupList[i].assembly.getAllElement();
 
-        tempAssembly.anchor = {};
-        tempAssembly.links = [];
+		tempAssembly.anchor = {};
+		tempAssembly.links = [];
 
-        for(var ei in elementList.array){
-            var e = elementList.get(ei);
-            if(e instanceof Space){
-                tempAssembly.anchor.points = [];
+		for(var ei in elementList.array){
+			var e = elementList.get(ei);
+			if(e instanceof Space){
+				tempAssembly.anchor.points = [];
 
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    tempAssembly.anchor.points.push({
-                        x: (_p.getX()*SCALE_TRANS).toFixed(2),
-                        y: (_p.getY()*SCALE_TRANS).toFixed(2),
-                        z: "0.00"
-                    });
-                }
-            }
+				for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
+					tempAssembly.anchor.points.push({
+						x: (_p.getX()*SCALE_TRANS).toFixed(2),
+						y: (_p.getY()*SCALE_TRANS).toFixed(2),
+						z: "0.00"
+					});
+				}
+			}
 
-            else if(e instanceof Link){
-                var tempLink = {};
-                tempLink.name = e.name;
-                tempLink.points = [];
+			else if(e instanceof Link){
+				var tempLink = {};
+				tempLink.name = e.name;
+				tempLink.points = [];
 
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
+				for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
 
-                    if(!e.isSlider || (e.isSlider &amp;&amp; pi == 0))
-                    tempLink.points.push({
-                        x: (e.getGlobalPosition(_p).getX()*SCALE_TRANS).toFixed(2),
-                        y: (e.getGlobalPosition(_p).getY()*SCALE_TRANS).toFixed(2),
-                        z: (e.stack * Link3D.HEIGHT).toFixed(2) //yw_edited
-                    });
-                }
+					if(!e.isSlider || (e.isSlider &amp;&amp; pi == 0))
+					tempLink.points.push({
+						x: (e.getGlobalPosition(_p).getX()*SCALE_TRANS).toFixed(2),
+						y: (e.getGlobalPosition(_p).getY()*SCALE_TRANS).toFixed(2),
+						z: (e.stack * Link3D.HEIGHT).toFixed(2) //yw_edited
+					});
+				}
 
-                tempAssembly.links.push(tempLink);
-            }
-        }
+				tempAssembly.links.push(tempLink);
+			}
+		}
 
-        // CC Info
-        var constList = AssemblyGroupList[i].assembly.getAllConstraint();
+		// CC Info
+		var constList = AssemblyGroupList[i].assembly.getAllConstraint();
 
-        tempAssembly.constraints = [];
-        tempAssembly.sliders = [];
+		tempAssembly.constraints = [];
+		tempAssembly.sliders = [];
 
-        for(var ei in constList.array){
-            var e = constList.get(ei);
-            if(e instanceof CoaxialConstraint){
-                var tempCC = {};
-                tempCC.name = e.name;
-                tempCC.points = [];
+		for(var ei in constList.array){
+			var e = constList.get(ei);
+			if(e instanceof CoaxialConstraint){
+				var tempCC = {};
+				tempCC.name = e.name;
+				tempCC.points = [];
 
-                for(var j = 0; j&lt;e.link.length(); j++){
-                    var _link = e.link.get(j);
-                    var _index;
+				for(var j = 0; j&lt;e.link.length(); j++){
+					var _link = e.link.get(j);
+					var _index;
 
-                    for(var k=0; k&lt;_link.getPointList().length(); k++){
-                        if(e.point.get(j).getX() == _link.getPointList().get(k).getX() &amp;&amp; e.point.get(j).getY() == _link.getPointList().get(k).getY()){
-                            _index = k;
-                        }
-                    }
-                    tempCC.points.push({targetLink: _link.name, targetIndex: _index})
-                }
+					for(var k=0; k&lt;_link.getPointList().length(); k++){
+		 				if(e.point.get(j).getX() == _link.getPointList().get(k).getX() &amp;&amp; e.point.get(j).getY() == _link.getPointList().get(k).getY()){
+		 					_index = k;
+		 				}
+		 			}
+					tempCC.points.push({targetLink: _link.name, targetIndex: _index})
+				}
 
-                tempAssembly.constraints.push(tempCC)
-            }
-            else if(e instanceof SliderConstraint){
-                var tempSC = {};
-                tempSC.name = e.name;
-                tempSC.baseLink = e.link.get(e.BASE).name;
-                tempSC.targetLink = e.link.get(e.TARGET).name;
-                tempSC.baseIndex1 = 0;
-                tempSC.baseIndex2 = 1;
+				tempAssembly.constraints.push(tempCC)
+			}
+			else if(e instanceof SliderConstraint){
+				var tempSC = {};
+				tempSC.name = e.name;
+				tempSC.baseLink = e.link.get(e.BASE).name;
+				tempSC.targetLink = e.link.get(e.TARGET).name;
+				tempSC.baseIndex1 = 0;
+				tempSC.baseIndex2 = 1;
 
-                for(var k=0; k&lt;e.link.get(e.BASE).getPointList().length(); k++){
-                    if(e.getPoints()[0].getX() == e.link.get(e.BASE).getPointList().get(k).getX() &amp;&amp; e.getPoints()[0].getY() == e.link.get(e.BASE).getPointList().get(k).getY()){
-                        tempSC.baseIndex1 = k;
-                    }
-                    if(e.getPoints()[1].getX() == e.link.get(e.BASE).getPointList().get(k).getX() &amp;&amp; e.getPoints()[1].getY() == e.link.get(e.BASE).getPointList().get(k).getY()){
-                        tempSC.baseIndex2 = k;
-                    }
-                }
+				for(var k=0; k&lt;e.link.get(e.BASE).getPointList().length(); k++){
+					if(e.getPoints()[0].getX() == e.link.get(e.BASE).getPointList().get(k).getX() &amp;&amp; e.getPoints()[0].getY() == e.link.get(e.BASE).getPointList().get(k).getY()){
+						tempSC.baseIndex1 = k;
+					}
+					if(e.getPoints()[1].getX() == e.link.get(e.BASE).getPointList().get(k).getX() &amp;&amp; e.getPoints()[1].getY() == e.link.get(e.BASE).getPointList().get(k).getY()){
+						tempSC.baseIndex2 = k;
+					}
+				}
 
-                tempAssembly.sliders.push(tempSC);
+				tempAssembly.sliders.push(tempSC);
 
-            }
-        }
+			}
+		}
 
-        // Markers
-        var _trajectoryList = AssemblyGroupList[i].getTrajectory();
+		// Markers
+		var _trajectoryList = AssemblyGroupList[i].getTrajectory();
 
-        tempAssembly.markers = [];
+		tempAssembly.markers = [];
 
-        for(var ti in _trajectoryList.array){
-            var t = _trajectoryList.get(ti);
+		for(var ti in _trajectoryList.array){
+			var t = _trajectoryList.get(ti);
 
-            if(t instanceof Trajectory){
-                _link = t.link;
+			if(t instanceof Trajectory){
+				_link = t.link;
 
-                for(var k=0; k&lt;_link.getPointList().length(); k++){
-                    if(t.point.getX() == _link.getPointList().get(k).getX() &amp;&amp; t.point.getY() == _link.getPointList().get(k).getY()){
-                        _index = k;
-                    }
-                }
+				for(var k=0; k&lt;_link.getPointList().length(); k++){
+	 				if(t.point.getX() == _link.getPointList().get(k).getX() &amp;&amp; t.point.getY() == _link.getPointList().get(k).getY()){
+	 					_index = k;
+	 				}
+	 			}
 
-                var tempTrj = {targetLink: _link.name, targetIndex: _index};
-            }
+				var tempTrj = {targetLink: _link.name, targetIndex: _index};
+			}
 
-            tempAssembly.markers.push(tempTrj);
-        }
+			tempAssembly.markers.push(tempTrj);
+		}
 
-        // JA
-        var _actuatorList = AssemblyGroupList[i].assembly.getAllActuator();
+		// JA
+		var _actuatorList = AssemblyGroupList[i].assembly.getAllActuator();
 
-        tempAssembly.motors = [];
+		tempAssembly.motors = [];
 
-        for(var ai in _actuatorList.array){
-            var a = _actuatorList.get(ai);
-            if(a instanceof JointActuator){
-                tempAssembly.motors.push({
-                    name: a.name,
-                    targetConstraint: a.coaxialConstraint.name,
-                    targetLink1: a.angularConstraint.link.get(0).name,
-                    targetLink2: a.angularConstraint.link.get(1).name,
-                    type: (a.isServo)? "SERVO":"DC",
-                    direction: (a.revDir)? 1:0,
-                    speed: Math.round(a.speedMultiply*100),
-                    phase: Math.round(Math.degrees(a.phaseShift)),
-                    range: Math.round(Math.degrees(a.startAngle)) +"-"+ Math.round(Math.degrees(a.endAngle))
-                });
-            }
-        }
+		for(var ai in _actuatorList.array){
+			var a = _actuatorList.get(ai);
+			if(a instanceof JointActuator){
+				tempAssembly.motors.push({
+					name: a.name,
+					targetConstraint: a.coaxialConstraint.name,
+					targetLink1: a.angularConstraint.link.get(0).name,
+					targetLink2: a.angularConstraint.link.get(1).name,
+					type: (a.isServo)? "SERVO":"DC",
+					direction: (a.revDir)? 1:0,
+					speed: Math.round(a.speedMultiply*100),
+					phase: Math.round(Math.degrees(a.phaseShift)),
+					range: Math.round(Math.degrees(a.startAngle)) +"-"+ Math.round(Math.degrees(a.endAngle))
+				});
+			}
+		}
 
-        tempObject.sketches.push( tempAssembly );
-    }
+		tempObject.sketches.push( tempAssembly );
+	}
 
-    restoreAssemblyPositions();
+	restoreAssemblyPositions();
 
-    var tempText = JSON.stringify(tempObject, null, '\t');
-    return tempText;
+	var tempText = JSON.stringify(tempObject, null, '\t');
+	return tempText;
 
 }
 
 </t>
 <t tx="leo.20191210204310.6">function getMsketchInfoForPlane(){
-    var tempData = JSON.parse( getMsketchInfo() );
+	var tempData = JSON.parse( getMsketchInfo() );
 
-    tempData.type = "Sketch";
+	tempData.type = "Sketch";
 
-    tempData.sketch = tempData.sketches[findCurrentAssemblyNum()];
-    delete tempData.sketches;
+	tempData.sketch = tempData.sketches[findCurrentAssemblyNum()];
+	delete tempData.sketches;
 
-    var tempText = JSON.stringify(tempData, null, '\t');
-    return tempText;
+	var tempText = JSON.stringify(tempData, null, '\t');
+	return tempText;
 }
 
 
 </t>
 <t tx="leo.20191210204310.7">function saveAssemblyPositions(){
-    // save positions
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        AssemblyGroupList[i].savePositions();
-        AssemblyGroupList[i].onStart();
-        AssemblyGroupList[i].flushTrajectories();
+	// save positions
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		AssemblyGroupList[i].savePositions();
+		AssemblyGroupList[i].onStart();
+		AssemblyGroupList[i].flushTrajectories();
 
-        var _actuatorList = AssemblyGroupList[i].assembly.getAllActuator();
-        for(var ai in _actuatorList.array){
-            var a = _actuatorList.get(ai);
-            if(a instanceof JointActuator){
-                a.setValue(0);
-            }
-        }
-        AssemblyGroupList[i].calculateAssembly();
-    }
+		var _actuatorList = AssemblyGroupList[i].assembly.getAllActuator();
+		for(var ai in _actuatorList.array){
+			var a = _actuatorList.get(ai);
+			if(a instanceof JointActuator){
+				a.setValue(0);
+			}
+		}
+		AssemblyGroupList[i].calculateAssembly();
+	}
 }
 
 </t>
 <t tx="leo.20191210204310.8">function restoreAssemblyPositions(){
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        AssemblyGroupList[i].onEnd();
-        AssemblyGroupList[i].restorePositions();
-        AssemblyGroupList[i].initTrajectories();
-        AssemblyGroupList[i].calculateAssembly();
-    }
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		AssemblyGroupList[i].onEnd();
+		AssemblyGroupList[i].restorePositions();
+		AssemblyGroupList[i].initTrajectories();
+		AssemblyGroupList[i].calculateAssembly();
+	}
 }
 
 </t>
@@ -10933,94 +10933,94 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
 @tabwidth -4
 </t>
 <t tx="leo.20191210204336.1">function exportDrawing(){
-    if(isPlaying)	interfaceSelect(TOOL_RUN);
+	if(isPlaying)	interfaceSelect(TOOL_RUN);
 
-    var doc = new jsPDF('landscape');
+  	var doc = new jsPDF('landscape');
 
-    var elementList = currentAssembly.getAllElement();
-    if(elementList==null) return;
+	var elementList = currentAssembly.getAllElement();
+	if(elementList==null) return;
 
-    doc.setFontSize(14);
-    doc.text(12, 15, 'm.Sketch Drawing');
-    doc.setFontSize(10);
-    doc.text(12, 20, 'Assembled View');
+	doc.setFontSize(14);
+	doc.text(12, 15, 'm.Sketch Drawing');
+	doc.setFontSize(10);
+	doc.text(12, 20, 'Assembled View');
 
-    doc.setFontSize(8);
-    doc.text(297-33.5, 210-15, 'EDISON DESIGN');
-    doc.setFontSize(8);
-    doc.text(297-42, 210-12, 'http://design.edison.re.kr');
-
-
-    //get dimension
-    var minX = 9999;
-    var maxX = -9999;
-    var minY = 9999;
-    var maxY = -9999;
-    var _scale = 10;
+	doc.setFontSize(8);
+	doc.text(297-33.5, 210-15, 'EDISON DESIGN');
+	doc.setFontSize(8);
+	doc.text(297-42, 210-12, 'http://design.edison.re.kr');
 
 
-    var HOLE_RADIUS = 2;
-
-    //========================= MAIN DRAWING ==========================
-    for(var ei in elementList.array){
-        var e = elementList.get(ei);
-
-        if(e instanceof Link &amp;&amp; !(e instanceof Space)){
-
-            for(var pi in e.getPointList().array){
-                var _p = e.getPointList().get(pi);
-                var _xM = e.getGlobalPosition(_p).getX()*SCALE_TRANS;
-                var _yM = -e.getGlobalPosition(_p).getY()*SCALE_TRANS;
-
-                if(minX&gt;_xM) minX = _xM;
-                if(maxX&lt;_xM) maxX = _xM;
-                if(minY&gt;_yM) minY = _yM;
-                if(maxY&lt;_yM) maxY = _yM;
-            }
-        }
-    }
-    //
-    var _x = (-minX)+20;
-    var _y = (-minY)+40;
-
-    for(var ei in elementList.array){
-        var e = elementList.get(ei);
-
-        if(e instanceof Link &amp;&amp; !(e instanceof Space)){
-            var v = e.getGlobalRoundedVertex(0);
-            if(v!=null){
-                v.push(v[0]);
-                v.push(v[1]);
-
-                for(var i=3; i&lt;v.length; i+=2){
-                    doc.line( v[i-3]*SCALE_TRANS+_x, -v[i-2]*SCALE_TRANS+_y, v[i-1]*SCALE_TRANS+_x, -v[i]*SCALE_TRANS+_y );
-                }
-
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = _x+e.getGlobalPosition(_p).getX()*SCALE_TRANS;
-                    var _yM = _y-e.getGlobalPosition(_p).getY()*SCALE_TRANS;
-
-                    doc.circle(_xM, _yM, HOLE_RADIUS);
+	//get dimension
+	var minX = 9999;
+	var maxX = -9999;
+	var minY = 9999;
+	var maxY = -9999;
+	var _scale = 10;
 
 
-                }
+	var HOLE_RADIUS = 2;
 
-            }
-        }
+	//========================= MAIN DRAWING ==========================
+	for(var ei in elementList.array){
+		var e = elementList.get(ei);
+
+		if(e instanceof Link &amp;&amp; !(e instanceof Space)){
+
+			for(var pi in e.getPointList().array){
+	 			var _p = e.getPointList().get(pi);
+	 			var _xM = e.getGlobalPosition(_p).getX()*SCALE_TRANS;
+	 			var _yM = -e.getGlobalPosition(_p).getY()*SCALE_TRANS;
+
+	 			if(minX&gt;_xM) minX = _xM;
+	 			if(maxX&lt;_xM) maxX = _xM;
+	 			if(minY&gt;_yM) minY = _yM;
+	 			if(maxY&lt;_yM) maxY = _yM;
+	 		}
+	 	}
+	}
+	//
+	var _x = (-minX)+20;
+ 	var _y = (-minY)+40;
+
+	for(var ei in elementList.array){
+	 	var e = elementList.get(ei);
+
+	 	if(e instanceof Link &amp;&amp; !(e instanceof Space)){
+	 		var v = e.getGlobalRoundedVertex(0);
+	 		if(v!=null){
+	 			v.push(v[0]);
+	 			v.push(v[1]);
+
+		 		for(var i=3; i&lt;v.length; i+=2){
+		 			doc.line( v[i-3]*SCALE_TRANS+_x, -v[i-2]*SCALE_TRANS+_y, v[i-1]*SCALE_TRANS+_x, -v[i]*SCALE_TRANS+_y );
+		 		}
+
+		 		for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
+		 			var _xM = _x+e.getGlobalPosition(_p).getX()*SCALE_TRANS;
+		 			var _yM = _y-e.getGlobalPosition(_p).getY()*SCALE_TRANS;
+
+		 			doc.circle(_xM, _yM, HOLE_RADIUS);
+
+
+		 		}
+
+	 		}
+	 	}
     }
     var number = 1;
     for(var ei in elementList.array){  //numbering
-        var e = elementList.get(ei);
+		var e = elementList.get(ei);
 
         if(e instanceof Link &amp;&amp; !(e instanceof Space)){
 
-            var v = new Array();
+	 		var v = new Array();
 
-            for(var pi in e.getPointList().array){
-                var _p = e.getPointList().get(pi);
-                v.push(e.getGlobalPosition(_p).getX());
-                v.push(e.getGlobalPosition(_p).getY());
+		 	for(var pi in e.getPointList().array){
+	 			var _p = e.getPointList().get(pi);
+	 			v.push(e.getGlobalPosition(_p).getX());
+	 			v.push(e.getGlobalPosition(_p).getY());
              }
 
         var sum_x = 0;
@@ -11044,137 +11044,137 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
         number++;
 
         }
-    }
+	}
 
-    //========================= SCHEMATIC DRAWING ==========================
-    doc.addPage();
+	//========================= SCHEMATIC DRAWING ==========================
+	doc.addPage();
 
-    doc.setFontSize(14);
-    doc.text(12, 15, 'm.Sketch Drawing');
-    doc.setFontSize(10);
-    doc.text(12, 20, 'Schematic Drawing');
+	doc.setFontSize(14);
+	doc.text(12, 15, 'm.Sketch Drawing');
+	doc.setFontSize(10);
+	doc.text(12, 20, 'Schematic Drawing');
 
-    doc.setFontSize(8);
-    doc.text(297-33.5, 210-15, 'EDISON DESIGN');
-    doc.setFontSize(8);
-    doc.text(297-42, 210-12, 'http://design.edison.re.kr');
+	doc.setFontSize(8);
+	doc.text(297-33.5, 210-15, 'EDISON DESIGN');
+	doc.setFontSize(8);
+	doc.text(297-42, 210-12, 'http://design.edison.re.kr');
 
-    // for removing duplicated vertexs
-    var pointList = new Array();
+	// for removing duplicated vertexs
+	var pointList = new Array();
 
-    for(var ei in elementList.array){
-        var e = elementList.get(ei);
+	for(var ei in elementList.array){
+	 	var e = elementList.get(ei);
 
-        if(e instanceof Link &amp;&amp; !(e instanceof Space)){
+	 	if(e instanceof Link &amp;&amp; !(e instanceof Space)){
 
-            var v = new Array();
+	 		var v = new Array();
 
-            for(var pi in e.getPointList().array){
-                var _p = e.getPointList().get(pi);
-                v.push(e.getGlobalPosition(_p).getX());
-                v.push(e.getGlobalPosition(_p).getY());
+	 		for(var pi in e.getPointList().array){
+	 			var _p = e.getPointList().get(pi);
+	 			v.push(e.getGlobalPosition(_p).getX());
+	 			v.push(e.getGlobalPosition(_p).getY());
 
-                _tX = _x+v[v.length-2]*SCALE_TRANS;
-                _tY = _y-v[v.length-1]*SCALE_TRANS;
+	 			_tX = _x+v[v.length-2]*SCALE_TRANS;
+	 			_tY = _y-v[v.length-1]*SCALE_TRANS;
 
-                doc.circle(_tX, _tY, 0.5);
-                doc.setFontSize(10);
+	 			doc.circle(_tX, _tY, 0.5);
+	 			doc.setFontSize(10);
 
-                var _text = "(" + (v[v.length-2]*SCALE_TRANS).toFixed(2) + " , " + (v[v.length-1]*SCALE_TRANS).toFixed(2) + ")"; //revised
-                if(pointList.indexOf(_text)==-1){
-                    pointList.push(_text);
-                    doc.text(_tX+1, _tY-1, _text);   //text insert part
-                }
+	 			var _text = "(" + (v[v.length-2]*SCALE_TRANS).toFixed(2) + " , " + (v[v.length-1]*SCALE_TRANS).toFixed(2) + ")"; //revised
+	 			if(pointList.indexOf(_text)==-1){
+	 				pointList.push(_text);
+	 				doc.text(_tX+1, _tY-1, _text);   //text insert part
+	 			}
 
-            }
+	 		}
 
-            if(v.length&gt;=6){
-                v.push(v[0]);
-                v.push(v[1]);
-                for(var i=3; i&lt;v.length; i+=2){
-                    doc.line( v[i-3]*SCALE_TRANS+_x, -v[i-2]*SCALE_TRANS+_y, v[i-1]*SCALE_TRANS+_x, -v[i]*SCALE_TRANS+_y );
-                }
-            }else{
-                doc.line( v[0]*SCALE_TRANS+_x, -v[1]*SCALE_TRANS+_y, v[2]*SCALE_TRANS+_x, -v[3]*SCALE_TRANS+_y );
-            }
+		 	if(v.length&gt;=6){
+		 		v.push(v[0]);
+	 			v.push(v[1]);
+		 		for(var i=3; i&lt;v.length; i+=2){
+		 			doc.line( v[i-3]*SCALE_TRANS+_x, -v[i-2]*SCALE_TRANS+_y, v[i-1]*SCALE_TRANS+_x, -v[i]*SCALE_TRANS+_y );
+		 		}
+		 	}else{
+	 			doc.line( v[0]*SCALE_TRANS+_x, -v[1]*SCALE_TRANS+_y, v[2]*SCALE_TRANS+_x, -v[3]*SCALE_TRANS+_y );
+		 	}
 
-        }
-    }
+	 	}
+	}
 
-    //========================= PART DRAWING ==========================
-    //rotated assembly
-    doc.addPage();
+	//========================= PART DRAWING ==========================
+	//rotated assembly
+	doc.addPage();
 
-    var offsetX = 0;
-    var offsetY = 0;
-    var maxOffsetX = 0;
+	var offsetX = 0;
+	var offsetY = 0;
+	var maxOffsetX = 0;
 
     var number_2 = 1;//
 
-    for(var ei in elementList.array){
-        var e = elementList.get(ei);
+	for(var ei in elementList.array){
+	 	var e = elementList.get(ei);
 
-        if(e instanceof Link &amp;&amp; !(e instanceof Space)){
-            var v = e.getGlobalRoundedVertex(1);
+	 	if(e instanceof Link &amp;&amp; !(e instanceof Space)){
+	 		var v = e.getGlobalRoundedVertex(1);
 
-            if(v!=null){
-                var minLX = 9999;
-                var maxLX = -9999;
-                var minLY = 9999;
-                var maxLY = -9999;
+	 		if(v!=null){
+	 			var minLX = 9999;
+				var maxLX = -9999;
+				var minLY = 9999;
+				var maxLY = -9999;
 
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
-                    var _yM = -e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
+	 			for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
+		 			var _xM = e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
+		 			var _yM = -e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
 
-                    if(minLX&gt;_xM) minLX = _xM;
-                    if(maxLX&lt;_xM) maxLX = _xM;
-                    if(minLY&gt;_yM) minLY = _yM;
-                    if(maxLY&lt;_yM) maxLY = _yM;
+		 			if(minLX&gt;_xM) minLX = _xM;
+		 			if(maxLX&lt;_xM) maxLX = _xM;
+		 			if(minLY&gt;_yM) minLY = _yM;
+		 			if(maxLY&lt;_yM) maxLY = _yM;
 
-                    //console.log (minLX +","+ maxLX+","+minLY+","+maxLY);
-                }
+		 			//console.log (minLX +","+ maxLX+","+minLY+","+maxLY);
+		 		}
 
-                var _w = Math.abs(maxLX - minLX);
-                var _h = Math.abs(maxLY - minLY);
+		 		var _w = Math.abs(maxLX - minLX);
+		 		var _h = Math.abs(maxLY - minLY);
 
-                if(offsetY+_h &gt; 210-40){
-                    offsetX += maxOffsetX + 20;
-                    offsetY = 0;
+		 		if(offsetY+_h &gt; 210-40){
+		 			offsetX += maxOffsetX + 20;
+		 			offsetY = 0;
 
-                    maxOffsetX=0;
-                }
-                if(offsetX+_w &gt; 297-40){
-                    doc.addPage();
-                    offsetX = 0;
-                    offsetY = 0;
+		 			maxOffsetX=0;
+		 		}
+		 		if(offsetX+_w &gt; 297-40){
+		 			doc.addPage();
+		 			offsetX = 0;
+		 			offsetY = 0;
 
-                    maxOffsetX=0;
-                }
+		 			maxOffsetX=0;
+		 		}
 
-                var _x = (-minLX)+20 + offsetX;
-                var _y = (-minLY)+20 + offsetY;
+		 		var _x = (-minLX)+20 + offsetX;
+			 	var _y = (-minLY)+20 + offsetY;
 
-                v.push(v[0]);
-                v.push(v[1]);
+	 			v.push(v[0]);
+	 			v.push(v[1]);
 
-                for(var i=3; i&lt;v.length; i+=2){
-                    doc.line( _x+v[i-3]*SCALE_TRANS, _y-v[i-2]*SCALE_TRANS, _x+v[i-1]*SCALE_TRANS, _y-v[i]*SCALE_TRANS );
-                }
+		 		for(var i=3; i&lt;v.length; i+=2){
+		 			doc.line( _x+v[i-3]*SCALE_TRANS, _y-v[i-2]*SCALE_TRANS, _x+v[i-1]*SCALE_TRANS, _y-v[i]*SCALE_TRANS );
+		 		}
 
                 var w = new Array(); //
 
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = _x+e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
-                    var _yM = _y-e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
+		 		for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
+		 			var _xM = _x+e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
+		 			var _yM = _y-e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
 
                     w.push(_xM);
                     w.push(_yM);
 
-                    doc.circle(_xM, _yM, HOLE_RADIUS);
-                }
+		 			doc.circle(_xM, _yM, HOLE_RADIUS);
+		 		}
 
                 var sum_x = 0; //
                 var sum_y = 0; //
@@ -11196,28 +11196,28 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
                 doc.text(offsetX+8, avr_y+1, _text);
                 number_2 ++;
 
-                offsetY += (_h+12);
-                if(maxOffsetX&lt;_w) maxOffsetX = _w;
+		 		offsetY += (_h+12);
+		 		if(maxOffsetX&lt;_w) maxOffsetX = _w;
 
-            }
-        }
-    }
+	 		}
+	 	}
+	}
 
 
 
     /*
     var number_2 = 1;
     for(var ei in elementList.array){  //numbering
-        var e = elementList.get(ei);
+		var e = elementList.get(ei);
 
         if(e instanceof Link &amp;&amp; !(e instanceof Space)){
 
-            var v = new Array();
+	 		var v = new Array();
 
-            for(var pi in e.getPointList().array){
-                var _p = e.getPointList().get(pi);
-                v.push(e.getGlobalPositionRotated(_p).getX());
-                v.push(e.getGlobalPositionRotated(_p).getY());
+		 	for(var pi in e.getPointList().array){
+	 			var _p = e.getPointList().get(pi);
+	 			v.push(e.getGlobalPositionRotated(_p).getX());
+	 			v.push(e.getGlobalPositionRotated(_p).getY());
             }
 
 
@@ -11242,24 +11242,24 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
         number_2 ++;
 
         }
-    }
+	}
     */
 
-    var agent = navigator.userAgent.toLowerCase();
-    var name = navigator.appName;
-    //console.log(name);
+	var agent = navigator.userAgent.toLowerCase();
+	var name = navigator.appName;
+	//console.log(name);
 
-    if ( name == "Microsoft Internet Explorer" || agent.search("trident") &gt; -1 || agent.search("edge/") &gt; -1){
-        doc.save('mSketchDrawing.pdf');
-    }
-    else {
-        //doc.output('dataurlnewwindow');
-        var blob = doc.output('blob');
-        window.open(URL.createObjectURL(blob));
-    }
+	if ( name == "Microsoft Internet Explorer" || agent.search("trident") &gt; -1 || agent.search("edge/") &gt; -1){
+		doc.save('mSketchDrawing.pdf');
+	}
+	else {
+		//doc.output('dataurlnewwindow');
+		var blob = doc.output('blob');
+		window.open(URL.createObjectURL(blob));
+	}
 
-    //if (agent.indexOf("chrome") != -1){
-    //}
+	//if (agent.indexOf("chrome") != -1){
+	//}
 }
 
 
@@ -11271,137 +11271,245 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
 //----------------------------------------------------------------------------------------------------
 </t>
 <t tx="leo.20191210204336.2">function exportCameoDrawing(){
-    if(isPlaying)	interfaceSelect(TOOL_RUN);
+	if(isPlaying)	interfaceSelect(TOOL_RUN);
 
-    var doc = new jsPDF('l', 'mm', [300, 300]);
+  	var doc = new jsPDF('l', 'mm', [300, 300]);
 
-    var elementList = currentAssembly.getAllElement();
-    if(elementList==null) return;
+	var elementList = currentAssembly.getAllElement();
+	if(elementList==null) return;
 
-    doc.setFontSize(8);
+	doc.setFontSize(8);
 
-    //get dimension
-    var minX = 9999;
-    var maxX = -9999;
-    var minY = 9999;
-    var maxY = -9999;
-    var _scale = 10;
-
-
-    var HOLE_RADIUS = 2.5;
-
-    // Cutting dimension (263.05mm)
-    var sideLength = 263.05;
-    doc.circle(5, 5, 0.1);
-    doc.circle(5+sideLength, 5+sideLength, 0.1);
+	//get dimension
+	var minX = 9999;
+	var maxX = -9999;
+	var minY = 9999;
+	var maxY = -9999;
+	var _scale = 10;
 
 
-    //========================= PART DRAWING ==========================
-    //rotated assembly
+	var HOLE_RADIUS = 2.5;
 
-    var offsetX = 0;
-    var offsetY = 0;
-    var maxOffsetX = 0;
+	// Cutting dimension (263.05mm)
+	var sideLength = 263.05;
+	doc.circle(5, 5, 0.1);
+	doc.circle(5+sideLength, 5+sideLength, 0.1);
+
+
+	//========================= PART DRAWING ==========================
+	//rotated assembly
+
+	var offsetX = 0;
+	var offsetY = 0;
+	var maxOffsetX = 0;
 
     var number_2 = 1;//
 
-    for(var ei in elementList.array){
-        var e = elementList.get(ei);
+	for(var ei in elementList.array){
+	 	var e = elementList.get(ei);
 
-        if(e instanceof Space){
-            if(e.getPointList().length()&gt;1){
-                var v = e.getGlobalRoundedVertex(0);
+		if(e instanceof Space){
+			if(e.getPointList().length()&gt;1){
+				var v = e.getGlobalRoundedVertex(0);
 
-                if(v!=null){
-                    var minLX = 9999;
-                    var maxLX = -9999;
-                    var minLY = 9999;
-                    var maxLY = -9999;
-                }
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = e.getGlobalPosition(_p).getX()*SCALE_TRANS;
-                    var _yM = -e.getGlobalPosition(_p).getY()*SCALE_TRANS;
+				if(v!=null){
+		 			var minLX = 9999;
+					var maxLX = -9999;
+					var minLY = 9999;
+					var maxLY = -9999;
+				}
+				for(var pi in e.getPointList().array){
+					var _p = e.getPointList().get(pi);
+					var _xM = e.getGlobalPosition(_p).getX()*SCALE_TRANS;
+					var _yM = -e.getGlobalPosition(_p).getY()*SCALE_TRANS;
 
-                    if(minLX&gt;_xM) minLX = _xM;
-                    if(maxLX&lt;_xM) maxLX = _xM;
-                    if(minLY&gt;_yM) minLY = _yM;
-                    if(maxLY&lt;_yM) maxLY = _yM;
+					if(minLX&gt;_xM) minLX = _xM;
+					if(maxLX&lt;_xM) maxLX = _xM;
+					if(minLY&gt;_yM) minLY = _yM;
+					if(maxLY&lt;_yM) maxLY = _yM;
 
-                    //console.log (minLX +","+ maxLX+","+minLY+","+maxLY);
-                }
+					//console.log (minLX +","+ maxLX+","+minLY+","+maxLY);
+				}
 
-                var _w = Math.abs(maxLX - minLX);
-                var _h = Math.abs(maxLY - minLY);
+				var _w = Math.abs(maxLX - minLX);
+				var _h = Math.abs(maxLY - minLY);
 
-                if(offsetY+_h &gt; 280-40){
-                    offsetX += maxOffsetX + 20;
-                    offsetY = 0;
+				if(offsetY+_h &gt; 280-40){
+					offsetX += maxOffsetX + 20;
+					offsetY = 0;
 
-                    maxOffsetX=0;
-                }
-                if(offsetX+_w &gt; 280-40){
-                    doc.addPage();
-                    offsetX = 0;
-                    offsetY = 0;
+					maxOffsetX=0;
+				}
+				if(offsetX+_w &gt; 280-40){
+					doc.addPage();
+					offsetX = 0;
+					offsetY = 0;
 
-                    maxOffsetX=0;
-                }
+					maxOffsetX=0;
+				}
 
-                var _x = (-minLX)+15 + offsetX;
-                var _y = (-minLY)+15 + offsetY;
+				var _x = (-minLX)+15 + offsetX;
+				var _y = (-minLY)+15 + offsetY;
 
-                var spaceOffset = 10;
+				var spaceOffset = 10;
 
-                //doc.roundedRect(_x+minLX, _y+minLY, (_w+spaceOffset*2)*2, _h+spaceOffset*2, 3, 3);
+				//doc.roundedRect(_x+minLX, _y+minLY, (_w+spaceOffset*2)*2, _h+spaceOffset*2, 3, 3);
 
-                var _rx = _x+minLX;
-                var _ry = _y+minLY;
-                var _rw = (_w+spaceOffset*2)*2;
-                var _rh = (_h+spaceOffset*2);
+				var _rx = _x+minLX;
+				var _ry = _y+minLY;
+				var _rw = (_w+spaceOffset*2)*2;
+				var _rh = (_h+spaceOffset*2);
 
-                doc.line(_rx + 0.5, _ry, _rx + _rw - 1, _ry);
-                doc.line(_rx, _ry, _rx, _ry + _rh);
-                doc.line(_rx + _rw, _ry, _rx + _rw, _ry + _rh);
-                doc.line(_rx + 0.5, _ry + _rh, _rx + _rw - 1, _ry + _rh);
+				doc.line(_rx + 0.5, _ry, _rx + _rw - 1, _ry);
+				doc.line(_rx, _ry, _rx, _ry + _rh);
+				doc.line(_rx + _rw, _ry, _rx + _rw, _ry + _rh);
+				doc.line(_rx + 0.5, _ry + _rh, _rx + _rw - 1, _ry + _rh);
 
-                // folding Line
-                var foldingLineX = _x + minLX + _w + spaceOffset*2;
-                var foldingLineOffset = 15;
-                for(var fi = 5; fi&lt; _h+spaceOffset*2-foldingLineOffset/2; fi+=foldingLineOffset){
-                    doc.line(foldingLineX, _y+minLY+fi, foldingLineX, _y+minLY+fi+foldingLineOffset/2);
-                }
+				// folding Line
+				var foldingLineX = _x + minLX + _w + spaceOffset*2;
+				var foldingLineOffset = 15;
+				for(var fi = 5; fi&lt; _h+spaceOffset*2-foldingLineOffset/2; fi+=foldingLineOffset){
+					doc.line(foldingLineX, _y+minLY+fi, foldingLineX, _y+minLY+fi+foldingLineOffset/2);
+				}
 
 
-                /*
-                v.push(v[0]);
-                v.push(v[1]);
+				/*
+				v.push(v[0]);
+				v.push(v[1]);
 
-                for(var i=3; i&lt;v.length; i+=2){
-                    doc.line( _x+v[i-3]*SCALE_TRANS, _y-v[i-2]*SCALE_TRANS, _x+v[i-1]*SCALE_TRANS, _y-v[i]*SCALE_TRANS );
-                }*/
+				for(var i=3; i&lt;v.length; i+=2){
+					doc.line( _x+v[i-3]*SCALE_TRANS, _y-v[i-2]*SCALE_TRANS, _x+v[i-1]*SCALE_TRANS, _y-v[i]*SCALE_TRANS );
+				}*/
+
+				var w = new Array(); //
+
+				for(var pi in e.getPointList().array){
+					var _p = e.getPointList().get(pi);
+					var _xM = _x+e.getGlobalPosition(_p).getX()*SCALE_TRANS;
+					var _yM = _y-e.getGlobalPosition(_p).getY()*SCALE_TRANS;
+
+					w.push(_xM);
+					w.push(_yM);
+
+
+
+					//doc.circle(_xM+spaceOffset, _yM+spaceOffset, HOLE_RADIUS);
+					//doc.circle( foldingLineX+(foldingLineX-(_xM+spaceOffset)), _yM+spaceOffset, HOLE_RADIUS);
+
+					doc.lines([[0, 0, 0, -HOLE_RADIUS, HOLE_RADIUS, -HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, HOLE_RADIUS]], _xM+spaceOffset-HOLE_RADIUS, _yM+spaceOffset-0.25, [1, 1]);
+					doc.lines([[0, 0, 0, HOLE_RADIUS, HOLE_RADIUS, HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, -HOLE_RADIUS]],_xM+spaceOffset-HOLE_RADIUS, _yM+spaceOffset+0.25, [1, 1]);
+
+					doc.lines([[0, 0, 0, -HOLE_RADIUS, HOLE_RADIUS, -HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, HOLE_RADIUS]], foldingLineX+(foldingLineX-(_xM+spaceOffset))-HOLE_RADIUS, _yM+spaceOffset-0.25, [1, 1]);
+					doc.lines([[0, 0, 0, HOLE_RADIUS, HOLE_RADIUS, HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, -HOLE_RADIUS]], foldingLineX+(foldingLineX-(_xM+spaceOffset))-HOLE_RADIUS, _yM+spaceOffset+0.25, [1, 1]);
+				}
+
+				var sum_x = 0; //
+				var sum_y = 0; //
+
+				var i = 0;
+				while(i&lt;w.length){
+					sum_x += w[i];
+					i += 2;
+				}
+				var j = 1;
+				while(j&lt;w.length){
+					sum_y += w[j];
+					j += 2;
+				}
+
+				var _text = number_2.toString();
+				var avr_x = sum_x/(w.length/2);
+				var avr_y = sum_y/(w.length/2);
+				//doc.text(offsetX+8, avr_y+1, _text);
+				number_2 ++;
+
+				offsetY += (_h+30);
+				if(maxOffsetX&lt;_w) maxOffsetX = _w*2;
+			}
+
+		}
+
+	 	if(e instanceof Link &amp;&amp; !(e instanceof Space)){
+	 		var v = e.getGlobalRoundedVertex(1);
+
+	 		if(v!=null){
+	 			var minLX = 9999;
+				var maxLX = -9999;
+				var minLY = 9999;
+				var maxLY = -9999;
+
+	 			for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
+		 			var _xM = e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
+		 			var _yM = -e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
+
+		 			if(minLX&gt;_xM) minLX = _xM;
+		 			if(maxLX&lt;_xM) maxLX = _xM;
+		 			if(minLY&gt;_yM) minLY = _yM;
+		 			if(maxLY&lt;_yM) maxLY = _yM;
+
+		 			//console.log (minLX +","+ maxLX+","+minLY+","+maxLY);
+		 		}
+
+		 		var _w = Math.abs(maxLX - minLX);
+		 		var _h = Math.abs(maxLY - minLY);
+
+		 		if(offsetY+_h &gt; 280-40){
+		 			offsetX += maxOffsetX + 20;
+		 			offsetY = 0;
+
+		 			maxOffsetX=0;
+		 		}
+		 		if(offsetX+_w &gt; 280-40){
+		 			doc.addPage();
+		 			offsetX = 0;
+		 			offsetY = 0;
+
+		 			maxOffsetX=0;
+		 		}
+
+		 		var _x = (-minLX)+20 + offsetX;
+			 	var _y = (-minLY)+20 + offsetY;
+
+	 			v.push(v[0]);
+	 			v.push(v[1]);
+
+		 		for(var i=3; i&lt;v.length; i+=2){
+
+					var _x1 = _x+v[i-3]*SCALE_TRANS;
+					var _y1 = _y-v[i-2]*SCALE_TRANS;
+					var _x2 = _x+v[i-1]*SCALE_TRANS;
+					var _y2 = _y-v[i]*SCALE_TRANS;
+
+					var _p1 = new Point2D(_x1, _y1);
+					var _p2 = new Point2D(_x2, _y2);
+
+					//console.log(i + "," + Math.round(v.length/8) + "," + MMath.dist(_p1, _p2));
+
+					if( (Math.round(i/2)%Math.round(v.length/16)==0) &amp;&amp; MMath.dist(_p1, _p2) &lt; 5 ){
+						console.log(i);
+					}else{
+						doc.line(_x1, _y1, _x2, _y2);
+					}
+
+		 		}
 
                 var w = new Array(); //
 
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = _x+e.getGlobalPosition(_p).getX()*SCALE_TRANS;
-                    var _yM = _y-e.getGlobalPosition(_p).getY()*SCALE_TRANS;
+		 		for(var pi in e.getPointList().array){
+		 			var _p = e.getPointList().get(pi);
+		 			var _xM = _x+e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
+		 			var _yM = _y-e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
 
                     w.push(_xM);
                     w.push(_yM);
 
+		 			//doc.circle(_xM, _yM, HOLE_RADIUS);
+					//upper arc and bottom arc
+					doc.lines([[0, 0, 0, -HOLE_RADIUS, HOLE_RADIUS, -HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, HOLE_RADIUS]], _xM-HOLE_RADIUS, _yM-0.25, [1, 1]);
+					doc.lines([[0, 0, 0, HOLE_RADIUS, HOLE_RADIUS, HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, -HOLE_RADIUS]], _xM-HOLE_RADIUS, _yM+0.25, [1, 1]);
 
-
-                    //doc.circle(_xM+spaceOffset, _yM+spaceOffset, HOLE_RADIUS);
-                    //doc.circle( foldingLineX+(foldingLineX-(_xM+spaceOffset)), _yM+spaceOffset, HOLE_RADIUS);
-
-                    doc.lines([[0, 0, 0, -HOLE_RADIUS, HOLE_RADIUS, -HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, HOLE_RADIUS]], _xM+spaceOffset-HOLE_RADIUS, _yM+spaceOffset-0.25, [1, 1]);
-                    doc.lines([[0, 0, 0, HOLE_RADIUS, HOLE_RADIUS, HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, -HOLE_RADIUS]],_xM+spaceOffset-HOLE_RADIUS, _yM+spaceOffset+0.25, [1, 1]);
-
-                    doc.lines([[0, 0, 0, -HOLE_RADIUS, HOLE_RADIUS, -HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, HOLE_RADIUS]], foldingLineX+(foldingLineX-(_xM+spaceOffset))-HOLE_RADIUS, _yM+spaceOffset-0.25, [1, 1]);
-                    doc.lines([[0, 0, 0, HOLE_RADIUS, HOLE_RADIUS, HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, -HOLE_RADIUS]], foldingLineX+(foldingLineX-(_xM+spaceOffset))-HOLE_RADIUS, _yM+spaceOffset+0.25, [1, 1]);
-                }
+		 		}
 
                 var sum_x = 0; //
                 var sum_y = 0; //
@@ -11423,140 +11531,32 @@ function getLinkContainingPoints(_x1, _y1, _x2, _y2){
                 //doc.text(offsetX+8, avr_y+1, _text);
                 number_2 ++;
 
-                offsetY += (_h+30);
-                if(maxOffsetX&lt;_w) maxOffsetX = _w*2;
-            }
+		 		offsetY += (_h+12);
+		 		if(maxOffsetX&lt;_w) maxOffsetX = _w;
 
-        }
-
-        if(e instanceof Link &amp;&amp; !(e instanceof Space)){
-            var v = e.getGlobalRoundedVertex(1);
-
-            if(v!=null){
-                var minLX = 9999;
-                var maxLX = -9999;
-                var minLY = 9999;
-                var maxLY = -9999;
-
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
-                    var _yM = -e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
-
-                    if(minLX&gt;_xM) minLX = _xM;
-                    if(maxLX&lt;_xM) maxLX = _xM;
-                    if(minLY&gt;_yM) minLY = _yM;
-                    if(maxLY&lt;_yM) maxLY = _yM;
-
-                    //console.log (minLX +","+ maxLX+","+minLY+","+maxLY);
-                }
-
-                var _w = Math.abs(maxLX - minLX);
-                var _h = Math.abs(maxLY - minLY);
-
-                if(offsetY+_h &gt; 280-40){
-                    offsetX += maxOffsetX + 20;
-                    offsetY = 0;
-
-                    maxOffsetX=0;
-                }
-                if(offsetX+_w &gt; 280-40){
-                    doc.addPage();
-                    offsetX = 0;
-                    offsetY = 0;
-
-                    maxOffsetX=0;
-                }
-
-                var _x = (-minLX)+20 + offsetX;
-                var _y = (-minLY)+20 + offsetY;
-
-                v.push(v[0]);
-                v.push(v[1]);
-
-                for(var i=3; i&lt;v.length; i+=2){
-
-                    var _x1 = _x+v[i-3]*SCALE_TRANS;
-                    var _y1 = _y-v[i-2]*SCALE_TRANS;
-                    var _x2 = _x+v[i-1]*SCALE_TRANS;
-                    var _y2 = _y-v[i]*SCALE_TRANS;
-
-                    var _p1 = new Point2D(_x1, _y1);
-                    var _p2 = new Point2D(_x2, _y2);
-
-                    //console.log(i + "," + Math.round(v.length/8) + "," + MMath.dist(_p1, _p2));
-
-                    if( (Math.round(i/2)%Math.round(v.length/16)==0) &amp;&amp; MMath.dist(_p1, _p2) &lt; 5 ){
-                        console.log(i);
-                    }else{
-                        doc.line(_x1, _y1, _x2, _y2);
-                    }
-
-                }
-
-                var w = new Array(); //
-
-                for(var pi in e.getPointList().array){
-                    var _p = e.getPointList().get(pi);
-                    var _xM = _x+e.getGlobalPositionRotated(_p).getX()*SCALE_TRANS;
-                    var _yM = _y-e.getGlobalPositionRotated(_p).getY()*SCALE_TRANS;
-
-                    w.push(_xM);
-                    w.push(_yM);
-
-                    //doc.circle(_xM, _yM, HOLE_RADIUS);
-                    //upper arc and bottom arc
-                    doc.lines([[0, 0, 0, -HOLE_RADIUS, HOLE_RADIUS, -HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, HOLE_RADIUS]], _xM-HOLE_RADIUS, _yM-0.25, [1, 1]);
-                    doc.lines([[0, 0, 0, HOLE_RADIUS, HOLE_RADIUS, HOLE_RADIUS],[0, 0, HOLE_RADIUS, 0, HOLE_RADIUS, -HOLE_RADIUS]], _xM-HOLE_RADIUS, _yM+0.25, [1, 1]);
-
-                }
-
-                var sum_x = 0; //
-                var sum_y = 0; //
-
-                var i = 0;
-                while(i&lt;w.length){
-                    sum_x += w[i];
-                    i += 2;
-                }
-                var j = 1;
-                while(j&lt;w.length){
-                    sum_y += w[j];
-                    j += 2;
-                }
-
-                var _text = number_2.toString();
-                var avr_x = sum_x/(w.length/2);
-                var avr_y = sum_y/(w.length/2);
-                //doc.text(offsetX+8, avr_y+1, _text);
-                number_2 ++;
-
-                offsetY += (_h+12);
-                if(maxOffsetX&lt;_w) maxOffsetX = _w;
-
-            }
-        }
-    }
+	 		}
+	 	}
+	}
 
 
-    var agent = navigator.userAgent.toLowerCase();
-    var name = navigator.appName;
-    //console.log(name);
-    /*
-    if ( name == "Microsoft Internet Explorer" || agent.search("trident") &gt; -1 || agent.search("edge/") &gt; -1){
-        doc.save('mSketchDrawing.pdf');
-    }
-    else {
-        doc.output('dataurlnewwindow');
-    }
-    */
-    var _date = new Date();
-    //console.log(saveDate.getFullYear()+""+(saveDate.getMonth()+1)+""+saveDate.getDate()+"_"+saveDate.getHours()+""+saveDate.getMinutes()+""+saveDate.getSeconds());
-    var _dateName = _date.getFullYear()+""+(_date.getMonth()+1)+""+_date.getDate()+"_"+_date.getHours()+""+_date.getMinutes()+""+_date.getSeconds();
-    doc.save('mSketch_UIST_Drawing_'+ _dateName +'.pdf');
+	var agent = navigator.userAgent.toLowerCase();
+	var name = navigator.appName;
+	//console.log(name);
+	/*
+	if ( name == "Microsoft Internet Explorer" || agent.search("trident") &gt; -1 || agent.search("edge/") &gt; -1){
+		doc.save('mSketchDrawing.pdf');
+	}
+	else {
+		doc.output('dataurlnewwindow');
+	}
+	*/
+	var _date = new Date();
+	//console.log(saveDate.getFullYear()+""+(saveDate.getMonth()+1)+""+saveDate.getDate()+"_"+saveDate.getHours()+""+saveDate.getMinutes()+""+saveDate.getSeconds());
+	var _dateName = _date.getFullYear()+""+(_date.getMonth()+1)+""+_date.getDate()+"_"+_date.getHours()+""+_date.getMinutes()+""+_date.getSeconds();
+	doc.save('mSketch_UIST_Drawing_'+ _dateName +'.pdf');
 
-    //if (agent.indexOf("chrome") != -1){
-    //}
+	//if (agent.indexOf("chrome") != -1){
+	//}
 }
 </t>
 <t tx="leo.20191210204346.1">// =============================================================================
@@ -11659,32 +11659,32 @@ interfaceSelect(-1);	// init interface
 </t>
 <t tx="leo.20191210204410.1">function animate(){
 
-    requestAnimationFrame( animate );
+	requestAnimationFrame( animate );
 
-    if (isPlaying)	{
-        actuate();		//* Calls actuate in every frame
-        for(var i=0; i&lt;AssemblyGroupList.length; i++){
-            AssemblyGroupList[i].recordTrajectories();	// Trajectory recording function in [assembly/AssemblyGroup.js]
-        }
-    }
+	if (isPlaying)	{
+		actuate();		//* Calls actuate in every frame
+		for(var i=0; i&lt;AssemblyGroupList.length; i++){
+			AssemblyGroupList[i].recordTrajectories();	// Trajectory recording function in [assembly/AssemblyGroup.js]
+		}
+	}
 
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        AssemblyGroupList[i].update();
-    }
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		AssemblyGroupList[i].update();
+	}
 
-    if(currentInterface instanceof OptInterface &amp;&amp; isPathOptimizing){
-        optimize();
-    }
+	if(currentInterface instanceof OptInterface &amp;&amp; isPathOptimizing){
+		optimize();
+	}
 
-    render();
+	render();
 }
 
 
 </t>
 <t tx="leo.20191210204410.2">function render(){
-    controls.update();
-    transformControl.update();
-    renderer.render(scene, camera);
+	controls.update();
+	transformControl.update();
+	renderer.render(scene, camera);
 }
 
 // =============================================================================
@@ -11693,15 +11693,15 @@ interfaceSelect(-1);	// init interface
 </t>
 <t tx="leo.20191210204410.3">function actuate(){
 
-    currentMillis = new Date().getTime();
-    if(isAnalysisOn)	globalAngle += 0.02
-    else				globalAngle = (motorSpeed*(currentMillis-prevMillis)/1000);
+	currentMillis = new Date().getTime();
+	if(isAnalysisOn)	globalAngle += 0.02
+	else				globalAngle = (motorSpeed*(currentMillis-prevMillis)/1000);
 
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        AssemblyGroupList[i].actuateAll(globalAngle);
-    }
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		AssemblyGroupList[i].actuateAll(globalAngle);
+	}
 
-    getAnalysisInfo();
+	getAnalysisInfo();
 }
 
 
@@ -11711,12 +11711,12 @@ interfaceSelect(-1);	// init interface
 
 </t>
 <t tx="leo.20191210204410.4">function initMechCalc(){
-    addAssemblyGroup(0);
-    currentAssemblyGroup.init();
-    selectAssembly(0);
+	addAssemblyGroup(0);
+	currentAssemblyGroup.init();
+	selectAssembly(0);
 
-    //jansen();				//** ======================= Example Jansen Mechanism Case in [common/MechExample.js]
-    //currentAssemblyGroup.init();
+	//jansen();				//** ======================= Example Jansen Mechanism Case in [common/MechExample.js]
+	//currentAssemblyGroup.init();
 }
 
 
@@ -11726,67 +11726,70 @@ interfaceSelect(-1);	// init interface
 
 </t>
 <t tx="leo.20191210204410.5">function addAssemblyGroup(_z){
-    AssemblyGroupList.push( new AssemblyGroup() );
-    currentAssemblyGroup = AssemblyGroupList[AssemblyGroupList.length-1];
-    currentAssembly = currentAssemblyGroup.getAssembly();
-    currentSpace = currentAssemblyGroup.getSpace();
-    currentTrajectory = currentAssemblyGroup.getTrajectory();
-    currentMousePlane = currentAssemblyGroup.getMousePlane();
-    currentAssemblyGroup.setPlane(_z);
+	AssemblyGroupList.push( new AssemblyGroup() );
+	currentAssemblyGroup = AssemblyGroupList[AssemblyGroupList.length-1];
+	currentAssembly = currentAssemblyGroup.getAssembly();
+	currentSpace = currentAssemblyGroup.getSpace();
+	currentTrajectory = currentAssemblyGroup.getTrajectory();
+	currentMousePlane = currentAssemblyGroup.getMousePlane();
+	currentAssemblyGroup.setPlane(_z);
 }
 
 </t>
 <t tx="leo.20191210204410.6">function removeAssemblyGroup(_index){
-    if(AssemblyGroupList.length&gt;1){
-        AssemblyGroupList[_index].remove();
-        AssemblyGroupList.splice(_index, 1);
-        if(_index&gt;0){
-            selectAssembly(_index-1);
-        }
-        else{
-            selectAssembly(_index);
-        }
-    }
-    else{
-        showMessage("Cannot remove: Last plane.")
-    }
-    updateMotorList();
+	if(AssemblyGroupList.length&gt;1){
+		AssemblyGroupList[_index].remove();
+		AssemblyGroupList.splice(_index, 1);
+		if(_index&gt;0){
+			selectAssembly(_index-1);
+		}
+		else{
+			selectAssembly(_index);
+		}
+	}
+	else{
+		showMessage("Cannot remove: Last plane.")
+	}
+	updateMotorList();
 }
 
 </t>
 <t tx="leo.20191210204410.7">function selectAssembly(_k){
-    if(_k &gt; AssemblyGroupList.length-1) _k = AssemblyGroupList.length-1;
+	if(_k &gt; AssemblyGroupList.length-1) _k = AssemblyGroupList.length-1;
 
-    currentAssemblyGroup = AssemblyGroupList[_k];
-    currentAssembly = currentAssemblyGroup.getAssembly();
-    currentSpace = currentAssemblyGroup.getSpace();
-    currentTrajectory = currentAssemblyGroup.getTrajectory();
-    currentMousePlane = currentAssemblyGroup.getMousePlane();
+	currentAssemblyGroup = AssemblyGroupList[_k];
+	currentAssembly = currentAssemblyGroup.getAssembly();
+	currentSpace = currentAssemblyGroup.getSpace();
+	currentTrajectory = currentAssemblyGroup.getTrajectory();
+	currentMousePlane = currentAssemblyGroup.getMousePlane();
 
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        if(AssemblyGroupList[i] == currentAssemblyGroup){
-            AssemblyGroupList[i].showPlane();
-        }
-        else{
-            AssemblyGroupList[i].hidePlane();
-        }
-    }
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		if(AssemblyGroupList[i] == currentAssemblyGroup){
+			AssemblyGroupList[i].showPlane();
+		}
+		else{
+			AssemblyGroupList[i].hidePlane();
+		}
+	}
 
-    if(toolState==TOOL_PTRANS || toolState==TOOL_PROT){
-        transformControl.attach( currentAssemblyGroup.group );
-    }
+	if(toolState==TOOL_PTRANS || toolState==TOOL_PROT){
+		transformControl.attach( currentAssemblyGroup.group );
+	}
 
 }
 
 </t>
 <t tx="leo.20191210204410.8">function findCurrentAssemblyNum(){
-    for(var i=0; i&lt;AssemblyGroupList.length; i++){
-        if(AssemblyGroupList[i] == currentAssemblyGroup){
-            return i;
-        }
-    }
-    return -1;
+	for(var i=0; i&lt;AssemblyGroupList.length; i++){
+		if(AssemblyGroupList[i] == currentAssemblyGroup){
+			return i;
+		}
+	}
+	return -1;
 }
 </t>
+<t tx="leo.20191210220017.1"></t>
+<t tx="leo.20191210220042.1">  &lt;script src="./public/js/jquery.min.js"&gt;&lt;/script&gt;
+  必須放在 head 命名節點, 若放在 included_javascript 會產生移動機構節點的錯誤.</t>
 </tnodes>
 </leo_file>
