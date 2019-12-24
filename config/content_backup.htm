@@ -18,10 +18,13 @@
 <h4>2019 Fall 學期教育目標:</h4>
 <p>使用可攜程式系統與網際內容管理系統, 管理各學員與分組學習內容, 同時利用 <a href="https://www.solidworks.com/">Solidworks</a>, <a href="https://www.plm.automation.siemens.com/global/en/products/nx/">NX</a>,<span> </span><a href="https://www.onshape.com/">Onshape</a>, <a href="http://solvespace.com">Solvespace</a>, <a href="https://www.freecadweb.org/">FreeCAD</a>, <a href="https://cyberbotics.com/">Webots</a><span> </span>與<span> </span><a href="http://www.coppeliarobotics.com/">V-rep</a><span> </span>執行機電資整合產品開發, 當面臨各種電腦輔助機械設計階段所遭遇問題時, 各學員可利用客製化程式加以解決.</p>
 <h4>Textbooks:</h4>
-<p style="padding-left: 30px;">1) 2015- Space Modeling with SolidWorks and NX</p>
+<p style="padding-left: 30px;">1. 2018 - NX 12 für Einsteiger – kurz und bündig</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-658-23061-6">https://link.springer.com/book/10.1007/978-3-658-23061-6</a></p>
+<p style="padding-left: 30px;">2. 2015- Space Modeling with SolidWorks and NX</p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">https://link.springer.com/book/10.1007/978-3-319-03862-9</a></p>
-<p style="padding-left: 30px;">2) 2008- The Engineering Design Revolution</p>
+<p style="padding-left: 30px;">3. 2008- The Engineering Design Revolution</p>
 <p style="padding-left: 60px;"><a href="/downloads/cad_history.pdf">The Engineering Design Revolution</a> (a.k.a. cad_history.pdf)</p>
+<p style="padding-left: 30px;">4. 登入 @gm 電子郵箱後<a href="https://drive.google.com/file/d/1HWp9teh16EPRr0rpnM7rNyutSa_2g53i/view?usp=sharing">下載 2019fall_cadp_電子書.7z</a></p>
 <h4>達成學期教育目標之評量方式與標準:</h4>
 <p>評分比例 <span>(包含學員自評、同組互評與教師評分等三項)</span>:</p>
 <hr/>
@@ -46,7 +49,41 @@
 <p style="padding-left: 30px;">學員實習</p>
 <p style="padding-left: 30px;">分組報告</p>
 <p>參考資料:</p>
-<p><a href="https://open.umn.edu/opentextbooks/subjects/engineering">https://open.umn.edu/opentextbooks/subjects/engineering</a> </p><h2>Evaluation</h2>
+<p><a href="https://open.umn.edu/opentextbooks/subjects/engineering">https://open.umn.edu/opentextbooks/subjects/engineering</a> </p><h2>CAD Process</h2>
+<h4><span style="background-color: #ffff00;">下載隨身系統並建立 Github 倉儲</span></h4>
+<p>每一位學員下載 <a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a><span> (編譯  Solvespace 用), 存放於採  extFAT 格式, 支援 USB 3.0 以上連線速度的 USB 隨身碟中, 在 Windows 10 64 位元電腦中, 以 64 位元<span> </span><a href="https://git-scm.com/download/win">Portablegit</a><span> </span>擷取存放於 Github 上的個人倉儲資料.</span></p>
+<p>在 Github 倉儲中的畫面如下:</p>
+<p><img alt="" class="add_border" height="328" src="/images/cad2019_process1.png" width="800"/></p>
+<h4><span style="background-color: #ffff00;">Git Clone 倉儲內容至隨身碟</span></h4>
+<p>使用者在近端利用隨身系統中的 git 指令, 將 Github 上的倉儲 clone 到近端隨身碟中:</p>
+<p style="padding-left: 30px;">git clone <a href="https://github.com">https://github.com</a>/使用者名稱/倉儲名稱.git</p>
+<p>倉儲資料將會以"倉儲名稱"作為目錄名, 將倉儲資料存入.</p>
+<p>接著使用者利用 git submodule add 指令, 將 <a href="https://github.com/mdecourse/cmsimde.git">https://github.com/mdecourse/cmsimde.git</a> 倉儲設為子模組, 且存入 cmsimde 目錄中.</p>
+<p style="padding-left: 30px;">git submodule add <a href="https://github.com/mdecourse/cmsimde.git">https://github.com/mdecourse/cmsimde.git</a> cmsimde</p>
+<p>完成後, 使用者必須將 cmsimde 目錄中 up_dir 目錄內容複製到前述的"倉儲名稱"目錄內. 而此目錄中包含 CMSiMDE 網際內容管理系統可讓使用者設定的 init.py, config/config, local_publishconf.py, pelicanconf.py 以及 publishconf.py 等檔案. 其中 init.py 與 config/config 設定 CMSiMDE 動態與靜態網站系統所使用的 html 頁面標題與內容管理系統標題. 而 <span>local_publishconf.py, </span><span>pelicanconf.py 以及 </span><span>publishconf.py 則用來設定 Pelican 近端與遠端網誌系統內容.</span></p>
+<h4><span style="background-color: #ffff00;">修改倉儲中 .git/config 中的  url 設定</span></h4>
+<p><span>從 https 連線協定改為以 ssh 方式連線.</span></p>
+<h4><span style="background-color: #ffff00;">Github SSH 連線設定</span></h4>
+<h4><span style="background-color: #ffff00;">利用 batch 檔案啟動網站內容編輯</span></h4>
+<p><span>接下來使用者可以利用下列 batch 檔案執行, 啟動近端動態網站系統, 並帶出近端動態網站編輯器.</span></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+y:
+cd tmp\cad2019\cmsimde
+start /WAIT python wsgi.py | sleep 2 | start chrome https://localhost:9443
+cd \
+cls</pre>
+<p>根據第一階至第三階網頁標題方式, 在近端動態系統中編輯內容, 使用者可以利用 HTML語法將圖片, 影片, 檔案下載與程式碼內容放入網頁中.</p>
+<p>完成動態系統內容編輯後, 利用 generate_pages 按鈕將 config/content.htm 轉為 content 目錄中靜態網站中的各分頁內容檔案, 此時在動態系統中的各頁面標題, 將作為 content 目錄中各檔案存檔的檔名依據.</p>
+<h4><span style="background-color: #ffff00;">將近端倉儲改版內容新增提交推送至  Github</span></h4>
+<p>使用者完成近端倉儲改版後, 可以利用下列 batch 檔案, 檢查轉出的靜態檔案內容是否正確:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+y:
+cd tmp\cad2019\
+start python http-server.py | sleep 2 | start chrome https://localhost:8444
+cd \
+cls
+</pre>
+<p>若一切正常, 則可再利用下列 batch 檔案, 帶出</p><h2>Evaluation</h2>
 <p>本課程經由第五、七與期中考週的學員自評與互評, 提供教師評量學員期中成績.</p>
 <p>並依據第十四、十六與期末考週的學員自評與互評, 提供教師評量學員的期末成績.</p>
 <p><span>電腦輔助設計實習每週自評與互評表單: </span><a href="https://forms.gle/raTtrfjv8cMMVSZd6">https://forms.gle/raTtrfjv8cMMVSZd6</a><span> </span></p>
@@ -2173,8 +2210,10 @@ if __name__ == "__main__":
 <p><a href="https://github.com/TransmissionZero/MinGW-Win32-Application">https://github.com/TransmissionZero/MinGW-Win32-Application</a></p>
 <p><a href="http://cq.cx/index.pl">http://cq.cx/index.pl</a> (for @gm user - <a href="https://drive.google.com/file/d/1awO1X82iflWodJ0ULUIm6Z71AxWkUiuR/view?usp=sharing">sketchflat_project.7z</a>)</p>
 <p><a href="https://github.com/LDmicro/LDmicro">https://github.com/LDmicro/LDmicro</a></p><h2>Solvespace</h2>
+<p><a href="https://github.com/solvespace/solvespace/blob/master/CHANGELOG.md">https://github.com/solvespace/solvespace/blob/master/CHANGELOG.md</a></p>
 <p><a href="http://solvespace.com/">http://solvespace.com</a></p>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a> </p>
+<p>Latest Build: <a href="https://ci.appveyor.com/project/whitequark/solvespace/build/artifacts">https://ci.appveyor.com/project/whitequark/solvespace/build/artifacts</a></p>
 <p><a href="https://www.youtube.com/channel/UCPwwPIXHMZYcVyJ2SuRJjuA/videos">https://www.youtube.com/channel/UCPwwPIXHMZYcVyJ2SuRJjuA/videos</a></p>
 <h4>編譯步驟:</h4>
 <p>先將 Y:\portablegit\bin\sh.exe 改名為 sh_rename_for_solvespace.exe</p>
@@ -2197,8 +2236,7 @@ if __name__ == "__main__":
 <p style="padding-left: 30px;"><a href="https://drive.google.com/open?id=16bLBcVUXWW_nQ1ki-Mtsox1DsSI-2gIj"><span>下載 Solvespace </span>986da7d 版本</a></p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/11lSoROAP5swT1RqX-eR-6aMhmOwx3zt3/view?usp=sharing">下載自行編譯的  solvespace.exe</a></p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/18R3erVkzKdvJmQ-ni7YzSb_izwGUkkeo/view?usp=sharing">下載 Solvespace 22e4011 版本</a></p>
-<p></p>
-<h2>Pyslvs-UI</h2>
+<p></p><h2>Pyslvs-UI</h2>
 <p><a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a></p>
 <p>目前正將原先使用 PyQt 的使用者介面改寫為 <a href="https://github.com/mottosso/Qt.py">https://github.com/mottosso/Qt.py</a> 相容, </p>
 <p>套件執行請下載 <a href="https://github.com/KmolYuan/Pyslvs-UI/releases">https://github.com/KmolYuan/Pyslvs-UI/releases</a> Windows 64 位元版本.</p>
@@ -2470,74 +2508,9 @@ print('Program ended')</pre>
 <h4>Solvespace 零件尺寸與 Webots</h4>
 <p style="padding-left: 30px;">因為 Webots 內建的尺寸單位為 m, 因此利用 Import 導入 wrl 檔案時, 該檔案從 Solvespace 以 mm 尺寸執行繪圖後, 轉為 wrl 後導入 Webots, 若 Solvespace 以 mm 數字輸出, 則必須將 scale 調整為 1/1000, 才能夠將該 mm 數字轉為 m, 得到正確的零件尺寸. 一般在 Solvespace 均以 mm 作圖, 因此轉出 wrl 時必須注意轉出內容與所使用繪圖單位之間的轉換.</p>
 <p style="padding-left: 30px;">Solvespace 與轉出檔案有關的 export scale factor 在 home-&gt;configuration 中, 內建為 1, 以 mm 單位輸出, 若要改為以 m 輸出, 可將 export scale factor 設為 1:1000.</p>
-<p style="padding-left: 30px;">使用者可以將零件從 Solvespace 轉出 wrl 後, 在 transform 中加入</p>
-<p style="padding-left: 30px;">scale 0.001 0.001 0.001</p>
-<p style="padding-left: 30px;">後重新存檔, 就可以在 Import 轉入 Webots 後, 得到正確的尺寸. 也可以修改 Solvespace 的原始碼, 自動在轉出的 wrl 檔案中加入 scale 轉換, 改以 m 作為尺寸單位.</p>
-<p style="padding-left: 30px;">另外, 由於 Webots 無法解讀從 Solvespace 轉出 wrl 檔案中的 <span style="background-color: #ffff00;">colorPerVertex, color 以及 colorIndex</span> 等三種欄位資料, 因此也可以在修改 scale 時將這些欄位資料刪除. 或從 Solvespace 原始碼中進行修改.</p>
-<p style="padding-left: 30px;">例如:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#VRML V2.0 utf8
-#Exported from SolveSpace 3.0
-
-DEF a1m_block Transform {
-  scale 0.001 0.001 0.001
-  children [
-    Shape {
-      appearance Appearance {
-        material DEF a1m_block_material_255 Material {
-          diffuseColor 0.300000 0.300000 0.300000
-          ambientIntensity 0.300000
-          transparency 0.000000
-        }
-      }
-      geometry IndexedFaceSet {
-        colorPerVertex TRUE
-        coord Coordinate { point [
-          -50.400000 50.000000 1000.000000,
-          -50.400000 -0.000000 1000.000000,
-          0.000000 50.000000 1000.000000,
-          0.000000 -0.000000 1000.000000,
-          -50.400000 -0.000000 0.000000,
-          -50.400000 50.000000 0.000000,
-          0.000000 -0.000000 0.000000,
-          0.000000 50.000000 0.000000,
-        ] }
-        coordIndex [
-          0, 1, 2, -1,
-          2, 1, 3, -1,
-          4, 5, 6, -1,
-          6, 5, 7, -1,
-          3, 1, 6, -1,
-          6, 1, 4, -1,
-          1, 0, 4, -1,
-          4, 0, 5, -1,
-          0, 2, 5, -1,
-          5, 2, 7, -1,
-          2, 3, 7, -1,
-          7, 3, 6, -1,
-        ]
-        color Color { color [
-          0.3921568692 0.3921568692 0.3921568692,
-        ] }
-        colorIndex [
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-          0, 0, 0, -1,
-        ]
-      }
-    }
-  ]
-}
-</pre>
-<h4>E-Puck Python control program</h4>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;">另外, 由於 Webots 無法解讀從 Solvespace 轉出 wrl 檔案中的 <span style="background-color: #ffff00;">colorPerVertex, color 以及 colorIndex</span> 等三種欄位資料, 因此可從 Solvespace 原始碼中進行修改.</p>
+<p style="padding-left: 30px;">E-Puck Python control program</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">"""e-puck controller."""
 
 from controller import DifferentialWheels
@@ -2611,6 +2584,19 @@ while robot.step(timestep) != -1:
 <p style="padding-left: 30px;"><span><a href="https://github.com/x3dom/x3dom">https://github.com/x3dom/x3dom</a></span></p>
 <p style="padding-left: 30px;"><span>2016 報價: 約 NT$ 400,000. (<a href="https://www.cyberbotics.com/e-puck">https://www.cyberbotics.com/e-puck</a> 約 NT$ 25,000.)</span></p>
 <p><span><img alt="" height="262" src="/images/webots_and_5_e-pucks_price_2016.png" width="600"/></span></p><h3>VRML</h3>
+<p>WRL 檔案有三個主要內容:</p>
+<ol>
+<li>標頭 header (必要)</li>
+<li>註解 comment (以 # 開頭)</li>
+<li>節點 nodes
+<ol>
+<li>節點類別 (大寫英文, 必要)</li>
+<li>大括號 {} (必要)</li>
+<li>欄位值</li>
+<li>欄位中可帶有多重欄位值者以中括號界定 []</li>
+</ol>
+</li>
+</ol>
 <p><a href="https://cyberbotics.com/doc/reference/group">https://cyberbotics.com/doc/reference/group</a></p>
 <p style="padding-left: 30px;"><a href="https://cyberbotics.com/doc/reference/transform">https://cyberbotics.com/doc/reference/transform</a></p>
 <p style="padding-left: 60px;"><a href="https://cyberbotics.com/doc/reference/solid">https://cyberbotics.com/doc/reference/solid</a></p>
@@ -4051,11 +4037,29 @@ int main()
 <p style="padding-left: 30px;">參考電子書:</p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3225-5">Learn Autodesk Inventor 2018 Basics - 3D Modeling, 2D Graphics, and Assembly Design</a></p>
 <p style="padding-left: 30px;">請每位組員<span>登入 @gm 電子郵箱,<span> </span></span><a href="https://drive.google.com/file/d/1fEZtGVCXp2vtILUZZ8vTTdtYHsbBpf7j/view?usp=sharing">下載 NX 12.0.2 安裝光碟</a><span>, 或者</span><a href="https://drive.google.com/file/d/1UyDUGc2ytn-EVHCw-bNqanV6Jw11yvUg/view?usp=sharing">下載 NX12.0.2 虛擬主機板本</a><span>, 或者</span><a href="https://drive.google.com/file/d/1Ul025kwP3I1SC0aD1YEzZRcL0ZzIlO1p/view?usp=sharing">下載 NX12 可攜版本</a><span>. 以便利用 NX12 執行下列專案的零組件設計繪圖與工程分析.</span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/sfepy/sfepy">https://github.com/sfepy/sfepy</a></span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/tjfulle/fem-with-python/tree/master/Lessons">https://github.com/tjfulle/fem-with-python/tree/master/Lessons</a></span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/AppliedMechanics-EAFIT/SolidsPy">https://github.com/AppliedMechanics-EAFIT/SolidsPy</a></span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/CALFEM/calfem-python">https://github.com/CALFEM/calfem-python</a></span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/weihuayi/fealpy">https://github.com/weihuayi/fealpy</a></span></p>
+<p style="padding-left: 60px;"><span><a href="https://github.com/ali7line/awesome-fem">https://github.com/ali7line/awesome-fem</a></span></p>
 <p style="padding-left: 30px;">請每位學員參考 <a href="https://github.com/nasa-jpl/open-source-rover">https://github.com/nasa-jpl/open-source-rover</a> (提供 Solidworks 零組件檔案) 與<span> </span><a href="https://github.com/mdecourse/Sawppy_Rover">https://github.com/mdecourse/Sawppy_Rover</a> (提供<span> </span><a href="https://cad.onshape.com/documents/0c757e42f113318abade702c/w/83a3818a1aef5d4234265d9c/e/0284daee1c8866acdbcf0b9d">Onshape 零組件檔案</a>) 中的 Rover 設計, 分別利用 <span>Inventor 2019 與 NX12 進行 Rover 零組件的設計與繪圖.</span></p>
 <p style="padding-left: 30px;"><span>參考電子書:</span></p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">2015 Space Modeling with SolidWorks and NX</a></p>
 <p>登入 @gm 電子郵箱後, <a href="https://drive.google.com/file/d/1MtT6W0kNAEhNZkgm3oZvAp-kREhgFPgT/view?usp=sharing">下載上述 Inventor_nx_sw_onshape_ebooks.7z</a></p>
 <p><span></span><span><img alt="" height="315" src="/images/sawppy_rover_onshape.png" width="560"/></span></p>
+<p><a href="/downloads/Kinematics Modeling and Analyses of Articulated Rovers.pdf">Kinematics Modeling and Analyses of Articulated Rovers.pdf</a></p>
+<p><a href="/downloads/A General Approach to Kinematics Modeling of All-Terrain Rovers.pdf">A General Approach to Kinematics Modeling of All-Terrain Rovers.pdf</a></p>
+<p><a href="/downloads/Characterization and Comparison of Rover Locomotion Performance Based on Kinematic Aspects.pdf">Characterization and Comparison of Rover Locomotion Performance Based on Kinematic Aspects.pdf</a></p>
+<p><a href="/downloads/Motion Planning Algorithm Based on Environmental Information for Mars Rover.pdf">Motion Planning Algorithm Based on Environmental Information for Mars Rover.pdf</a></p>
+<p><a href="/downloads/Motion Control for a Planetary Exploration Rover with Six Steerable Wheels.pdf">Motion Control for a Planetary Exploration Rover with Six Steerable Wheels.pdf</a></p>
+<p><a href="/downloads/Fast Approximate Clearance Evaluation for Rovers with Articulated Suspension Systems.pdf">Fast Approximate Clearance Evaluation for Rovers with Articulated Suspension Systems.pdf</a></p>
+<p><a href="/downloads/study and implementation of wheel walking for a mars rover.pdf">study and implementation of wheel walking for a mars rover.pdf</a> (thesis)</p>
+<p><a href="/downloads/Kinematic Analysis and Comparison of Wheeled Locomotion Performance.pdf">Kinematic Analysis and Comparison of Wheeled Locomotion Performance.pdf</a></p>
+<p><a href="/downloads/modelling and dynamic analysis of rocker-bogie rover for space exploration.pdf">modelling and dynamic analysis of rocker-bogie rover for space exploration.pdf</a> (thesis)</p>
+<p><a href="/downloads/Assessment of an ESA Fast Mobility Mars Rover.pdf">Assessment of an ESA Fast Mobility Mars Rover.pdf</a></p>
+<p><a href="/downloads/Mars_express.pdf">Mars_express.pdf</a></p>
+<p><a href="/downloads/Phobos Moon of Mars Sample Return Mission.pdf">Phobos Moon of Mars Sample Return Mission.pdf</a></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1" frameborder="0" height="315" src="https://www.youtube.com/embed/acANiRFg-qA" width="560"></iframe><br/><span></span></p><h3>導入 GitExtensions</h3>
 <p>為了讓參與 Github 或 Gitlab 協同設計的成員能夠更方便使用 git 指令, 在此導入 <a href="https://github.com/gitextensions/gitextensions">https://github.com/gitextensions/gitextensions</a>.</p>
 <p>目前推薦使用 GitExtensions 的可攜版本:</p>
@@ -4176,7 +4180,8 @@ Y:\cad\201906_fall\data\GitExtensions\gitextensions.exe  browse y:\tmp\cad2019\<
 <p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Automated_storage_and_retrieval_system">AS/RS</a></p>
 <p></p><h2>Documentary</h2>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/Yutzg2NLwcU" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/0_AelzzIRSM" width="560"></iframe></p><h2>Ebooks</h2>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/0_AelzzIRSM" width="560"></iframe></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/YZXHfXcWcBs" width="560"></iframe></p><h2>Ebooks</h2>
 <p>本課程所採用的兩本電子書, 第一本主要用於 Solidworks 2017 與 NX 12 執行零組件繪圖時參考, 而第二本則說明電腦輔助繪圖與設計程式發展歷史,  其中牽涉到許多套件間的開發細節與背景, 這些資料主要用於參考用.</p>
 <p>1) 2015- Space Modeling with SolidWorks and NX</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-3-319-03862-9">https://link.springer.com/book/10.1007/978-3-319-03862-9</a></p>
@@ -4291,7 +4296,7 @@ Y:\cad\201906_fall\data\GitExtensions\gitextensions.exe  browse y:\tmp\cad2019\<
 <p>先根據</p>
 <p><a href="https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/OOOT_Functions/OptMethods/abstractOptMethod.cs">https://github.com/mdecourse/pmks_firefox/blob/master/PKMS_source_codes/PlanarMechanismSimulator/OOOT_Functions/OptMethods/abstractOptMethod.cs</a></p>
 <p>中將數值分析解題分為六大類:</p>
-<p>IOptFunction<br/>    IInequality<br/>    IEquality<br/>    IObjectiveFunction<br/>IDependentAnalysis<br/>abstractLineSearch<br/>abstractSearchDirection<br/>abstractMeritFunction<br/>abstractConvergence</p>
+<p>IOptFunction<br/>    IInequality<br/>    IEquality<br/>    IObjectiveFunction<br>IDependentAnalysis<br/>abstractLineSearch<br/>abstractSearchDirection<br/>abstractMeritFunction<br>abstractConvergence</br></br></p>
 <p>其中主要運算則導向</p>
 <p>inequality, equality, objectiveFunction, abstractLineSearch 以及abstractSearchDirection 等運算方法.</p>
 <p><span>而各點計算位置, 速度與加速度的程式碼, 位於:</span></p>

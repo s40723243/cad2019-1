@@ -5189,7 +5189,7 @@ SliderConstraint.prototype.constructor = SliderConstraint;
 
                     targetLG.zeroToPoint(targetLG.getLocalPosition(cc.constraint.getLink(cc.target), cc.constraint.getPoint(cc.target)));
                     targetLG.setRelativePosition(  baseLG.getLocalPosition(cc.constraint.getLink(cc.base),   cc.constraint.getPoint(cc.base)) );
-                    var angleSign = (ac.target==Constraint.target) ?+1 : -1; // javascript에서 작동하는지?
+                    var angleSign = (ac.target==Constraint.target) ?+1 : -1; // javascript does it work?
 
                     targetLG.setRelativeAngle( ac.constraint.getLink(ac.base).getAngle() - ac.constraint.getLink(ac.target).getAngle() + angleSign*ac.constraint.getAngle());
 

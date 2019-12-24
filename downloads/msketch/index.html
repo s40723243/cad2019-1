@@ -1357,10 +1357,10 @@
         <input type="radio" name="gender" id="panel_gen_4" checked>
         <i class="form-icon"></i> <span class="msketch-panel-desc">4-bar</span>
         </label>
-        <!-- <label class="form-radio" style="width: 49%;">
+        <label class="form-radio" style="width: 49%;">
         <input type="radio" name="gender" id="panel_gen_6" >
         <i class="form-icon"></i> <span class="msketch-panel-desc">6-bar</span>
-        </label> -->
+        </label>
         </div>
         </div>
         <div class="msketch-panel-row">
@@ -1393,12 +1393,12 @@
                 var t1 = performance.now();
                 console.log("Call to startFourbarGeneration took " + (t1 - t0) + " milliseconds.")
             }
-            // else if( $('#panel_gen_6').prop('checked') ){
-            //     var t0 = performance.now();
-            //     startWattGeneration();
-            //     var t1 = performance.now();
-            //     console.log("Call to startFourbarGeneration took " + (t1 - t0) + " milliseconds.")
-            // }
+            else if( $('#panel_gen_6').prop('checked') ){
+                 var t0 = performance.now();
+                 startWattGeneration();
+                 var t1 = performance.now();
+                 console.log("Call to startFourbarGeneration took " + (t1 - t0) + " milliseconds.")
+             }
         });
 
             //var wattDataPath = "./public/res/WattDataSet";
@@ -1411,7 +1411,7 @@
             var FOURBAR_SAMPLE_SIZE = 16;
             var NUM_OF_WATT_DATASET = 5;
             var NUM_OF_FOURBAR_DATASET = 1;
-            //var sampleWattTrj = loadWattSet();
+            var sampleWattTrj = loadWattSet();
             var sampleFourbarTrj = loadFourbarSet();
 
         function startWattGeneration(){
